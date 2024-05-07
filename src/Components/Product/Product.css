@@ -1,0 +1,100 @@
+.product {
+    /* border: 1px solid gray; */
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    padding: 8px;
+    background-color: white;
+  
+    position: relative;
+    box-shadow: var(--shadow);
+  
+  /* border: solid 1px var(--main-color); */
+  }
+  .product:hover {
+    box-shadow: var(--shadow);
+  }
+
+  .product-img {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .product-img img {
+    height: 300px;
+    width: 95%;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+  }
+  
+  .start {
+    color: #f6a355;
+  }
+  
+  
+  .product-icons {
+    list-style: none;
+    position: absolute;
+    right: 0px;
+    top: 20px;
+    opacity: 0;
+    transition: all .5s ease;
+  }
+  
+  .product-icons li {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-left: auto;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+  }
+  
+  .product-icons li:hover {
+    background-color: var(--main-color);
+    color: white ;
+    border-color: var(--main-color);
+  }
+  .product-icons li a{
+    color: black;
+  }
+  .product-icons li:hover a{
+    color: white !important;
+  }
+  
+  .product:hover .product-icons {
+    opacity: 1;
+    right: 20px;
+  
+  }
+  
+  .product:hover img {
+    transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    -o-transform: scale(1.05);
+  }
+  
