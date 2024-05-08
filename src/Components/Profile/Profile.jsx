@@ -15,7 +15,7 @@ export default function Profile() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Profile</title>
+        <title>Fresh Cart | Profile</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 

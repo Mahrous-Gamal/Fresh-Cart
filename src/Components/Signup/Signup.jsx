@@ -5,9 +5,10 @@ import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FiUser } from "react-icons/fi";
-import {faEye,faEyeSlash,faEnvelope} from "@fortawesome/free-regular-svg-icons";
+import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { FiLock } from "react-icons/fi";
 import "../Signin/Signin.css";
+import { Helmet } from "react-helmet";
 
 
 export default function Signup() {
@@ -77,6 +78,13 @@ export default function Signup() {
 
   return (
     <>
+
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fresh Cart | Register</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Register Now </h2>

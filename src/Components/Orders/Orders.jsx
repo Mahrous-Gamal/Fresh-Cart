@@ -24,7 +24,7 @@ export default function Allorders() {
 
       <Helmet>
         <meta charSet="utf-8" />
-        <title>All Orders</title>
+        <title>Fresh Cart | All Orders</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 

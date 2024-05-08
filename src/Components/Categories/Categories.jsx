@@ -22,7 +22,7 @@ export default function Categories() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Categories</title>
+        <title>Fresh Cart | Categories</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 

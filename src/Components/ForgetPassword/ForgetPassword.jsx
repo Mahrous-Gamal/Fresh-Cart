@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEnvelope} from "@fortawesome/free-regular-svg-icons";
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import "../Signin/Signin.css";
 import Froget from "../../Assets/Images/forgetLock.svg"
+import { Helmet } from "react-helmet";
+
 
 export default function ForgetPassword() {
   let [err, setErr] = useState("");
@@ -56,6 +58,12 @@ export default function ForgetPassword() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fresh Cart | Forget Password</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       <div style={{ paddingTop: "100.49px" }}>
         <div className="w-75 w-small-75 m-auto my-5 text-center" >
           <img src={Froget} alt="" />

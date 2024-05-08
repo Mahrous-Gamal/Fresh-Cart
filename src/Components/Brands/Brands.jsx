@@ -23,7 +23,7 @@ export default function Brands() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Brands</title>
+        <title>Fresh Cart | Brands</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 

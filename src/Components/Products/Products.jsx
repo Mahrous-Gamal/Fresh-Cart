@@ -25,7 +25,7 @@ export default function Products() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Products</title>
+        <title>Fresh Cart | Products</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="container my-3" style={{ paddingTop: "74.49px" }}>

@@ -4,9 +4,10 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEye,faEyeSlash,faEnvelope} from "@fortawesome/free-regular-svg-icons";
+import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { FiLock } from "react-icons/fi";
 import "../Signin/Signin.css";
+import { Helmet } from "react-helmet";
 
 
 export default function Signin() {
@@ -72,9 +73,14 @@ export default function Signin() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fresh Cart | Login</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
-          <h2 className="mb-5 fw-bold text-dark">Register Now </h2>
+          <h2 className="mb-5 fw-bold text-dark">Login </h2>
           <form onSubmit={registr.handleSubmit}>
             <label htmlFor="email">Email:</label>
             <div className="input-group my-2">

@@ -18,7 +18,7 @@ export default function Wishlist() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Wishlist</title>
+        <title>Fresh Cart | Wishlist</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div

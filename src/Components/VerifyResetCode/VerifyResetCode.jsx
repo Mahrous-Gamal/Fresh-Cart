@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { Helmet } from "react-helmet";
 
 
 export default function ForgetPass() {
@@ -54,6 +55,12 @@ export default function ForgetPass() {
 
   return (
     <>
+   <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fresh Cart | Reset Code</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+
       <div style={{ paddingTop: "180.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Verify Reset Code</h2>

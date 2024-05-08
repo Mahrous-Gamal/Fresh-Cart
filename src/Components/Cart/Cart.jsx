@@ -32,7 +32,7 @@ export default function Cart() {
       <>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Cart</title>
+          <title>Fresh Cart | Cart</title>
           <link rel="canonical" href="http://mysite.com/example" />
         </Helmet>
         <div style={{ paddingTop: "74.49px" }}>
