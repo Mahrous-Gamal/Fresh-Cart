@@ -2,7 +2,6 @@ import axios from "axios";
 import Product from "../Product/Product";
 import Loader from "../Loader/Loader";
 import { useQuery } from "react-query";
-import Footer from "../Footer/Footer";
 import { useContext } from "react";
 import { storeContext } from "../../Context/StoreContext";
 import { Helmet } from "react-helmet";
@@ -16,7 +15,6 @@ export default function Products() {
   let { data, isLoading } = useQuery("getProduct", getProduct);
   let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
   let Arr = dataWish?.data?.data?.map((item) => item._id);
-  // console.log(Arr);
 
   if (isLoading) {
     return <Loader />;
@@ -42,7 +40,6 @@ export default function Products() {
           })}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

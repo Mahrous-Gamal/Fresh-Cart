@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Footer from "../Footer/Footer";
 import { storeContext } from "../../Context/StoreContext";
 import { useQuery } from "react-query";
 import Loader from "../Loader/Loader";
@@ -12,6 +11,7 @@ export default function Wishlist() {
     useContext(storeContext);
   let { data, isLoading, refetch } = useQuery("getWish", getWishlist);
   let Arr = data?.data?.data?.map((item) => item._id);
+  
   setWishlistCounter(data?.data?.data?.length);
   if (isLoading) return <Loader />;
   return (
@@ -21,6 +21,7 @@ export default function Wishlist() {
         <title>Fresh Cart | Wishlist</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+
       <div
         className="container my-5"
         style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
@@ -43,11 +44,10 @@ export default function Wishlist() {
             className="text-center my-5"
             style={{ paddingTop: "185.49px", paddingBottom: "200px" }}
           >
-            wishlist is empty.
+            Wishlist is empty.
           </h2>
         )}
       </div>
-      <Footer />
     </>
   );
 }

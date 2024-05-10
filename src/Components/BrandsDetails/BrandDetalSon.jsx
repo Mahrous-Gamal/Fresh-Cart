@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { storeContext } from "../../context/storeContext";
+import { storeContext } from "../../Context/StoreContext";
 import { toast } from "react-toastify";
 import BigLoader from "../BigLoader/BigLoader";
 
@@ -81,11 +81,10 @@ export default function Product(props) {
         <div className="product p-3 rounded-3 cursor-pointer position-relative">
           <i
             onClick={() => chiking()}
-            className={`${
-              arrIdWish?.includes(props?.item?._id.toString())
+            className={`${arrIdWish?.includes(props?.item?._id.toString())
                 ? "fa-solid fa-heart text-danger"
                 : "fa-regular fa-heart"
-            }`}
+              }`}
           ></i>
           <Link to={`/product-delales/${item._id}`}>
             <img src={item.imageCover} className="w-100" alt="imageCover" />

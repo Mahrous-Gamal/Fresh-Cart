@@ -1,20 +1,20 @@
 import React from "react";
 import error from "../../Assets/Images/oops404Error.svg";
-import Footer from "../Footer/Footer";
 
 
 export default function NotFound() {
   return (
     <>
-      <div className="text-center mt-5">
+      <div className="text-center mt-4">
         <img
           src={error}
           alt="error"
           style={{ height: "90vh" }}
-          className="w-100 border border-2"
+          className="w-100 image-notfound"
         />
+        <p className="fw-bold fs-5">This page you are looking for could not be found.</p>
       </div>
-      <Footer />
+
     </>
   );
 }

@@ -3,7 +3,6 @@ import Image1 from "../../Assets/Images/slider-image-1.jpeg";
 import Image2 from "../../Assets/Images/slider-image-2.jpeg";
 import MainSlider from "../MainSlider/MainSlider";
 import axios from "axios";
-import Footer from "../Footer/Footer";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../GoSignIn/GoSignIn";
@@ -48,9 +47,10 @@ export default function WelcomePage() {
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Fresh Cart</title>
+        <title>Fresh Cart | Home</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
+
       <div className="container posss my-3 " style={{ paddingTop: "74.49px" }}>
         <div className="row">
           <div className="col-md-8 p-0">
@@ -75,7 +75,6 @@ export default function WelcomePage() {
         ...
         {/* <DataPagination /> */}
       </div>
-      <Footer />
       {/* <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}

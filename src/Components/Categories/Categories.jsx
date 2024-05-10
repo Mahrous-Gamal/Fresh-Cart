@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import Loader from "../Loader/Loader";
 import Categorie from "../Category/Category";
 import { Helmet } from "react-helmet";
-import Footer from "../Footer/Footer.jsx";
 
 
 export default function Categories() {
@@ -33,7 +32,6 @@ export default function Categories() {
           ))}
         </div>
       </div>
-      <Footer />
     </>
   );
 }

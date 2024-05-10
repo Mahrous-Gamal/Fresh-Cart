@@ -1,13 +1,16 @@
 import React from "react";
 import logo from "../../Assets/Images/freshcart-logo.svg";
-import { Link } from "react-router-dom";
+import Payment1 from "../../Assets/Images/Amazon_Pay.wine.svg"
+import Payment2 from "../../Assets/Images/American-Express.webp"
+import Payment3 from "../../Assets/Images/MasterCard.png"
+import Payment4 from "../../Assets/Images/Paypal.png"
 
 
 export default function Footer() {
   return (
-    <footer className="bg-body-tertiary text-muted">
+    <footer className="ext-muted" style={{ backgroundColor: "rgb(238, 238, 238)" }}>
       {/* Section: Social media */}
-      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-2 border-muted">
         {/* Left */}
         <div className="me-5 d-none d-lg-block">
           <span>Get connected with us on social networks:</span>
@@ -62,56 +65,56 @@ export default function Footer() {
                 content. Lorem ipsum dolor sit amet, consectetur adipisicing
                 elit.
               </p>
+              <div className="payment">
+                <span>Payment Partners</span>
+                <img src={Payment1} style={{ width: "90px" }} alt="" />
+                <img src={Payment2} className="mx-2" style={{ width: "45px" }} alt="" />
+                <img src={Payment3} style={{ width: "45px" }} alt="" />
+                <img src={Payment4} className="mx-2" style={{ width: "60px" }} alt="" />
+              </div>
             </div>
 
             <div className="col-xl-2  col-md-3 mx-auto mb-4">
               {/* Links */}
               <h6 className="fw-bold mb-4 text-dark">Account</h6>
-              <p>
-                <Link to="" className="text-reset">
-                  My Account
-                </Link>
+              <p className="cursor-pointer">
+                My Account
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  Login / Register
-                </Link>
+
+              <p className="cursor-pointer">
+                Login / Register
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  Cart
-                </Link>
+
+              <p className="cursor-pointer">
+                Cart
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  Wishlist
-                </Link>
+
+              <p className="cursor-pointer">
+                Wishlist
               </p>
+
             </div>
 
             <div className="col-xl-2 col-md-3 mx-auto mb-4">
               {/* Links */}
               <h6 className="fw-bold mb-4 text-dark">Quick Link</h6>
-              <p>
-                <Link to="" className="text-reset">
-                  Privacy Policy
-                </Link>
+
+              <p className="cursor-pointer">
+                Privacy Policy
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  FAQ
-                </Link>
+
+              <p className="cursor-pointer">
+                FAQ
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  Terms Of Use
-                </Link>
+
+              <p className="cursor-pointer">
+                Terms Of Use
               </p>
-              <p>
-                <Link to="" className="text-reset">
-                  Contact
-                </Link>
+
+              <p className="cursor-pointer">
+                Contact
               </p>
+
             </div>
 
             <div className="col-xl-4 col-md-6 mx-auto mb-md-0 mb-4">

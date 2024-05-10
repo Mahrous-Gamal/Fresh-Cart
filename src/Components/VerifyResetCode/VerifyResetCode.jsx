@@ -55,7 +55,7 @@ export default function ForgetPass() {
 
   return (
     <>
-   <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Fresh Cart | Reset Code</title>
         <link rel="canonical" href="http://mysite.com/example" />
@@ -75,19 +75,13 @@ export default function ForgetPass() {
               id="resetCode"
             />
             {registr.errors.resetCode && registr.touched.resetCode ? (
-              <div className="text-danger">
+              <p className="text-danger">
                 *{registr.errors.resetCode}
-              </div>
+              </p>
             ) : (
               ""
             )}
-            {err ? (
-              <div className="alert alert-danger" role="alert">
-                {err}
-              </div>
-            ) : (
-              ""
-            )}
+
             <div className="text-end">
               <button
                 disabled={!(registr.dirty && registr.isValid)}
@@ -95,7 +89,10 @@ export default function ForgetPass() {
                 className="btn bg-main text-white"
               >
                 {loaderbtn ? (
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                  <>
+                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Reset Password
+                  </>
+
                 ) : (
                   "Reset Password"
                 )}

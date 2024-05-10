@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import { storeContext } from "../../Context/StoreContext";
 import { toast } from "react-toastify";
-import Footer from "../Footer/Footer";
 import Slider from "react-slick";
-
 
 export default function ProductDetails() {
   let { setCounter, addToCart } = useContext(storeContext);
   let [loading, setLoading] = useState(1);
+
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   async function addproductToCart(productId) {
     try {
       setLoading(0);
@@ -26,8 +26,10 @@ export default function ProductDetails() {
       console.log(err);
     }
   }
+
   let id = useParams();
-  let [prouducts, setProuducts] = useState();
+  let [products, setProuducts] = useState();
+
   async function getData() {
     try {
       const { data } = await axios.get(
@@ -55,9 +57,10 @@ export default function ProductDetails() {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
+
   function onlineInBtn() {
     if (isOnline) {
-      addproductToCart(prouducts?._id)
+      addproductToCart(products?._id)
       console.log("online")
     }
     else {
@@ -65,6 +68,7 @@ export default function ProductDetails() {
       console.log("off")
     }
   }
+
   var settings = {
     dots: true,
     infinite: true,
@@ -74,37 +78,39 @@ export default function ProductDetails() {
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2000,
-    infinite: true
   };
 
-  if (prouducts) {
+  if (products) {
     return (
       <>
         <div className="container mt-5 mb-3" style={{ paddingTop: '74.49px' }}>
           <div className="row pt-5 align-items-center g-4">
             <div className="col-md-4">
               <div className="layer">
+
                 <Slider {...settings}>
-                  {prouducts?.images?.map((item, idx) => {
-                    return (<div key={idx}>
-                      <img src={item} alt={prouducts.title} className="w-100" />
-                    </div>)
+                  {products?.images?.map((item, index) => {
+                    return (
+                      <div key={index}>
+                        <img src={item} alt={products.title} className="w-100" />
+                      </div>)
                   })}
                 </Slider>
+
               </div>
             </div>
             <div className="col-md-8">
               <div className="layer">
-                <h2 className="mb-3">{prouducts.title}</h2>
-                <p className="text-muted ps-2">{prouducts.description}</p>
-                <span>{prouducts.category.name}</span>
+                <h2 className="mb-3">{products.title}</h2>
+                <p className="text-muted">{products.description}</p>
+                <span>{products.category.name}</span>
                 <div className="mt-3 d-flex justify-content-between">
                   <div>
-                    <p>{prouducts.price} EGP</p>
+                    <p>{products.price} EGP</p>
                   </div>
                   <div>
                     <i className="fa-solid fa-star pe-1 rating-color"></i>
-                    {prouducts.ratingsAverage}
+                    {products.ratingsAverage}
                   </div>
                 </div>
                 <button
@@ -124,7 +130,6 @@ export default function ProductDetails() {
             </div>
           </div>
         </div>
-        <Footer />
       </>
     );
   } else {

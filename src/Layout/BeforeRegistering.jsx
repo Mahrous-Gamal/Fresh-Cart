@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import logo from "../Assets/Images/freshcart-logo.svg";
 import { Link, NavLink, Outlet } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../Components/GoSignIn/GoSignIn";
-import bground from "../Assets/Images/light-patten.svg";
+import BackGround from "../Assets/Images/light-patten.svg";
+import Footer from "../Components/Footer/Footer";
 
 
 export default function BeforeRegistering() {
-  const [modalShow, setModalShow] = useState(false);
   return (
     <>
       <img
-        src={bground}
+        src={BackGround}
         alt="backGround"
         style={{
           position: "fixed",
@@ -71,7 +71,7 @@ export default function BeforeRegistering() {
         onHide={() => setModalShow(false)}
       /> */}
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

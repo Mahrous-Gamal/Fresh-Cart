@@ -182,7 +182,9 @@ export default function Signin() {
                 className="btn bg-main text-white"
               >
                 {loaderbtn ? (
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                  <>
+                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Login
+                  </>
                 ) : (
                   "Login"
                 )}

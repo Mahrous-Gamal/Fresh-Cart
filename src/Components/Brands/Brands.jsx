@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import Loader from "../Loader/Loader";
-import Footer from "../Footer/Footer";
 import Brand from "../Brand/Brand";
 import { Helmet } from "react-helmet";
 
@@ -34,7 +33,6 @@ export default function Brands() {
           })}
         </div>
       </div>
-      <Footer />
     </>
 
   );

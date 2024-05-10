@@ -5,13 +5,13 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 import BrandDetalSon from './BrandDetalSon';
 import { storeContext } from '../../Context/StoreContext';
-import Footer from '../footer/Footer';
+import Footer from '../Footer/Footer';
 
 
-export default function BrandsDetal() {
+export default function BrandsDetails() {
   let { getWishlist } = useContext(storeContext);
   const [final, setFinal] = useState(null);
-  const [arr,setArr]=useState(0);
+  const [arr, setArr] = useState(0);
   const id = useParams();
 
   function getProduct() {
@@ -21,8 +21,8 @@ export default function BrandsDetal() {
   const datapro = useQuery('getProduct', getProduct);
   const product = datapro?.data?.data?.data;
 
-    let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
-    let Arr = dataWish?.data?.data?.map((item) => item._id);
+  let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
+  let Arr = dataWish?.data?.data?.map((item) => item._id);
 
   useEffect(() => {
     if (product) {
@@ -43,8 +43,8 @@ export default function BrandsDetal() {
         setArr(0)
       }
     }
-  }, [id.id, product,dataWish]);
-  
+  }, [id.id, product, dataWish]);
+
 
   if (datapro.isLoading) {
     return <Loader />;
@@ -52,14 +52,14 @@ export default function BrandsDetal() {
 
   return (
     <>
-    <div className='container' style={{paddingTop:'74.49px'}}>
-      <div className='row'>
-        {final }
+      <div className='container' style={{ paddingTop: '74.49px' }}>
+        <div className='row'>
+          {final}
+        </div>
       </div>
-    </div>
-   {arr?<Footer/>: <div style={{position:'absolute',bottom:'0',left:'0',width:'100%'}}>
-    <Footer/>
-    </div>}
+      {/* {arr ? "" : <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%' }}>
+        <Footer />
+      </div>} */}
     </>
   );
 }

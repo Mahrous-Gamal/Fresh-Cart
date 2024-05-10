@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
 import { jwtDecode } from "jwt-decode";
 import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -64,7 +63,6 @@ export default function Profile() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

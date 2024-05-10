@@ -3,10 +3,10 @@ import { jwtDecode } from "jwt-decode";
 import React from "react";
 import { useQuery } from "react-query";
 import Loader from "../Loader/Loader";
-import Footer from "../Footer/Footer";
 import AccordItem from "./AccordItem";
 import Accordion from "react-bootstrap/Accordion";
 import { Helmet } from "react-helmet";
+
 
 export default function Allorders() {
   let { id } = jwtDecode(localStorage.getItem("token"));
@@ -42,7 +42,6 @@ export default function Allorders() {
           <div className="my-4 text-center fs-2">There are no orders!</div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

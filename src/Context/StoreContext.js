@@ -56,7 +56,7 @@ export default function StoreContextProvider({ children }) {
   async function pay(id, shippingAddress) {
     return axios
       .post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://fresh-cart-zeta.vercel.app/#/cart`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://fresh-cart.vercel.app/cart`,
         { shippingAddress },
         {
           headers: {

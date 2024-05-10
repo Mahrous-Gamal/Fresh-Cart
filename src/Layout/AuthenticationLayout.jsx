@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import logo from "../Assets/Images/freshcart-logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import bground from "../Assets/Images/light-patten.svg";
+import Footer from "../Components/Footer/Footer";
 
 
 export default function AuthenticationLayout() {
@@ -66,8 +67,7 @@ export default function AuthenticationLayout() {
         </div>
       </nav>
       <Outlet />
-
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

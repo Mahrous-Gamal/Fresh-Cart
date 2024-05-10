@@ -11,30 +11,29 @@ import NotFound from "./Components/NotFound/NotFound";
 import Signin from "./Components/Signin/Signin";
 import Signup from "./Components/Signup/Signup";
 import Gard from "./Components/Gard/Gard";
-import ProductDetales from "./Components/ProductDetails/ProductDetails";
+import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import StoreContextProvider from "./Context/StoreContext";
 import { ToastContainer } from "react-toastify";
 import BeforeRegistering from "./Layout/BeforeRegistering";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 import { Offline, Online } from "react-detect-offline";
 import GetAllSubCategoriesOnCategory from "./Components/Get All SubCategories On Category/GetAllSubCategoriesOnCategory";
-import BrandsDetal from "./Components/ProductDetails/ProductDetails";
-import ForgetPass from "./Components/ForgetPassword/ForgetPassword";
+import BrandsDetails from "./Components/BrandsDetails/BrandsDetails";
+import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./Components/VerifyResetCode/VerifyResetCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
 import Handala from "./Components/Handala/Handala";
 import Address from "./Components/Address/Address";
-import Allorders from "./Components/Orders/Orders";
+import Orders from "./Components/Orders/Orders";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Profile from "./Components/Profile/Profile";
 import UpdateData from "./Components/Update/UpdateData";
-import UpdatePass from "./Components/Update/UpdatePass";
+import UpdatePassword from "./Components/Update/UpdatePassword";
 import ScrollButton from "./Components/ScrollButton/ScrollButton";
 import { MdOutlineWifiOff } from "react-icons/md";
 
-
 export default function App() {
-  const routes = createBrowserRouter([
+  const routers = createBrowserRouter([
     {
       path: "/",
       element: <BeforeRegistering />,
@@ -81,12 +80,12 @@ export default function App() {
           path: "forgetPass",
           element: (
             <Handala>
-              <ForgetPass />
+              <ForgetPassword />
             </Handala>
           ),
         },
         {
-          path: "VerifyResetCode",
+          path: "verifyResetCode",
           element: (
             <Handala>
               <VerifyResetCode />
@@ -94,7 +93,7 @@ export default function App() {
           ),
         },
         {
-          path: "ResetPassword",
+          path: "resetPassword",
           element: (
             <Handala>
               <ResetPassword />
@@ -168,7 +167,7 @@ export default function App() {
           path: "brands/:id",
           element: (
             <Gard>
-              <BrandsDetal />
+              <BrandsDetails />
             </Gard>
           ),
         },
@@ -176,7 +175,7 @@ export default function App() {
           path: "product-delales/:id",
           element: (
             <Gard>
-              <ProductDetales />
+              <ProductDetails />
             </Gard>
           ),
         },
@@ -200,7 +199,7 @@ export default function App() {
           path: "allorders",
           element: (
             <Gard>
-              <Allorders />
+              <Orders />
             </Gard>
           ),
         },
@@ -224,7 +223,7 @@ export default function App() {
           path: "UpdatePass",
           element: (
             <Gard>
-              <UpdatePass />
+              <UpdatePassword />
             </Gard>
           ),
         },
@@ -235,10 +234,10 @@ export default function App() {
   return (
     <>
       <StoreContextProvider>
-        <RouterProvider router={routes} />
+        <RouterProvider router={routers} />
       </StoreContextProvider>
 
-      <ToastContainer theme="colored" autoClose={1000} />
+      <ToastContainer theme="light" autoClose={1000} />
 
       <Offline>
         <div className="offline d-flex justify-content-center align-items-center ">

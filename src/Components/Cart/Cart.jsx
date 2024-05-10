@@ -6,7 +6,7 @@ import CartSon from "./CartSon";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
-import Footer from "../Footer/Footer";
+
 
 export default function Cart() {
   let { getCart, deletAllCart, bosLoad, setBosLoad, setCounter } =
@@ -16,12 +16,13 @@ export default function Cart() {
   async function deletAllCartt() {
     setBosLoad(true);
     let retDel = await deletAllCart();
-    console.log(retDel);
-    if (retDel?.data?.message == "success") {
+
+    if (retDel?.data?.message === "success") {
       setBosLoad(false);
       setCounter(0);
       refetch();
     } else {
+      
       toast.error("Deletion error");
       setBosLoad(false);
     }
@@ -70,20 +71,7 @@ export default function Cart() {
               ""
             )}
           </div>
-          {data?.data?.data?.products ? (
-            <Footer />
-          ) : (
-            <div
-              style={{
-                position: "absolute",
-                bottom: "0",
-                left: "0",
-                width: "100%",
-              }}
-            >
-              <Footer />
-            </div>
-          )}
+
         </div>
       </>
     );

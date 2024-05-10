@@ -21,7 +21,9 @@ export default function Signup() {
 
 
   let [err, setErr] = useState("");
+
   const [loaderbtn, setLoaderbtn] = useState(false);
+
   let gotSignin = useNavigate();
 
   function sign_up(values) {
@@ -43,7 +45,7 @@ export default function Signup() {
 
   function validationSchema() {
     const errors = Yup.object({
-      name: Yup.string().min(3).max(20).required("Name is a required field"),
+      name: Yup.string().min(3, "Name must be at least 3 characters").max(20, "Name must be at most 20 characters").required("Name is a required field"),
       email: Yup.string()
         .matches(
           /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
@@ -57,10 +59,11 @@ export default function Signup() {
         )
         .required("Password is a required field"),
       rePassword: Yup.string()
-        .oneOf([Yup.ref("password")])
+        .oneOf([Yup.ref("password")], "Confirm Password does not match")
         .required("Confirm Password is a required field"),
     });
     return errors;
+
   }
 
   let register = useFormik({
@@ -93,12 +96,7 @@ export default function Signup() {
 
             <div className="input-group my-2">
               <span className="input-group-text">
-                {/* <FontAwesomeIcon
-                  icon={faCircleUser}
-                  className="user-icon text-main fs-5"
-                /> */}
                 <FiUser className="user-icon text-main fs-5" />
-
               </span>
               <input
                 type="text"
@@ -198,12 +196,12 @@ export default function Signup() {
                 placeholder="e.g. user#123"
                 onBlur={register.handleBlur}
                 onChange={register.handleChange}
-                name="repassword"
+                name="rePassword"
                 id="rePassword"
               />
               <span
                 className="input-group-textt"
-                onClick={togglePassword}
+                onClick={togglePasswordd}
               >
                 {showPasswordd ? (
                   <FontAwesomeIcon
@@ -232,7 +230,10 @@ export default function Signup() {
                 className="btn bg-main text-white"
               >
                 {loaderbtn ? (
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                  <>
+                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Create Account
+                  </>
+
                 ) : (
                   "Create Account"
                 )}

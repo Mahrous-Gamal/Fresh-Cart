@@ -1,14 +1,15 @@
 import React from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
-import bground from "../Assets/Images/light-patten.svg";
+import Footer from "../Components/Footer/Footer";
+import BackGround from "../Assets/Images/light-patten.svg";
 
 
 export default function MainLayout() {
   return (
     <>
       <img
-        src={bground}
+        src={BackGround}
         alt="backGround"
         style={{
           position: "fixed",
@@ -23,6 +24,7 @@ export default function MainLayout() {
       />
       <Navbar />
       <Outlet />
+      <Footer/>
     </>
   );
 }

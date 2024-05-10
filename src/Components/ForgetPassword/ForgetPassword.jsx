@@ -124,7 +124,9 @@ export default function ForgetPassword() {
                 className="btn bg-main text-white mt-2"
               >
                 {loaderbtn ? (
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                 <>
+                  <i className="fa-solid fa-spinner fa-spin-pulse"></i> Submit
+                 </>
                 ) : (
                   "Submit"
                 )}

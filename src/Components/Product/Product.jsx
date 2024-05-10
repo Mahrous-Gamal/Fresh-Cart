@@ -58,7 +58,7 @@ export default function Product(props) {
   async function DeleteToWash(productId) {
     setBlock("block");
     let { data } = await DeleteWishlist(productId);
-    if (data?.status == "success") {
+    if (data?.status === "success") {
       toast.success("Product Deleted successfully");
       setWishlistCounter(data?.data?.length);
       await props.refetch();
