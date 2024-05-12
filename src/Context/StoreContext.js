@@ -3,7 +3,9 @@ import { createContext, useState } from "react";
 
 
 export let storeContext = createContext(0);
+
 export default function StoreContextProvider({ children }) {
+  /**********************************<<addToCart>>********************************productId**/
   async function addToCart(productId) {
     return axios
       .post(
@@ -15,9 +17,11 @@ export default function StoreContextProvider({ children }) {
           },
         }
       )
-      .then((data) => data)
-      .catch((err) => err);
+      .then((response) => response)
+      .catch((error) => error);
   }
+
+  /**********************************<<getCart>>**********************************/
   async function getCart() {
     return axios
       .get("https://ecommerce.routemisr.com/api/v1/cart", {
@@ -25,9 +29,11 @@ export default function StoreContextProvider({ children }) {
           token: localStorage.getItem("token"),
         },
       })
-      .then((data) => data)
-      .catch((err) => err);
+      .then((response) => response)
+      .catch((error) => error);
   }
+
+  /**********************************<<deletCart>>**********************************/
   async function deletCart(id) {
     return axios
       .delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
@@ -35,9 +41,11 @@ export default function StoreContextProvider({ children }) {
           token: localStorage.getItem("token"),
         },
       })
-      .then((data) => data)
-      .catch((err) => err);
+      .then((response) => response)
+      .catch((error) => error);
   }
+
+  /**********************************<<updatetCart>>********************************count**/
   async function updatetCart(id, count) {
     return axios
       .put(
@@ -49,8 +57,19 @@ export default function StoreContextProvider({ children }) {
           },
         }
       )
-      .then((data) => data)
-      .catch((err) => err);
+      .then((response) => response)
+      .catch((error) => error);
+  }
+  /**************************************************************************************/
+  async function deletAllCart() {
+    return axios
+      .delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
+        headers: {
+          token: localStorage.getItem("token"),
+        },
+      })
+      .then((response) => response)
+      .catch((error) => error);
   }
 
   async function pay(id, shippingAddress) {
@@ -64,21 +83,12 @@ export default function StoreContextProvider({ children }) {
           },
         }
       )
-      .then((data) => data)
-      .catch((err) => err);
+      .then((response) => response)
+      .catch((error) => error);
   }
 
-  async function deletAllCart() {
-    return axios
-      .delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      })
-      .then((data) => data)
-      .catch((err) => err);
-  }
-
+  /**************************************************************************************/
+  /**********************************<<addToWishlist>>********************************productId**/
   async function addToWishlist(productId) {
     return axios.post(
       `https://ecommerce.routemisr.com/api/v1/wishlist`,
@@ -90,6 +100,8 @@ export default function StoreContextProvider({ children }) {
       }
     );
   }
+  /**********************************<<getWishlist>>**********************************/
+
   async function getWishlist() {
     return axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, {
       headers: {
@@ -97,6 +109,8 @@ export default function StoreContextProvider({ children }) {
       },
     });
   }
+  /**********************************<<DeleteWishlist>>**********************************/
+
   async function DeleteWishlist(id) {
     return axios.delete(
       `https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,
@@ -107,12 +121,14 @@ export default function StoreContextProvider({ children }) {
       }
     );
   }
+  /**************************************************************************************/
 
   let [counter, setCounter] = useState(0);
-  let [loading, setLoading] = useState(1);
   let [bosLoad, setBosLoad] = useState(0);
+  let [loading, setLoading] = useState(1);
   let [wishlistCounter, setWishlistCounter] = useState(0);
   let [block, setBlock] = useState("none");
+
   const userId = null;
 
   return (
@@ -120,24 +136,32 @@ export default function StoreContextProvider({ children }) {
       value={{
         counter,
         setCounter,
-        addToCart,
-        getCart,
-        loading,
-        setLoading,
-        deletCart,
-        updatetCart,
-        pay,
-        deletAllCart,
-        bosLoad,
-        setBosLoad,
-        userId,
-        addToWishlist,
-        wishlistCounter,
-        setWishlistCounter,
-        getWishlist,
-        DeleteWishlist,
+
         block,
         setBlock,
+
+        loading,
+        setLoading,
+
+        wishlistCounter,
+        setWishlistCounter,
+
+        bosLoad,
+        setBosLoad,
+
+        userId,
+
+        addToCart,
+        getCart,
+        deletCart,
+        updatetCart,
+        deletAllCart,
+
+        pay,
+
+        addToWishlist,
+        getWishlist,
+        DeleteWishlist,
       }}
     >
       {children}

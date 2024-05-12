@@ -17,11 +17,13 @@ export default function Product(props) {
     block,
     setBlock,
   } = useContext(storeContext);
+
   let [loading, setLoading] = useState(1);
   let arrIdWish = props?.arrIdWish;
   const item = props.item;
 
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -37,27 +39,37 @@ export default function Product(props) {
 
   async function addproductToCart(productId) {
     setLoading(0);
+
     let { data } = await addToCart(productId);
+    
     if (data?.status === "success") {
       toast.success("Product added successfully");
       setCounter(data.numOfCartItems);
       setLoading(1);
     }
   }
+
+
   async function addToWash(productId) {
     setBlock("block");
+
     let { data } = await addToWishlist(productId);
-    // console.log(data);
-    if (data?.status == "success") {
+
+    if (data?.status === "success") {
       toast.success("Product added successfully");
       setWishlistCounter(data?.data?.length);
       await props.refetch();
       await setBlock("none");
     }
   }
+
+
+
   async function DeleteToWash(productId) {
     setBlock("block");
+
     let { data } = await DeleteWishlist(productId);
+
     if (data?.status === "success") {
       toast.success("Product Deleted successfully");
       setWishlistCounter(data?.data?.length);
@@ -65,16 +77,16 @@ export default function Product(props) {
       await setBlock("none");
     }
   }
+
+
   function chiking() {
-    if (isOnline) {
-      if (!arrIdWish?.includes(item?._id.toString())) {
-        addToWash(item._id);
-      } else {
-        DeleteToWash(item._id);
-      }
-    } else {
+    if (isOnline) 
+
+      (!arrIdWish?.includes(item?._id.toString()))? addToWash(item._id):DeleteToWash(item._id);
+      
+    else 
       toast.error("You are offline now");
-    }
+    
   }
 
   return (

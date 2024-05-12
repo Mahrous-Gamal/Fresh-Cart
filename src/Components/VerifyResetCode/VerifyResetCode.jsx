@@ -3,12 +3,14 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
 
 export default function ForgetPass() {
-  const [err, setErr] = useState("");
-  const gotnewpass = useNavigate();
+  let [error, setError] = useState(null);
+
+  const navigate = useNavigate();
   const [loaderbtn, setLoaderbtn] = useState(false);
 
   const sign_in = (values) => {
@@ -22,27 +24,26 @@ export default function ForgetPass() {
           },
         }
       )
-      .then((res) => {
+      .then((response) => {
         setLoaderbtn(false);
-        if (res.status === 200) {
-          gotnewpass("/ResetPassword");
-        } else {
-          setErr(res?.data?.message);
-        }
+        (response.status === 200) ? navigate("/ResetPassword") : setError(response?.data?.message);
+        
       })
-      .catch((err) => {
+      .catch((error) => {
         setLoaderbtn(false);
-        setErr(err?.response?.data?.message);
+        setError(error?.response?.data?.message);
+        toast.error("Reset code is invalid or has expired");
+
       });
   };
 
   const validationSchema = () => {
     return Yup.object({
-      resetCode: Yup.string().min(2).max(9).required("Reset Code is a required field"),
+      resetCode: Yup.string().min(6, "Reset code must be at least  6 digits").max(8, "Reset code must be at most 8 digits").required("Reset code is a required field"),
     });
   };
 
-  const registr = useFormik({
+  const formik = useFormik({
     initialValues: {
       resetCode: "",
     },
@@ -61,22 +62,25 @@ export default function ForgetPass() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div style={{ paddingTop: "180.49px" }}>
+
+      <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Verify Reset Code</h2>
-          <form onSubmit={registr.handleSubmit}>
+          <p className="fw-bold">Enter the 6-digit code</p>
+          <form onSubmit={formik.handleSubmit}>
             <label htmlFor="resetCode">Reset Code:</label>
             <input
-              onBlur={registr.handleBlur}
-              onChange={registr.handleChange}
-              type="text"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="number"
               name="resetCode"
               className="form-control my-2"
               id="resetCode"
+              placeholder="6-digit code"
             />
-            {registr.errors.resetCode && registr.touched.resetCode ? (
+            {formik.errors.resetCode && formik.touched.resetCode ? (
               <p className="text-danger">
-                *{registr.errors.resetCode}
+                *{formik.errors.resetCode}
               </p>
             ) : (
               ""
@@ -84,7 +88,7 @@ export default function ForgetPass() {
 
             <div className="text-end">
               <button
-                disabled={!(registr.dirty && registr.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
                 className="btn bg-main text-white"
               >

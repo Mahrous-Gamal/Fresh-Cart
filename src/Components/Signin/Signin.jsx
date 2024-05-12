@@ -6,8 +6,9 @@ import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import { FiLock } from "react-icons/fi";
-import "../Signin/Signin.css";
+import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import "../Signin/Signin.css";
 
 
 export default function Signin() {
@@ -15,9 +16,11 @@ export default function Signin() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => { setShowPassword((prevState) => !prevState); };
 
-  let [err, setErr] = useState("");
-  let gothome = useNavigate();
+  let [error, setError] = useState(null);
+  
+  let navigate = useNavigate();
   let [loaderbtn, setLoaderbtn] = useState(false);
+
   function sign_in(values) {
     axios
       .post("https://ecommerce.routemisr.com/api/v1/auth/signin", values, {
@@ -25,19 +28,22 @@ export default function Signin() {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
+      .then((response) => {
         setLoaderbtn(false);
-        localStorage.setItem("token", res.data.token);
-        if (res.data.message === "success") {
+        localStorage.setItem("token", response.data.token);
+
+        if (response.data.message === "success") {
           console.log(values)
 
           localStorage.setItem("email", JSON.parse(values).email)
-          gothome("/home");
+          navigate("/home");
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         setLoaderbtn(false);
-        setErr(err?.response?.data?.message);
+        setError(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message);
+
       });
   }
 
@@ -59,7 +65,7 @@ export default function Signin() {
     return errors;
   }
 
-  let registr = useFormik({
+  let formik = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -81,7 +87,7 @@ export default function Signin() {
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Login </h2>
-          <form onSubmit={registr.handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             <label htmlFor="email">Email:</label>
             <div className="input-group my-2">
               <span className="input-group-text">
@@ -93,32 +99,32 @@ export default function Signin() {
               <input
                 className="form-control"
                 placeholder="e.g. user@example.com"
-                onBlur={registr.handleBlur}
-                onChange={registr.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 type="email"
                 name="email"
                 id="email"
               />
             </div>
-            {registr.errors.email && registr.touched.email ? (
+            {formik.errors.email && formik.touched.email ? (
               <p className="text-danger" >
-                *{registr.errors.email}
+                *{formik.errors.email}
               </p>
             ) : (
               ""
             )}
             <label htmlFor="password" >Password:</label>
             {/* <input
-              onBlur={registr.handleBlur}
-              onChange={registr.handleChange}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               type="password"
               name="password"
               className="form-control mb-3"
               id="Pass"
             />
-            {registr.errors.password && registr.touched.password ? (
+            {formik.errors.password && formik.touched.password ? (
               <div className="alert alert-danger" >
-                {registr.errors.password}
+                {formik.errors.password}
               </div>
             ) : (
               ""
@@ -143,8 +149,8 @@ export default function Signin() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="e.g. user#123"
-                onBlur={registr.handleBlur}
-                onChange={registr.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 name="password"
                 id="password"
               />
@@ -153,21 +159,23 @@ export default function Signin() {
                 onClick={togglePassword}
               >
                 {showPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
-                ) : (
-                  <FontAwesomeIcon
+                    <FontAwesomeIcon
                     icon={faEyeSlash}
                     className="eye-icon eye-slash position-absolute"
                   />
+              
+                ) : (
+                
+                  <FontAwesomeIcon
+                  icon={faEye}
+                  className="eye-icon position-absolute"
+                />
                 )}
               </span>
             </div>
-            {registr.errors.password && registr.touched.password ? (
+            {formik.errors.password && formik.touched.password ? (
               <p className="text-danger" >
-                *{registr.errors.password}
+                *{formik.errors.password}
               </p>
             ) : (
               ""
@@ -177,7 +185,7 @@ export default function Signin() {
             </Link>
             <div className="text-end">
               <button
-                disabled={!(registr.dirty && registr.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
                 className="btn bg-main text-white"
               >

@@ -58,7 +58,7 @@ export default function Profile() {
               className="linkItem d-flex align-items-center"
             >
               <i className="fa-solid fa-wrench mt-2 fs-3 me-3"></i>
-              <h4 className="m-0">Update Your PassWord</h4>
+              <h4 className="m-0">Change Password</h4>
             </NavLink>
           </div>
         </div>

@@ -8,7 +8,7 @@ import Payment4 from "../../Assets/Images/Paypal.png"
 
 export default function Footer() {
   return (
-    <footer className="ext-muted" style={{ backgroundColor: "rgb(238, 238, 238)" }}>
+    <footer className="text-muted" style={{ backgroundColor: "rgb(238, 238, 238)" }}>
       {/* Section: Social media */}
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-2 border-muted">
         {/* Left */}

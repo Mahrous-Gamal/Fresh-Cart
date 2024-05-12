@@ -7,13 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
 import "../Signin/Signin.css";
 import Froget from "../../Assets/Images/forgetLock.svg"
+import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 
 
 export default function ForgetPassword() {
-  let [err, setErr] = useState("");
-  let gotVCode = useNavigate();
+  let [error, setError] = useState("");
+  let navigate = useNavigate();
   let [loaderbtn, setLoaderbtn] = useState(false);
+
   function sign_in(values) {
     axios
       .post("https://ecommerce.routemisr.com/api/v1/auth/forgotPasswords", values, {
@@ -21,15 +23,18 @@ export default function ForgetPassword() {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
+      .then((response) => {
         setLoaderbtn(false);
-        if (res.data.statusMsg === "success") {
-          gotVCode("/VerifyResetCode");
+        if (response.data.statusMsg === "success") {
+          navigate("/VerifyResetCode");
+          toast.success("Password Reset Link Sent Successfully");
+
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         setLoaderbtn(false);
-        setErr(err?.response?.data?.message);
+        setError(error?.response?.data?.message);
+        toast.error("There is no user registered with this email address");
       });
   }
 
@@ -45,7 +50,7 @@ export default function ForgetPassword() {
     return errors;
   }
 
-  let registr = useFormik({
+  let formik = useFormik({
     initialValues: {
       email: "",
     },
@@ -69,19 +74,19 @@ export default function ForgetPassword() {
           <img src={Froget} alt="" />
           <h2 className="mb-4 fw-bold text-dark mt-4">Forget Password !</h2>
           <p className="fs-6">Don't worry, we'll cover you. Enter the email address associated with this account.</p>
-          <form onSubmit={registr.handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             {/* <label htmlFor="Email text">Email:</label> */}
             {/* <input
-              onBlur={registr.handleBlur}
-              onChange={registr.handleChange}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               type="email"
               name="email"
               className="form-control mb-3"
               id="Email"
             />
-            {registr.errors.email && registr.touched.email ? (
+            {formik.errors.email && formik.touched.email ? (
               <div className="alert alert-danger" role="alert">
-                {registr.errors.email}
+                {formik.errors.email}
               </div>
             ) : (
               ""
@@ -103,30 +108,30 @@ export default function ForgetPassword() {
               <input
                 className="form-control"
                 placeholder="e.g. user@example.com"
-                onBlur={registr.handleBlur}
-                onChange={registr.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 type="email"
                 name="email"
                 id="email"
               />
             </div>
-            {registr.errors.email && registr.touched.email ? (
+            {formik.errors.email && formik.touched.email ? (
               <div className="text-danger text-start" >
-                *{registr.errors.email}
+                *{formik.errors.email}
               </div>
             ) : (
               ""
             )}
             <div className="text-end">
               <button
-                disabled={!(registr.dirty && registr.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
-                className="btn bg-main text-white mt-2"
+                className="btn bg-main text-white"
               >
                 {loaderbtn ? (
-                 <>
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i> Submit
-                 </>
+                  <>
+                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Submit
+                  </>
                 ) : (
                   "Submit"
                 )}

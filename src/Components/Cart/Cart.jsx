@@ -36,6 +36,7 @@ export default function Cart() {
           <title>Fresh Cart | Cart</title>
           <link rel="canonical" href="http://mysite.com/example" />
         </Helmet>
+        
         <div style={{ paddingTop: "74.49px" }}>
           <div className="container bg-main-light my-5 p-4">
             <h2>Shop Cart :</h2>

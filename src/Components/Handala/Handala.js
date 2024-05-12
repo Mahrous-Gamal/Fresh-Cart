@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import{ useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 export default function Handala({children}) {
-  let x=useNavigate()
+  
+  let navigate=useNavigate()
+
   useEffect(()=>{
     if(localStorage.getItem('token')){
-      x('/home')
+      navigate('/home')
     }
   },[])
   return children

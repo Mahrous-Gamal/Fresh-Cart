@@ -9,8 +9,8 @@ import Categories from "./Components/Categories/Categories";
 import Brands from "./Components/Brands/Brands";
 import NotFound from "./Components/NotFound/NotFound";
 import Signin from "./Components/Signin/Signin";
-import Signup from "./Components/Signup/Signup";
-import Gard from "./Components/Gard/Gard";
+import Register from "./Components/Register/Register";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
 import StoreContextProvider from "./Context/StoreContext";
 import { ToastContainer } from "react-toastify";
@@ -27,8 +27,8 @@ import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";
 import Wishlist from "./Components/Wishlist/Wishlist";
 import Profile from "./Components/Profile/Profile";
-import UpdateData from "./Components/Update/UpdateData";
-import UpdatePassword from "./Components/Update/UpdatePassword";
+import UpdateData from "./Components/UpdateData/UpdateData";
+import ChangePassword from "./Components/ChangePassword/ChangePassword.jsx";
 import ScrollButton from "./Components/ScrollButton/ScrollButton";
 import { MdOutlineWifiOff } from "react-icons/md";
 
@@ -72,7 +72,7 @@ export default function App() {
           path: "signup",
           element: (
             <Handala>
-              <Signup />
+              <Register />
             </Handala>
           ),
         },
@@ -110,121 +110,121 @@ export default function App() {
         {
           index: true,
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Home />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "home",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Home />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "products",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Products />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "cart",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Cart />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "wishlist",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Wishlist />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "categories",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Categories />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "brands",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Brands />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "brands/:id",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <BrandsDetails />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "product-delales/:id",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <ProductDetails />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "categories/:id",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <GetAllSubCategoriesOnCategory />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "address/:id",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Address />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "allorders",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Orders />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "profile",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <Profile />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "UpdateData",
           element: (
-            <Gard>
+            <ProtectedRoute>
               <UpdateData />
-            </Gard>
+            </ProtectedRoute>
           ),
         },
         {
           path: "UpdatePass",
           element: (
-            <Gard>
-              <UpdatePassword />
-            </Gard>
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
           ),
         },
         { path: "*", element: <NotFound /> },

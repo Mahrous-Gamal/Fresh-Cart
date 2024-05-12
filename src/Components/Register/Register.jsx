@@ -4,27 +4,27 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FiUser } from "react-icons/fi";
 import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-icons";
-import { FiLock } from "react-icons/fi";
-import "../Signin/Signin.css";
+import { FiUser, FiPhone, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
+import "../Signin/Signin.css";
 
 
-export default function Signup() {
+export default function Register() {
 
   const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordd, setShowPasswordd] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const togglePassword = () => { setShowPassword((prevState) => !prevState); };
-  const togglePasswordd = () => { setShowPasswordd((prevState) => !prevState); };
+  const toggleConfirmPassword = () => { setShowConfirmPassword((prevState) => !prevState); };
 
 
-  let [err, setErr] = useState("");
+  let [error, setError] = useState(null);
 
   const [loaderbtn, setLoaderbtn] = useState(false);
-
-  let gotSignin = useNavigate();
+  
+  let navigate = useNavigate();
 
   function sign_up(values) {
     axios
@@ -33,13 +33,16 @@ export default function Signup() {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
-        if (res.data.message === "success") {
-          gotSignin("/signin");
+      .then((response) => {
+        if (response.data.message === "success") {
+          navigate("/signin");
         }
       })
-      .catch((err) => {
-        setErr(err?.response?.data?.message);
+      .catch((error) => {
+        setError(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message);
+
+
       });
   }
 
@@ -52,6 +55,12 @@ export default function Signup() {
           "Please enter a valid email address"
         )
         .required("Email is a required field"),
+      phone: Yup.string()
+        .matches(
+          /^(\+201|01|00201)[0-2,5]{1}[0-9]{8}/,
+          "Please enter a valid phone number"
+        )
+        .required("Phone is a required field"),
       password: Yup.string()
         .matches(
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -66,10 +75,11 @@ export default function Signup() {
 
   }
 
-  let register = useFormik({
+  let formik = useFormik({
     initialValues: {
       name: "",
       email: "",
+      phone: "",
       password: "",
       rePassword: "",
     },
@@ -91,7 +101,8 @@ export default function Signup() {
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Register Now </h2>
-          <form onSubmit={register.handleSubmit}>
+
+          <form onSubmit={formik.handleSubmit}>
             <label htmlFor="name">Name:</label>
 
             <div className="input-group my-2">
@@ -102,19 +113,17 @@ export default function Signup() {
                 type="text"
                 className="form-control"
                 placeholder="e.g. John Doe"
-                onBlur={register.handleBlur}
-                onChange={register.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 name="name"
                 id="name"
               />
 
             </div>
-            {register.errors.name && register.touched.name ? (
+            {formik.errors.name && formik.touched.name && (
               <p className="text-danger" >
-                *{register.errors.name}
+                *{formik.errors.name}
               </p>
-            ) : (
-              ""
             )}
             <label htmlFor="email">Email:</label>
 
@@ -128,20 +137,42 @@ export default function Signup() {
               <input
                 className="form-control"
                 placeholder="e.g. user@example.com"
-                onBlur={register.handleBlur}
-                onChange={register.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 type="email"
                 name="email"
                 id="email"
               />
             </div>
-            {register.errors.email && register.touched.email ? (
+            {formik.errors.email && formik.touched.email && (
               <p className="text-danger" >
-                *{register.errors.email}
+                *{formik.errors.email}
               </p>
-            ) : (
-              ""
             )}
+
+            <label htmlFor="phone">Phone:</label>
+
+            <div className="input-group my-2">
+              <span className="input-group-text">
+                <FiPhone className="user-icon text-main fs-5" />
+
+              </span>
+              <input
+                className="form-control"
+                placeholder="e.g. 01001449752"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                type="tel"
+                name="phone"
+                id="phone"
+              />
+            </div>
+            {formik.errors.phone && formik.touched.phone && (
+              <p className="text-danger" >
+                *{formik.errors.phone}
+              </p>
+            )}
+
             <label htmlFor="password">Password:</label>
 
             <div className="input-group position-relative my-2">
@@ -153,8 +184,8 @@ export default function Signup() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="e.g. user#123"
-                onBlur={register.handleBlur}
-                onChange={register.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 name="password"
                 id="password"
               />
@@ -164,24 +195,23 @@ export default function Signup() {
               >
                 {showPassword ? (
                   <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
-                ) : (
-                  <FontAwesomeIcon
                     icon={faEyeSlash}
                     className="eye-icon eye-slash position-absolute"
+                  />
+                ) : (
+
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    className="eye-icon position-absolute"
                   />
 
                 )}
               </span>
             </div>
-            {register.errors.password && register.touched.password ? (
+            {formik.errors.password && formik.touched.password && (
               <p className="text-danger" >
-                *{register.errors.password}
+                *{formik.errors.password}
               </p>
-            ) : (
-              ""
             )}
             <label htmlFor="rePassword">Confirm Password:</label>
 
@@ -191,41 +221,40 @@ export default function Signup() {
 
               </span>
               <input
-                type={showPasswordd ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="e.g. user#123"
-                onBlur={register.handleBlur}
-                onChange={register.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 name="rePassword"
                 id="rePassword"
               />
               <span
                 className="input-group-textt"
-                onClick={togglePasswordd}
+                onClick={toggleConfirmPassword}
               >
-                {showPasswordd ? (
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
-                ) : (
+                {showConfirmPassword ? (
                   <FontAwesomeIcon
                     icon={faEyeSlash}
                     className="eye-icon eye-slash position-absolute"
                   />
+                ) : (
+
+                  <FontAwesomeIcon
+                    icon={faEye}
+                    className="eye-icon position-absolute"
+                  />
                 )}
               </span>
             </div>
-            {register.errors.rePassword && register.touched.rePassword ? (
+            {formik.errors.rePassword && formik.touched.rePassword && (
               <p className="text-danger" >
-                *{register.errors.rePassword}
+                *{formik.errors.rePassword}
               </p>
-            ) : (
-              ""
             )}
             <div className="text-end">
               <button
-                disabled={!(register.dirty && register.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
                 className="btn bg-main text-white"
               >

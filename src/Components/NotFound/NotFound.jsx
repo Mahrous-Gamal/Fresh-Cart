@@ -10,7 +10,7 @@ export default function NotFound() {
           src={error}
           alt="error"
           style={{ height: "90vh" }}
-          className="w-100 image-notfound"
+          className="w-100 image-notfound mt-2"
         />
         <p className="fw-bold fs-5">This page you are looking for could not be found.</p>
       </div>

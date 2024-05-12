@@ -6,16 +6,18 @@ import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash, faEnvelope, } from "@fortawesome/free-regular-svg-icons";
 import { FiLock } from "react-icons/fi";
-import "../Signin/Signin.css";
 import { Helmet } from "react-helmet";
+import { toast } from "react-toastify";
+import "../Signin/Signin.css";
 
 
 export default function ResetPassword() {
   const [showPassword, setShowPassword] = useState(false);
   const togglePassword = () => { setShowPassword((prevState) => !prevState); };
 
-  let [err, setErr] = useState("");
-  let gothome = useNavigate();
+  let [error, setError] = useState("");
+
+  let navigate = useNavigate();
   let [loaderbtn, setLoaderbtn] = useState(false);
 
   function sign_in(values) {
@@ -25,16 +27,18 @@ export default function ResetPassword() {
           "Content-Type": "application/json",
         },
       })
-      .then((res) => {
+      .then((response) => {
         setLoaderbtn(false);
-        if (res.data.token) {
-          localStorage.setItem("token", res.data.token);
-          gothome("/signin");
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+          navigate("/signin");
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         setLoaderbtn(false);
-        setErr(err?.response?.data?.message);
+        setError(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message);
+
       });
   }
 
@@ -56,7 +60,7 @@ export default function ResetPassword() {
     return errors;
   }
 
-  let registr = useFormik({
+  let formik = useFormik({
     initialValues: {
       email: "",
       newPassword: "",
@@ -79,7 +83,7 @@ export default function ResetPassword() {
       <div style={{ paddingTop: "100.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Reset Password</h2>
-          <form onSubmit={registr.handleSubmit}>
+          <form onSubmit={formik.handleSubmit}>
             <label htmlFor="email">Email:</label>
             <div className="input-group my-2">
               <span className="input-group-text">
@@ -91,16 +95,16 @@ export default function ResetPassword() {
               <input
                 className="form-control"
                 placeholder="e.g. user@example.com"
-                onBlur={registr.handleBlur}
-                onChange={registr.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 type="email"
                 name="email"
                 id="email"
               />
             </div>
-            {registr.errors.email && registr.touched.email ? (
+            {formik.errors.email && formik.touched.email ? (
               <p className="text-danger" >
-                *{registr.errors.email}
+                *{formik.errors.email}
               </p>
             ) : (
               ""
@@ -115,8 +119,8 @@ export default function ResetPassword() {
                 type={showPassword ? "text" : "password"}
                 className="form-control"
                 placeholder="e.g. user#123"
-                onBlur={registr.handleBlur}
-                onChange={registr.handleChange}
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
                 name="newPassword"
                 id="newPassword"
               />
@@ -137,16 +141,16 @@ export default function ResetPassword() {
                 )}
               </span>
             </div>
-            {registr.errors.newPassword && registr.touched.newPassword ? (
+            {formik.errors.newPassword && formik.touched.newPassword ? (
               <p className="text-danger" >
-                *{registr.errors.newPassword}
+                *{formik.errors.newPassword}
               </p>
             ) : (
               ""
             )}
             <div className="text-end">
               <button
-                disabled={!(registr.dirty && registr.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
                 className="btn bg-main text-white"
               >
