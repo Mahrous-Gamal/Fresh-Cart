@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 import GetAllSubCategoriesOnCategorySon from './GetAllSubCategoriesOnCategorySon';
 import Loader from '../Loader/Loader';
 import { useContext, useEffect, useState } from 'react';
-import Footer from '../Footer/Footer';
-import { storeContext } from '../../Context/StoreContext';
+import { wishlistContext } from '../../Context/WishlistContext';
 
 
 export default function GetAllSubCategoriesOnCategory() {
-  let { getWishlist } = useContext(storeContext);
+  let { getWishlist } = useContext(wishlistContext);
   const [final, setFinal] = useState(null);
   const [arr, setArr] = useState(0);
   const id = useParams();
@@ -46,9 +45,9 @@ export default function GetAllSubCategoriesOnCategory() {
   }, [id.id, product, dataWish]);
 
 
-  if (datapro.isLoading) {
-    return <Loader />;
-  }
+  // if (datapro.isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
@@ -57,9 +56,7 @@ export default function GetAllSubCategoriesOnCategory() {
           {final}
         </div>
       </div>
-      {arr ? <Footer /> : <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%' }}>
-        <Footer />
-      </div>}
+
     </>
   );
 }

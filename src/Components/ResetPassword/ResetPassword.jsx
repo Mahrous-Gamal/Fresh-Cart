@@ -73,9 +73,9 @@ export default function ResetPassword() {
   });
 
   return (
-    
+
     <>
-       <Helmet>
+      <Helmet>
         <meta charSet="utf-8" />
         <title>Fresh Cart | Reset Password</title>
         <link rel="canonical" href="http://mysite.com/example" />
@@ -118,7 +118,7 @@ export default function ResetPassword() {
               <input
                 type={showPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="newPassword"
@@ -158,7 +158,7 @@ export default function ResetPassword() {
                   <>
                     <i className="fa-solid fa-spinner fa-spin-pulse"></i> Reset Password
                   </>
-                  
+
                 ) : (
                   "Reset Password"
                 )}

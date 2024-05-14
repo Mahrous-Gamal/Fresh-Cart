@@ -13,9 +13,9 @@ export default function Brands() {
 
   let { data, isLoading } = useQuery("getbrand", getBrand);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
 

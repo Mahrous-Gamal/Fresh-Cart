@@ -2,20 +2,25 @@ import { useFormik } from "formik";
 import React, { useContext, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as Yup from "yup";
-import { storeContext } from "../../Context/StoreContext";
+import { cartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
-import Footer from "../Footer/Footer";
 
 
 export default function Address() {
   let { id } = useParams()
-  let { pay } = useContext(storeContext)
-  let [err, setErr] = useState("");
-  let gothome = useNavigate();
+
+  let { pay } = useContext(cartContext)
+
+  let [error, setError] = useState("");
+
+
   let [loaderbtn, setLoaderbtn] = useState(false);
+
   async function payPay(values) {
     setLoaderbtn(1)
+
     let { data } = await pay(id, values)
+
     if (data.status === "success") {
       setLoaderbtn(0)
       window.location.href = data.session.url
@@ -23,12 +28,11 @@ export default function Address() {
       toast.error('error')
       setLoaderbtn(0)
     }
-    console.log(data)
   }
 
   function validationSchema() {
     const errors = Yup.object({
-      details: Yup.string().max(100).required("Details is a required field"),
+      details: Yup.string().max(100, "Details must be at most 100 characters").required("Details is a required field"),
       phone: Yup.string()
         .matches(
           /^01[0125][0-9]{8}$/,
@@ -45,11 +49,12 @@ export default function Address() {
     return errors;
   }
 
-  let address = useFormik({
+  let formik = useFormik({
     initialValues: {
-      details: "",
       phone: "",
-      city: ""
+      city: "",
+      details: ""
+
     },
     validationSchema,
     onSubmit: (values) => {
@@ -63,62 +68,65 @@ export default function Address() {
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Address Now</h2>
-          <form onSubmit={address.handleSubmit}>
-            <label htmlFor="details">Details:</label>
-            <input
-              onBlur={address.handleBlur}
-              onChange={address.handleChange}
-              type="text"
-              name="details"
-              className="form-control my-2"
-              id="details"
-            />
-            {address.errors.details && address.touched.details ? (
-              <p className="text-danger">
-
-                *{address.errors.details}
-              </p>
-            ) : (
-              ""
-            )}
+          <form onSubmit={formik.handleSubmit}>
             <label htmlFor="phone">Phone:</label>
             <input
-              onBlur={address.handleBlur}
-              onChange={address.handleChange}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               type="tel"
               name="phone"
               className="form-control my-2"
+              placeholder="123-456-7890"
               id="phone"
             />
-            {address.errors.phone && address.touched.phone ? (
+            {formik.errors.phone && formik.touched.phone ? (
               <p className="text-danger">
 
-                *{address.errors.phone}
+                *{formik.errors.phone}
               </p>
             ) : (
               ""
             )}
             <label htmlFor="city">City:</label>
             <input
-              onBlur={address.handleBlur}
-              onChange={address.handleChange}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
               type="text"
               name="city"
               className="form-control my-2"
               id="city"
             />
-            {address.errors.city && address.touched.city ? (
+            {formik.errors.city && formik.touched.city ? (
               <div className="text-danger">
-                *{address.errors.city}
+                *{formik.errors.city}
               </div>
             ) : (
               ""
             )}
 
-            {err ? (
+
+            <label htmlFor="details">Details:</label>
+            <input
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="text"
+              name="details"
+              className="form-control my-2"
+              id="details"
+            />
+            {formik.errors.details && formik.touched.details ? (
+              <p className="text-danger">
+
+                *{formik.errors.details}
+              </p>
+            ) : (
+              ""
+            )}
+
+            {error ? (
               <div className="text-danger">
 
-                {err}
+                {error}
               </div>
             ) : (
               ""
@@ -126,7 +134,7 @@ export default function Address() {
 
             <div className="text-end">
               <button
-                disabled={!(address.dirty && address.isValid)}
+                disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
                 className="btn bg-main text-white"
               >
@@ -140,7 +148,6 @@ export default function Address() {
           </form>
         </div>
       </div>
-      <Footer />
     </>
   );
 }

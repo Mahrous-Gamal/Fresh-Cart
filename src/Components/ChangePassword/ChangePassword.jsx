@@ -104,7 +104,7 @@ export default function ChangePassword() {
               <input
                 type={showCurrentPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="currentPassword"
@@ -143,7 +143,7 @@ export default function ChangePassword() {
               <input
                 type={showNewPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="password"
@@ -182,7 +182,7 @@ export default function ChangePassword() {
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="rePassword"

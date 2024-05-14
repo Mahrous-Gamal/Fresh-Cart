@@ -23,7 +23,7 @@ export default function Register() {
   let [error, setError] = useState(null);
 
   const [loaderbtn, setLoaderbtn] = useState(false);
-  
+
   let navigate = useNavigate();
 
   function sign_up(values) {
@@ -159,7 +159,7 @@ export default function Register() {
               </span>
               <input
                 className="form-control"
-                placeholder="e.g. 01001449752"
+                placeholder="123-456-7890"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 type="tel"
@@ -183,7 +183,7 @@ export default function Register() {
               <input
                 type={showPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="password"
@@ -223,7 +223,7 @@ export default function Register() {
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="rePassword"

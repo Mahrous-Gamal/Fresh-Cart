@@ -12,17 +12,16 @@ import Signin from "./Components/Signin/Signin";
 import Register from "./Components/Register/Register";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import ProductDetails from "./Components/ProductDetails/ProductDetails";
-import StoreContextProvider from "./Context/StoreContext";
+import CartContextProvider from "./Context/CartContext";
 import { ToastContainer } from "react-toastify";
 import BeforeRegistering from "./Layout/BeforeRegistering";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
-import { Offline, Online } from "react-detect-offline";
+import { Offline } from "react-detect-offline";
 import GetAllSubCategoriesOnCategory from "./Components/Get All SubCategories On Category/GetAllSubCategoriesOnCategory";
 import BrandsDetails from "./Components/BrandsDetails/BrandsDetails";
 import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
 import VerifyResetCode from "./Components/VerifyResetCode/VerifyResetCode";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
-import Handala from "./Components/Handala/Handala";
 import Address from "./Components/Address/Address";
 import Orders from "./Components/Orders/Orders";
 import Wishlist from "./Components/Wishlist/Wishlist";
@@ -31,6 +30,7 @@ import UpdateData from "./Components/UpdateData/UpdateData";
 import ChangePassword from "./Components/ChangePassword/ChangePassword.jsx";
 import ScrollButton from "./Components/ScrollButton/ScrollButton";
 import { MdOutlineWifiOff } from "react-icons/md";
+import WishlistContextProvider from "./Context/WishlistContext.js";
 
 export default function App() {
   const routers = createBrowserRouter([
@@ -41,9 +41,9 @@ export default function App() {
         {
           index: true,
           element: (
-            <Handala>
+            <ProtectedRoute>
               <WelcomePage />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
       ],
@@ -55,49 +55,49 @@ export default function App() {
         {
           index: true,
           element: (
-            <Handala>
+            <ProtectedRoute>
               <Signin />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         {
           path: "signin",
           element: (
-            <Handala>
+            <ProtectedRoute>
               <Signin />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         {
           path: "signup",
           element: (
-            <Handala>
+            <ProtectedRoute>
               <Register />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         {
           path: "forgetPass",
           element: (
-            <Handala>
+            <ProtectedRoute>
               <ForgetPassword />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         {
           path: "verifyResetCode",
           element: (
-            <Handala>
+            <ProtectedRoute>
               <VerifyResetCode />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         {
           path: "resetPassword",
           element: (
-            <Handala>
+            <ProtectedRoute>
               <ResetPassword />
-            </Handala>
+            </ProtectedRoute>
           ),
         },
         { path: "*", element: <NotFound /> },
@@ -172,7 +172,7 @@ export default function App() {
           ),
         },
         {
-          path: "product-delales/:id",
+          path: "product-details/:id",
           element: (
             <ProtectedRoute>
               <ProductDetails />
@@ -233,9 +233,11 @@ export default function App() {
   ]);
   return (
     <>
-      <StoreContextProvider>
-        <RouterProvider router={routers} />
-      </StoreContextProvider>
+      <CartContextProvider>
+        <WishlistContextProvider>
+          <RouterProvider router={routers} />
+        </WishlistContextProvider>
+      </CartContextProvider>
 
       <ToastContainer theme="light" autoClose={1000} />
 

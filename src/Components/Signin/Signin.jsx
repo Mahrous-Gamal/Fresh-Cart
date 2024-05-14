@@ -148,7 +148,7 @@ export default function Signin() {
               <input
                 type={showPassword ? "text" : "password"}
                 className="form-control"
-                placeholder="e.g. user#123"
+                placeholder="••••••••"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 name="password"

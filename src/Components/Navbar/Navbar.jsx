@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react";
 import logo from "../../Assets/Images/freshcart-logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { storeContext } from "../../Context/StoreContext";
+import { wishlistContext } from "../../Context/WishlistContext";
+import { cartContext } from "../../Context/CartContext";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import { LuUser } from "react-icons/lu";
 import { FaRegHeart } from "react-icons/fa";
@@ -13,12 +14,17 @@ export default function Navbar() {
   }
   let {
     wishlistCounter,
-    counter,
-    getCart,
-    setCounter,
     getWishlist,
     setWishlistCounter,
-  } = useContext(storeContext);
+  } = useContext(wishlistContext);
+
+  let {
+    setCounter,
+    counter,
+    getCart,
+
+  } = useContext(cartContext);
+
   useEffect(() => {
     (async () => {
       let { data } = await getCart();

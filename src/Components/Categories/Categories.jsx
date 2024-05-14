@@ -1,20 +1,33 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
-import Loader from "../Loader/Loader";
-import Categorie from "../Category/Category";
+import Category from "../Category/Category";
 import { Helmet } from "react-helmet";
+import Slider from "react-slick";
 
 
 export default function Categories() {
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 550,
+    slidesToShow: 7,
+    slidesToScroll: 3,
+    arrows: false,
+    autoplay: true,
+    autoplaySpeed: 1550,
+  };
+
   function getCategory() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/categories");
   }
 
-  let { data, isLoading } = useQuery("getCategory", getCategory);
-  if (isLoading) {
-    return <Loader />;
-  }
+  let { data, } = useQuery("getCategory", getCategory);
+
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
 
@@ -25,11 +38,19 @@ export default function Categories() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div className="container my-5" style={{ paddingTop: "74.49px" }}>
-        <div className="colomns ">
-          {data?.data?.data.map((item) => (
-            <Categorie key={item._id} item={item} />
-          ))}
+      <div
+        className="container my-4 "
+        style={{ paddingTop: "20.49px" }}
+      >        <h3 className="mt-5 mb-3">Shop Popular Categories</h3>
+
+        <div className="row g-0">
+          <Slider {...settings}>
+
+            {data?.data?.data.map((item) => (
+              <Category key={item._id} item={item} />
+            ))}
+          </Slider>
+
         </div>
       </div>
     </>

@@ -1,50 +1,51 @@
 import axios from "axios";
 import Product from "../Product/Product";
-import Loader from "../Loader/Loader";
 import { useQuery } from "react-query";
 import { useContext } from "react";
-import { storeContext } from "../../Context/StoreContext";
+import { wishlistContext } from "../../Context/WishlistContext";
 import { Helmet } from "react-helmet";
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Products() {
 
-  const [products, setPoducts] = useState([]);
-  const [isLoadingg, setIsLoading] = useState(false);
-  const [erroe, setError] = useState(null);
+  // const [products, setPoducts] = useState([]);
+  // const [isLoadingg, setIsLoading] = useState(false);
+  // const [erroe, setError] = useState(null);
 
-  function getData() {
+  // function getData() {
 
-    setIsLoading(true);
+  //   setIsLoading(true);
 
-    axios.get("https://ecommerce.routemisr.com/api/v1/products")
-      .then((Response) => {
-        setPoducts(Response.data.data);
-        setIsLoading(false);
-        setError(null);
-      }
-      ).catch((error) => {
-        setPoducts([]);
-        setIsLoading(false);
-        setError(error.Response.data.message);
+  //   axios.get("https://ecommerce.routemisr.com/api/v1/products")
+  //     .then((Response) => {
+  //       setPoducts(Response.data.data);
+  //       setIsLoading(false);
+  //       setError(null);
+  //     }
+  //     ).catch((error) => {
+  //       setPoducts([]);
+  //       setIsLoading(false);
+  //       setError(error.Response.data.message);
 
-      })
+  //     })
 
-  }
+  // }
 
 
-  let { getWishlist } = useContext(storeContext);
+  let { getWishlist } = useContext(wishlistContext);
+
   function getProduct() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
-  let { data, isLoading } = useQuery("getProduct", getProduct);
+
+  let { data } = useQuery("getProduct", getProduct);
   let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
 
   let Arr = dataWish?.data?.data?.map((item) => item._id);
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>

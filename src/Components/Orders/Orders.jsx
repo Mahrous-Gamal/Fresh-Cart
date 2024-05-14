@@ -10,15 +10,17 @@ import { Helmet } from "react-helmet";
 
 export default function Allorders() {
   let { id } = jwtDecode(localStorage.getItem("token"));
+
   function getAllOredries() {
     return axios(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`)
       .then((data) => data)
       .catch((err) => err);
   }
-  let { data, isLoading } = useQuery("getAllOrder", getAllOredries);
-  if (isLoading) {
-    return <Loader />;
-  }
+  let { data } = useQuery("getAllOrder", getAllOredries);
+  
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
   return (
     <>
 
@@ -29,7 +31,7 @@ export default function Allorders() {
       </Helmet>
 
       <div
-        className="container my-4 "
+        className="container mt-4 "
         style={{ paddingTop: "195.49px", paddingBottom: "150px" }}
       >
         {data?.data?.length ? (
@@ -39,7 +41,7 @@ export default function Allorders() {
             })}
           </Accordion>
         ) : (
-          <div className="my-4 text-center fs-2">There are no orders!</div>
+          <div className="mt-4 text-center fs-5">You have no orders, Add products to your cart and start purchasing and making orders</div>
         )}
       </div>
     </>

@@ -1,24 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { storeContext } from "../../Context/StoreContext";
+import { wishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
 import BigLoader from "../BigLoader/BigLoader";
+import { cartContext } from './../../Context/CartContext';
 
 export default function Product(props) {
   let {
     setCounter,
-    addToCart,
     addToWishlist,
     setWishlistCounter,
     DeleteWishlist,
     block,
     setBlock,
-  } = useContext(storeContext);
+  } = useContext(wishlistContext);
+  let {
+
+    addToCart
+
+  } = useContext(cartContext);
+
+
   let [loading, setLoading] = useState(1);
   let arrIdWish = props?.arrIdWish;
   const item = props.item;
 
-
+  /****************************************************************/
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -32,6 +39,9 @@ export default function Product(props) {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
+  /****************************************************************/
+
+
   async function addproductToCart(productId) {
     setLoading(0);
     let { data } = await addToCart(productId);
@@ -42,25 +52,22 @@ export default function Product(props) {
     }
   }
   async function addToWash(productId) {
-    setBlock("block");
     let { data } = await addToWishlist(productId);
-    // console.log(data);
-    if (data?.status == "success") {
+
+    if (data?.status === "success") {
       toast.success("Product added successfully");
       setWishlistCounter(data?.data?.length);
       await props.refetch();
-      await setBlock("none");
     }
   }
   async function DeleteToWash(productId) {
-    setBlock("block");
+
     let { data } = await DeleteWishlist(productId);
-    // console.log(data);
-    if (data?.status == "success") {
+
+    if (data?.status === "success") {
       toast.success("Product Deleted successfully");
       setWishlistCounter(data?.data?.length);
       await props.refetch();
-      await setBlock("none");
     }
   }
   function chiking() {
@@ -77,18 +84,16 @@ export default function Product(props) {
 
   return (
     <>
-      <BigLoader state={block} />
-      <div className="col-lg-2 col-md-3 col-sm-6 position-relative my-3">
+      <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
         <div className="product p-3 rounded-3 cursor-pointer position-relative">
           <i
             onClick={() => chiking()}
-            className={`${
-              arrIdWish?.includes(props?.item?._id.toString())
-                ? "fa-solid fa-heart text-danger"
-                : "fa-regular fa-heart"
-            }`}
+            className={`${arrIdWish?.includes(props?.item?._id.toString())
+              ? "fa-solid fa-heart text-danger position-absolute z-3"
+              : "fa-regular fa-heart position-absolute z-3"
+              }`}
           ></i>
-          <Link to={`/product-delales/${item._id}`}>
+          <Link to={`/product-details/${item._id}`}>
             <img src={item.imageCover} className="w-100" alt="imageCover" />
             <span className="text-main">{item.category.name}</span>
             <h5 className="mt-3">
@@ -105,17 +110,19 @@ export default function Product(props) {
             </div>
           </Link>
           <button
-            disabled={!loading}
             onClick={() => addproductToCart(item._id)}
             className="btn bg-main w-100 text-white"
           >
             {loading ? (
               <>
-                Add
-                <i className="fa-solid fa-cart-shopping ps-2" />
+                Add <i className="fa-solid fa-cart-shopping ps-2" />
               </>
             ) : (
-              "Loading..."
+              <>
+
+                <i className="fa-solid fa-spinner fa-spin-pulse me-1"></i>
+                <i className="fa-solid fa-cart-shopping ps-2" />
+              </>
             )}
           </button>
         </div>

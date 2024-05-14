@@ -1,27 +1,31 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { storeContext } from "../../Context/StoreContext";
+import { wishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
-import BigLoader from "../BigLoader/BigLoader";
 import StarRating from "../StarRating/StarRating";
 import "./Product.css";
+import { cartContext } from './../../Context/CartContext';
 
 
 export default function Product(props) {
   let {
-    setCounter,
-    addToCart,
     addToWishlist,
     setWishlistCounter,
     DeleteWishlist,
-    block,
-    setBlock,
-  } = useContext(storeContext);
+  } = useContext(wishlistContext);
+
+  let {
+    setCounter,
+    addToCart,
+
+  } = useContext(cartContext);
 
   let [loading, setLoading] = useState(1);
+
   let arrIdWish = props?.arrIdWish;
   const item = props.item;
 
+  /****************************************************************/
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -37,68 +41,68 @@ export default function Product(props) {
     };
   }, []);
 
+  /****************************************************************/
   async function addproductToCart(productId) {
     setLoading(0);
 
     let { data } = await addToCart(productId);
-    
+
     if (data?.status === "success") {
-      toast.success("Product added successfully");
+      toast.success("Product added to your cart");
       setCounter(data.numOfCartItems);
+      // Loading
       setLoading(1);
     }
   }
-
+  /****************************************************************/
 
   async function addToWash(productId) {
-    setBlock("block");
+
 
     let { data } = await addToWishlist(productId);
 
     if (data?.status === "success") {
-      toast.success("Product added successfully");
+      toast.success("Product added to your wishlist");
       setWishlistCounter(data?.data?.length);
+
       await props.refetch();
-      await setBlock("none");
+
     }
   }
 
-
-
   async function DeleteToWash(productId) {
-    setBlock("block");
+
 
     let { data } = await DeleteWishlist(productId);
 
     if (data?.status === "success") {
-      toast.success("Product Deleted successfully");
+      toast.success("Product removed from your wishlist");
       setWishlistCounter(data?.data?.length);
+
       await props.refetch();
-      await setBlock("none");
+
     }
   }
 
-
   function chiking() {
-    if (isOnline) 
+    if (isOnline)
+      (!arrIdWish?.includes(item?._id.toString())) ? addToWash(item._id) : DeleteToWash(item._id);
 
-      (!arrIdWish?.includes(item?._id.toString()))? addToWash(item._id):DeleteToWash(item._id);
-      
-    else 
+    else
       toast.error("You are offline now");
-    
+
   }
 
   return (
     <>
-      <BigLoader state={block} />
+
       <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6 position-relative my-3">
         <div className="product">
           <div className="product-img">
             <img src={item.imageCover} className="w-100" alt="imageCover" />
           </div>
           <div className="product-txt text-start mt-2 fw-bold">
-            <h2 className="general-color fs-5">{item.category.name}</h2>
+            <h2 className="text-main fs-5">{item.category.name}</h2>
             <p>Mens Winter Leathers Jackets</p>
             <div className="d-flex justify-content-between">
               <StarRating ratingsAverage={item.ratingsAverage} />
@@ -108,7 +112,7 @@ export default function Product(props) {
             <p>
               {" "}
               <span className="text-main me-1">{item.price}{" "}</span>
-              <del className="text-secondary">{item.price + 100}</del>
+              <del className="text-secondary">{item.price > 3000 ? " " : item.price + 100}</del>
             </p>
           </div>
 
@@ -130,7 +134,7 @@ export default function Product(props) {
               ></i>
             </li>
             <li>
-              <Link to={`/product-delales/${item._id}`}>
+              <Link to={`/product-details/${item._id}`}>
                 <i className="fa-solid fa-eye"></i>
               </Link>
             </li>

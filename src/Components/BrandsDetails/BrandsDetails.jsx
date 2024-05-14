@@ -4,12 +4,13 @@ import Loader from '../Loader/Loader';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import BrandDetalSon from './BrandDetalSon';
-import { storeContext } from '../../Context/StoreContext';
-import Footer from '../Footer/Footer';
+import { wishlistContext } from '../../Context/WishlistContext';
 
 
 export default function BrandsDetails() {
-  let { getWishlist } = useContext(storeContext);
+
+  let { getWishlist } = useContext(wishlistContext);
+
   const [final, setFinal] = useState(null);
   const [arr, setArr] = useState(0);
   const id = useParams();
@@ -46,14 +47,16 @@ export default function BrandsDetails() {
   }, [id.id, product, dataWish]);
 
 
-  if (datapro.isLoading) {
-    return <Loader />;
-  }
+  // if (datapro.isLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
-      <div className='container' style={{ paddingTop: '74.49px' }}>
-        <div className='row'>
+      <div
+        className="container mt-4 "
+        style={{ paddingTop: "195.49px", paddingBottom: "150px" }}
+      >        <div className='row'>
           {final}
         </div>
       </div>

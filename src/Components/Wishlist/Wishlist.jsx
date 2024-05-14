@@ -1,24 +1,25 @@
 import React, { useContext } from "react";
-import { storeContext } from "../../Context/StoreContext";
+import { wishlistContext } from "../../Context/WishlistContext";
 import { useQuery } from "react-query";
-import Loader from "../Loader/Loader";
 import WishlistSon from "../WishlistSon/WishlistSon";
 import { Helmet } from "react-helmet";
 
 
 export default function Wishlist() {
-  let { wishlistCounter, getWishlist, setWishlistCounter } =
-    useContext(storeContext);
-  let { data, isLoading, refetch } = useQuery("getWish", getWishlist);
-  let Arr = data?.data?.data?.map((item) => item._id);
-  
+
+  let { wishlistCounter, getWishlist, setWishlistCounter } = useContext(wishlistContext);
+
+  let { data, refetch } = useQuery("getWish", getWishlist);
+
+  let  idProducts = data?.data?.data?.map((item) => item._id);
+
   setWishlistCounter(data?.data?.data?.length);
-  if (isLoading) return <Loader />;
+
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Fresh Cart | Wishlist</title>
+        <title>Fresh Cart | My Wishlist</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
@@ -33,20 +34,17 @@ export default function Wishlist() {
                 <WishlistSon
                   key={item._id}
                   item={item}
-                  arrIdWish={Arr}
+                  idWishlist={ idProducts}
                   refetch={refetch}
                 />
               );
             })}
           </div>
-        ) : (
-          <h2
-            className="text-center my-5"
-            style={{ paddingTop: "185.49px", paddingBottom: "200px" }}
-          >
-            Wishlist is empty.
-          </h2>
-        )}
+        ) :(
+          
+          <div className="mt-4 text-center fs-5">Your wishlist is empty, add some products and come back later. Add image to become more beautiful</div>
+        )
+        }
       </div>
     </>
   );

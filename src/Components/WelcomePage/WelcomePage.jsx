@@ -2,17 +2,16 @@ import React, { useState, useEffect } from "react";
 import Image1 from "../../Assets/Images/slider-image-1.jpeg";
 import Image2 from "../../Assets/Images/slider-image-2.jpeg";
 import MainSlider from "../MainSlider/MainSlider";
-import axios from "axios";
-import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../GoSignIn/GoSignIn";
 import { Helmet } from "react-helmet";
 
 
 export default function WelcomePage() {
-  const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [modalShow, setModalShow] = useState(false);
-  let x = useNavigate();
+
+/****************************************************************/
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -25,23 +24,7 @@ export default function WelcomePage() {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-
-  function getCategory() {
-    return axios.get("https://ecommerce.routemisr.com/api/v1/categories");
-  }
-
-  let { data } = useQuery("getCategory", getCategory);
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-  };
+/****************************************************************/
 
   return (
     <>
@@ -71,14 +54,8 @@ export default function WelcomePage() {
             />
           </div>
         </div>
-        <h3 className="mt-5 mb-3">Shop Popular Categories</h3>
-        ...
-        {/* <DataPagination /> */}
       </div>
-      {/* <MyVerticallyCenteredModal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-      /> */}
+
     </>
   );
 }

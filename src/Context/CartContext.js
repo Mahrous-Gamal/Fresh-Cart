@@ -1,12 +1,16 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 
+export let cartContext = createContext(0);
 
-export let storeContext = createContext(0);
+export default function CartContextProvider({ children }) {
+  // let [numberOfCartItems, setNumberOfCartItems] = useState(0);
+  let [counter, setCounter] = useState(0);
 
-export default function StoreContextProvider({ children }) {
+  const userId = null;
+
   /**********************************<<addToCart>>********************************productId**/
-  async function addToCart(productId) {
+  function addToCart(productId) {
     return axios
       .post(
         "https://ecommerce.routemisr.com/api/v1/cart",
@@ -19,10 +23,12 @@ export default function StoreContextProvider({ children }) {
       )
       .then((response) => response)
       .catch((error) => error);
+
+    // setNumberOfCartItems(response.numOfCartItems);
   }
 
   /**********************************<<getCart>>**********************************/
-  async function getCart() {
+  function getCart() {
     return axios
       .get("https://ecommerce.routemisr.com/api/v1/cart", {
         headers: {
@@ -34,7 +40,7 @@ export default function StoreContextProvider({ children }) {
   }
 
   /**********************************<<deletCart>>**********************************/
-  async function deletCart(id) {
+  function deletCart(id) {
     return axios
       .delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
         headers: {
@@ -46,7 +52,7 @@ export default function StoreContextProvider({ children }) {
   }
 
   /**********************************<<updatetCart>>********************************count**/
-  async function updatetCart(id, count) {
+  function updatetCart(id, count) {
     return axios
       .put(
         `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
@@ -60,8 +66,8 @@ export default function StoreContextProvider({ children }) {
       .then((response) => response)
       .catch((error) => error);
   }
-  /**************************************************************************************/
-  async function deletAllCart() {
+  /**********************************<<deletAllCart>>********************************count**/
+  function deletAllCart() {
     return axios
       .delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
         headers: {
@@ -71,8 +77,8 @@ export default function StoreContextProvider({ children }) {
       .then((response) => response)
       .catch((error) => error);
   }
-
-  async function pay(id, shippingAddress) {
+  /**********************************<<pay>>********************************count**/
+  function pay(id, shippingAddress) {
     return axios
       .post(
         `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://fresh-cart.vercel.app/cart`,
@@ -86,68 +92,13 @@ export default function StoreContextProvider({ children }) {
       .then((response) => response)
       .catch((error) => error);
   }
-
   /**************************************************************************************/
-  /**********************************<<addToWishlist>>********************************productId**/
-  async function addToWishlist(productId) {
-    return axios.post(
-      `https://ecommerce.routemisr.com/api/v1/wishlist`,
-      { productId },
-      {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
-  }
-  /**********************************<<getWishlist>>**********************************/
-
-  async function getWishlist() {
-    return axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist`, {
-      headers: {
-        token: localStorage.getItem("token"),
-      },
-    });
-  }
-  /**********************************<<DeleteWishlist>>**********************************/
-
-  async function DeleteWishlist(id) {
-    return axios.delete(
-      `https://ecommerce.routemisr.com/api/v1/wishlist/${id}`,
-      {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      }
-    );
-  }
-  /**************************************************************************************/
-
-  let [counter, setCounter] = useState(0);
-  let [bosLoad, setBosLoad] = useState(0);
-  let [loading, setLoading] = useState(1);
-  let [wishlistCounter, setWishlistCounter] = useState(0);
-  let [block, setBlock] = useState("none");
-
-  const userId = null;
 
   return (
-    <storeContext.Provider
+    <cartContext.Provider
       value={{
         counter,
         setCounter,
-
-        block,
-        setBlock,
-
-        loading,
-        setLoading,
-
-        wishlistCounter,
-        setWishlistCounter,
-
-        bosLoad,
-        setBosLoad,
 
         userId,
 
@@ -158,13 +109,9 @@ export default function StoreContextProvider({ children }) {
         deletAllCart,
 
         pay,
-
-        addToWishlist,
-        getWishlist,
-        DeleteWishlist,
       }}
     >
       {children}
-    </storeContext.Provider>
+    </cartContext.Provider>
   );
 }

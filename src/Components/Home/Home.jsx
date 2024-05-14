@@ -1,21 +1,17 @@
 import React from 'react'
 import WelcomePage from '../WelcomePage/WelcomePage'
-import FeaturedProduct from '../FeaturedProduct/FeaturedProduct';
 import Products from '../Products/Products';
 import { Helmet } from "react-helmet";
+import Categories from './../Categories/Categories';
 
 
 export default function Home() {
   return (
     <>
 
-
       <WelcomePage />
-      <FeaturedProduct />
+      <Categories />
       <Products />
-
-
-
 
       <Helmet>
         <meta charSet="utf-8" />
