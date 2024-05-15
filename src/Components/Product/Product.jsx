@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { wishlistContext } from "../../Context/WishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
 import StarRating from "../StarRating/StarRating";
-import "./Product.css";
-import { cartContext } from './../../Context/CartContext';
+// import "./Product.css";
+import { CartContext } from './../../Context/CartContext';
 
 
 export default function Product(props) {
@@ -12,17 +12,17 @@ export default function Product(props) {
     addToWishlist,
     setWishlistCounter,
     DeleteWishlist,
-  } = useContext(wishlistContext);
+  } = useContext(WishlistContext);
 
   let {
     setCounter,
     addToCart,
 
-  } = useContext(cartContext);
+  } = useContext(CartContext);
 
   let [loading, setLoading] = useState(1);
-
   let arrIdWish = props?.arrIdWish;
+  
   const item = props.item;
 
   /****************************************************************/
@@ -42,7 +42,7 @@ export default function Product(props) {
   }, []);
 
   /****************************************************************/
-  async function addproductToCart(productId) {
+  async function addProductToCart(productId) {
     setLoading(0);
 
     let { data } = await addToCart(productId);
@@ -56,7 +56,8 @@ export default function Product(props) {
   }
   /****************************************************************/
 
-  async function addToWash(productId) {
+
+  async function addProductToWishlist(productId) {
 
 
     let { data } = await addToWishlist(productId);
@@ -70,7 +71,7 @@ export default function Product(props) {
     }
   }
 
-  async function DeleteToWash(productId) {
+  async function deleteFromWishlist(productId) {
 
 
     let { data } = await DeleteWishlist(productId);
@@ -86,7 +87,7 @@ export default function Product(props) {
 
   function chiking() {
     if (isOnline)
-      (!arrIdWish?.includes(item?._id.toString())) ? addToWash(item._id) : DeleteToWash(item._id);
+      (!arrIdWish?.includes(item?._id.toString())) ? addProductToWishlist(item._id) : deleteFromWishlist(item._id);
 
     else
       toast.error("You are offline now");
@@ -95,67 +96,47 @@ export default function Product(props) {
 
   return (
     <>
-
-      <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6 position-relative my-3">
-        <div className="product">
-          <div className="product-img">
+      <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
+        <div className="product p-3 rounded-3 cursor-pointer position-relative">
+          <i
+            onClick={() => chiking()}
+            className={`${arrIdWish?.includes(props?.item?._id.toString())
+              ? "fa-solid fa-heart text-danger position-absolute z-3"
+              : "fa-regular fa-heart position-absolute z-3"
+              }`}
+          ></i>
+          <Link to={`/product-details/${item._id}`}>
             <img src={item.imageCover} className="w-100" alt="imageCover" />
-          </div>
-          <div className="product-txt text-start mt-2 fw-bold">
-            <h2 className="text-main fs-5">{item.category.name}</h2>
-            <p>Mens Winter Leathers Jackets</p>
+            <span className="text-main">{item.category.name}</span>
+            <h5 className="mt-3">
+              {item.title.split(" ").slice(0, 2).join(" ")}
+            </h5>
             <div className="d-flex justify-content-between">
-              <StarRating ratingsAverage={item.ratingsAverage} />
-
-              {item.ratingsAverage}
+              <div>
+                <p>{item.price}EGP</p>
+              </div>
+              <div>
+                <i className="fa-solid fa-star pe-1 rating-color"></i>
+                {item.ratingsAverage}
+              </div>
             </div>
-            <p>
-              {" "}
-              <span className="text-main me-1">{item.price}{" "}</span>
-              <del className="text-secondary">{item.price > 3000 ? " " : item.price + 100}</del>
-            </p>
-          </div>
-
-          <ul className="product-icons">
-            <li>
-              <i
-                class="fa-solid fa-cart-shopping"
-                onClick={() => addproductToCart(item._id)}
-              ></i>
-            </li>
-            <li>
-              <i
-                class="fa-regular fa-heart"
-                onClick={() => chiking()}
-                className={`${arrIdWish?.includes(props?.item?._id.toString())
-                  ? "fa-solid fa-heart text-danger"
-                  : "fa-regular fa-heart"
-                  }`}
-              ></i>
-            </li>
-            <li>
-              <Link to={`/product-details/${item._id}`}>
-                <i className="fa-solid fa-eye"></i>
-              </Link>
-            </li>
-            {/* <li>
-              <i className="fa-solid fa-code-compare"></i>
-            </li> */}
-          </ul>
-          {/* <button
-            disabled={!loading}
-            onClick={() => addproductToCart(item._id)}
+          </Link>
+          <button
+            onClick={() => addProductToCart(item._id)}
             className="btn bg-main w-100 text-white"
           >
             {loading ? (
               <>
-                Add
-                <i className="fa-solid fa-cart-shopping ps-2" />
+                Add <i className="fa-solid fa-cart-shopping ps-2" />
               </>
             ) : (
-              "Loading..."
+              <>
+
+                <i className="fa-solid fa-spinner fa-spin-pulse me-1"></i>
+                <i className="fa-solid fa-cart-shopping ps-2" />
+              </>
             )}
-          </button> */}
+          </button>
         </div>
       </div>
     </>

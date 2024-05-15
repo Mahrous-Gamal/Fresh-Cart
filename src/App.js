@@ -55,25 +55,25 @@ export default function App() {
         {
           index: true,
           element: (
-            <ProtectedRoute>
-              <Signin />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Signin />
+            // </ProtectedRoute>
           ),
         },
         {
           path: "signin",
           element: (
-            <ProtectedRoute>
-              <Signin />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <Signin />
+            // </ProtectedRoute>
           ),
         },
         {
           path: "signup",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Register />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
@@ -239,14 +239,15 @@ export default function App() {
         </WishlistContextProvider>
       </CartContextProvider>
 
-      <ToastContainer theme="light" autoClose={1000} />
-
       <Offline>
         <div className="offline d-flex justify-content-center align-items-center ">
           <MdOutlineWifiOff className="me-2 fs-5" /> You are currently offline{" "}
           <p className="m-0 ms-2"></p>
         </div>
       </Offline>
+
+
+      <ToastContainer theme="light" autoClose={1000} />
 
       <ScrollButton />
     </>

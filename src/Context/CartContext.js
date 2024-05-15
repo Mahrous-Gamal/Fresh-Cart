@@ -1,25 +1,25 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 
-export let cartContext = createContext(0);
+export let CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
-  // let [numberOfCartItems, setNumberOfCartItems] = useState(0);
   let [counter, setCounter] = useState(0);
 
   const userId = null;
+
+  let userToken = localStorage.getItem("token");
+  let headers = {
+    token: userToken,
+  };
 
   /**********************************<<addToCart>>********************************productId**/
   function addToCart(productId) {
     return axios
       .post(
         "https://ecommerce.routemisr.com/api/v1/cart",
-        { productId },
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        { productId: productId },
+        { headers: headers }
       )
       .then((response) => response)
       .catch((error) => error);
@@ -30,64 +30,48 @@ export default function CartContextProvider({ children }) {
   /**********************************<<getCart>>**********************************/
   function getCart() {
     return axios
-      .get("https://ecommerce.routemisr.com/api/v1/cart", {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
-      })
+      .get("https://ecommerce.routemisr.com/api/v1/cart", { headers: headers })
       .then((response) => response)
       .catch((error) => error);
   }
 
   /**********************************<<deletCart>>**********************************/
-  function deletCart(id) {
+  function deleteCart(id) {
     return axios
       .delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
+        headers: headers,
       })
       .then((response) => response)
       .catch((error) => error);
   }
 
   /**********************************<<updatetCart>>********************************count**/
-  function updatetCart(id, count) {
+  function updateCart(id, count) {
     return axios
       .put(
         `https://ecommerce.routemisr.com/api/v1/cart/${id}`,
-        { count },
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        { count: count },
+        { headers: headers }
       )
       .then((response) => response)
       .catch((error) => error);
   }
-  /**********************************<<deletAllCart>>********************************count**/
-  function deletAllCart() {
+  /**********************************<<deletAllCart>>**********************************/
+  function deleteAllCart() {
     return axios
       .delete(`https://ecommerce.routemisr.com/api/v1/cart`, {
-        headers: {
-          token: localStorage.getItem("token"),
-        },
+        headers: headers,
       })
       .then((response) => response)
       .catch((error) => error);
   }
-  /**********************************<<pay>>********************************count**/
+  /**********************************<<pay>>**********************************/
   function pay(id, shippingAddress) {
     return axios
       .post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://fresh-cart.vercel.app/cart`,
-        { shippingAddress },
-        {
-          headers: {
-            token: localStorage.getItem("token"),
-          },
-        }
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:3000`,
+        { shippingAddress: shippingAddress },
+        { headers: headers }
       )
       .then((response) => response)
       .catch((error) => error);
@@ -95,7 +79,7 @@ export default function CartContextProvider({ children }) {
   /**************************************************************************************/
 
   return (
-    <cartContext.Provider
+    <CartContext.Provider
       value={{
         counter,
         setCounter,
@@ -104,14 +88,14 @@ export default function CartContextProvider({ children }) {
 
         addToCart,
         getCart,
-        deletCart,
-        updatetCart,
-        deletAllCart,
+        deleteCart,
+        updateCart,
+        deleteAllCart,
 
         pay,
       }}
     >
       {children}
-    </cartContext.Provider>
+    </CartContext.Provider>
   );
 }

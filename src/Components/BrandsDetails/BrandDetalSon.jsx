@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { wishlistContext } from "../../Context/WishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
-import { cartContext } from './../../Context/CartContext';
+import { CartContext } from './../../Context/CartContext';
 
 export default function Product(props) {
   let {
     addToWishlist,
     setWishlistCounter,
     DeleteWishlist,
-  } = useContext(wishlistContext);
+  } = useContext(WishlistContext);
 
   let {
     setCounter,
     addToCart
-  } = useContext(cartContext);
+  } = useContext(CartContext);
 
   let [loading, setLoading] = useState(1);
   let arrIdWish = props?.arrIdWish;
@@ -38,6 +38,7 @@ export default function Product(props) {
   /****************************************************************/
 
   async function addproductToCart(productId) {
+    setLoading(0);
 
     let { data } = await addToCart(productId);
 
@@ -82,13 +83,13 @@ export default function Product(props) {
   return (
     <>
 
-      <div className="col-lg-2 col-md-3 col-sm-6 position-relative my-3">
+      <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
         <div className="product p-3 rounded-3 cursor-pointer position-relative">
           <i
             onClick={() => chiking()}
             className={`${arrIdWish?.includes(props?.item?._id.toString())
-              ? "fa-solid fa-heart text-danger"
-              : "fa-regular fa-heart"
+              ? "fa-solid fa-heart text-danger position-absolute z-3"
+              : "fa-regular fa-heart position-absolute z-3"
               }`}
           ></i>
           <Link to={`/product-details/${item._id}`}>
@@ -108,7 +109,6 @@ export default function Product(props) {
             </div>
           </Link>
           <button
-            // disabled={!loading}
             onClick={() => addproductToCart(item._id)}
             className="btn bg-main w-100 text-white"
           >

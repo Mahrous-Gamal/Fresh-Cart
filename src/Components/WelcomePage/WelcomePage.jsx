@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
-import Image1 from "../../Assets/Images/slider-image-1.jpeg";
-import Image2 from "../../Assets/Images/slider-image-2.jpeg";
+import Image1 from "../../Assets/Images/slider-1.jpg";
+import Image2 from "../../Assets/Images/slider-2.jpg";
 import MainSlider from "../MainSlider/MainSlider";
 import { useNavigate } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../GoSignIn/GoSignIn";
 import { Helmet } from "react-helmet";
+import Categories from './../Categories/Categories';
+import Products from './../Products/Products';
 
 
 export default function WelcomePage() {
   const [modalShow, setModalShow] = useState(false);
 
-/****************************************************************/
+  /****************************************************************/
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   useEffect(() => {
     const handleOnline = () => setIsOnline(true);
@@ -24,7 +26,7 @@ export default function WelcomePage() {
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-/****************************************************************/
+  /****************************************************************/
 
   return (
     <>
@@ -55,6 +57,9 @@ export default function WelcomePage() {
           </div>
         </div>
       </div>
+
+      <Categories />
+      <Products />
 
     </>
   );

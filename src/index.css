@@ -6,13 +6,12 @@
   --rating-color: #ffc908;
   --font-family: "Encode Sans Expanded", sans-serif;
   --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
-  rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
-  rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+    rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+    rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
 }
 
 body {
   font-family: var(--font-family) !important;
-  border:2px solid red;
   min-height: 100vh;
 }
 
@@ -29,6 +28,7 @@ body {
   background-color: var(--main-color);
   border-radius: 15px;
 }
+
 /* Scrollbar */
 
 /*Navbar*/
@@ -161,6 +161,7 @@ a:hover {
   border-radius: 50%;
   background-color: red;
 }
+
 /* offline  */
 
 .slick-dots {
@@ -227,6 +228,7 @@ a:hover {
   text-decoration: underline !important;
   color: blue !important;
 }
+
 /* forgetPass */
 
 .colomns {
@@ -253,7 +255,6 @@ a:hover {
   color: white;
   font-size: 25px;
   font-weight: 600;
-  border: 2px solid red;
 }
 
 .colomns-son:hover .colomns-son-style {
@@ -333,11 +334,101 @@ a:hover {
 .navbar-toggler.collapsed .toggler-icon {
   background-color: var(--main-color) !important;
 }
+
 @media(max-width:576px) {
-  .image-notfound{
-    height:65vh !important;
+  .image-notfound {
+    height: 65vh !important;
     margin-top: 20px;
   }
-  
+
 }
 
+.colors,
+.sizes {
+  /* width: 120px; */
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.colors li {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.colors li:nth-child(2) {
+  border: 3px solid grey;
+}
+.colors li:hover {
+  border: 3px solid grey;
+}
+
+.colors li:nth-child(1) {
+
+  background-color: #fb5252;
+
+}
+
+.colors li:nth-child(2) {
+
+  background-color: #92cdfa;
+
+}
+
+.colors li:nth-child(3) {
+
+  background-color:#fcdb7e;
+
+}
+
+.colors li:nth-child(4) {
+
+  background-color: #4ad295;
+
+}
+
+.colors li:nth-child(5) {
+
+  background-color: #ffc0cb;
+
+}
+
+.colors li:nth-child(6) {
+
+  background-color: #fca120;
+
+}
+
+.sizes li {
+  width: 32px;
+  height: 32px;
+  border: 2px solid grey;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+}
+
+.sizes li:nth-child(3) {
+  background-color: #0aad0a;
+  color: white;
+}
+.sizes li:hover {
+  background-color: #0aad0a;
+  color: white;
+  cursor: pointer;
+}

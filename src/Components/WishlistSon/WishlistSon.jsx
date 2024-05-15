@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { wishlistContext } from "../../Context/WishlistContext";
-import { cartContext } from "../../Context/CartContext";
+import { WishlistContext } from "../../Context/WishlistContext";
+import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
 import BigLoader from "../BigLoader/BigLoader";
 
@@ -10,12 +10,12 @@ export default function WishlistSon(props) {
   let {
     DeleteWishlist,
     setWishlistCounter,
-  } = useContext(wishlistContext);
+  } = useContext(WishlistContext);
 
   let {
     setCounter,
     addToCart,
-  } = useContext(cartContext);
+  } = useContext(CartContext);
 
   let [loading, setLoading] = useState(1);
   const item = props.item;
@@ -68,7 +68,7 @@ export default function WishlistSon(props) {
   return (
     <>
 
-      <div className="col-lg-2 col-md-3 col-sm-6 position-relative my-3">
+      <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
         <div className="product p-3 rounded-3 cursor-pointer position-relative">
           <i
             onClick={() => {
@@ -77,7 +77,7 @@ export default function WishlistSon(props) {
             className="fa-solid fa-heart text-danger"
           ></i>
 
-          <Link to={`/product-delales/${item._id}`}>
+          <Link to={`/product-details/${item._id}`}>
 
             <img src={item.imageCover} className="w-100" alt="imageCover" />
             <span className="text-main">{item.category.name}</span>
@@ -96,7 +96,6 @@ export default function WishlistSon(props) {
           </Link>
 
           <button
-            // disabled={!loading}
             onClick={() => {
               isOnline ? addproductToCart(props.item._id) : toast.error("You are offline now");
             }}

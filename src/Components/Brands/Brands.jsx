@@ -27,7 +27,7 @@ export default function Brands() {
       </Helmet>
 
       <div className="container my-5" style={{ paddingTop: "74.49px" }}>
-        <div className="row g-3">
+        <div className="row">
           {data?.data?.data?.map((item) => {
             return <Brand key={item._id} item={item} />;
           })}

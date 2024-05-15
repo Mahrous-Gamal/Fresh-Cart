@@ -1,13 +1,11 @@
 import axios from "axios";
 import { createContext, useState } from "react";
 
-export let wishlistContext = createContext(0);
+export let WishlistContext = createContext();
 
 export default function WishlistContextProvider({ children }) {
-  let [counter, setCounter] = useState(0);
-  let [wishlistCounter, setWishlistCounter] = useState(0);
 
-  const userId = null;
+  let [wishlistCounter, setWishlistCounter] = useState(0);
 
   /**********************************<<addToWishlist>>********************************productId**/
   function addToWishlist(productId) {
@@ -45,15 +43,10 @@ export default function WishlistContextProvider({ children }) {
   /**************************************************************************************/
 
   return (
-    <wishlistContext.Provider
+    <WishlistContext.Provider
       value={{
-        counter,
-        setCounter,
-
         wishlistCounter,
         setWishlistCounter,
-
-        userId,
 
         addToWishlist,
         getWishlist,
@@ -61,6 +54,6 @@ export default function WishlistContextProvider({ children }) {
       }}
     >
       {children}
-    </wishlistContext.Provider>
+    </WishlistContext.Provider>
   );
 }

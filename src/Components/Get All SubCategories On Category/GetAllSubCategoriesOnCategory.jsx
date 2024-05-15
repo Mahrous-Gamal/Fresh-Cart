@@ -4,11 +4,13 @@ import { useParams } from 'react-router-dom';
 import GetAllSubCategoriesOnCategorySon from './GetAllSubCategoriesOnCategorySon';
 import Loader from '../Loader/Loader';
 import { useContext, useEffect, useState } from 'react';
-import { wishlistContext } from '../../Context/WishlistContext';
+import { WishlistContext } from '../../Context/WishlistContext';
 
 
 export default function GetAllSubCategoriesOnCategory() {
-  let { getWishlist } = useContext(wishlistContext);
+
+  let { getWishlist } = useContext(WishlistContext);
+
   const [final, setFinal] = useState(null);
   const [arr, setArr] = useState(0);
   const id = useParams();
@@ -26,6 +28,7 @@ export default function GetAllSubCategoriesOnCategory() {
   useEffect(() => {
     if (product) {
       const filteredItems = product.filter(ele => ele.category._id === id.id);
+      
       if (filteredItems?.length > 0) {
         const jsxElements = filteredItems.map((item) => (
           <GetAllSubCategoriesOnCategorySon
@@ -51,7 +54,10 @@ export default function GetAllSubCategoriesOnCategory() {
 
   return (
     <>
-      <div className='container' style={{ paddingTop: '74.49px' }}>
+      <div
+        className="container mt-4 "
+        style={{ paddingTop: "195.49px", paddingBottom: "150px" }}
+      >
         <div className='row'>
           {final}
         </div>

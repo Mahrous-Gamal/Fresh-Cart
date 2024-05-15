@@ -1,19 +1,19 @@
 import React, { useContext } from 'react'
-import { cartContext } from '../../Context/CartContext';
+import { CartContext } from '../../Context/CartContext';
 import { toast } from 'react-toastify';
 
 export default function CartSon({ item, refetch }) {
 
-  let { updatetCart, deletCart, setCounter} = useContext(cartContext);
+  let { updateCart, deleteCart, setCounter } = useContext(CartContext);
 
   async function deletCartt(id) {
 
-    let dataOfDelet = await deletCart(id)
+    let deleteCartItem = await deleteCart(id)
 
-    if (dataOfDelet?.data?.status === "success") {
+    if (deleteCartItem?.data?.status === "success") {
 
       toast.success("Product removed from your cart")
-      setCounter(dataOfDelet?.data?.numOfCartItems)
+      setCounter(deleteCartItem?.data?.numOfCartItems)
 
       await refetch()
     } else {
@@ -22,10 +22,10 @@ export default function CartSon({ item, refetch }) {
   }
 
 
-  async function updatetCartt(id, count) {
+  async function updateCartItem(id, count) {
 
 
-    let dataOfupdate = await updatetCart(id, count)
+    let dataOfupdate = await updateCart(id, count)
 
     if (dataOfupdate?.data?.status === "success") {
 
@@ -42,7 +42,7 @@ export default function CartSon({ item, refetch }) {
 
   return (
     <>
-      <div className="row p-2 my-3 g-3">
+      <div className="row py-2 my-3 g-3 border-bottom border-muted">
         <div className="col-md-1">
           <img src={item.product.imageCover} className="w-100" alt="" />
         </div>
@@ -61,7 +61,7 @@ export default function CartSon({ item, refetch }) {
           </div>
           <div className="d-flex align-items-center">
             <button
-              onClick={() => updatetCartt(item.product._id, item.count + 1)}
+              onClick={() => updateCartItem(item.product._id, item.count + 1)}
               className="btn bg-main text-white fs-2 py-0"
             >
               +
@@ -69,7 +69,7 @@ export default function CartSon({ item, refetch }) {
             <span className="px-2">{item.count}</span>
             <button
               disabled={item.count <= 1}
-              onClick={() => updatetCartt(item.product._id, item.count - 1)}
+              onClick={() => updateCartItem(item.product._id, item.count - 1)}
               className="btn  bg-main text-white  fs-2 py-0"
             >
               -

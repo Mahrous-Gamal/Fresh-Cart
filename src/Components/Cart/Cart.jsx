@@ -4,22 +4,20 @@ import CartSon from "./CartSon";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
-import { cartContext } from './../../Context/CartContext';
+import { CartContext } from './../../Context/CartContext';
 
 
 export default function Cart() {
 
-  let { getCart, deletAllCart, bosLoad, setBosLoad, setCounter } = useContext(cartContext);
+  let { getCart, deleteAllCart, setCounter } = useContext(CartContext);
 
-  let { data, refetch } = useQuery("cartQuery", getCart);
+  let { data, refetch, isLoading } = useQuery("cartQuery", getCart);
 
-  async function deletAllCartt() {
-    setBosLoad(true);
+  async function deleteAllCartItems() {
 
-    let retDel = await deletAllCart();
+    let retDel = await deleteAllCart();
 
     if (retDel?.data?.message === "success") {
-      setBosLoad(false);
       setCounter(0);
       refetch();
       toast.success("All products removed from your cart");
@@ -27,7 +25,7 @@ export default function Cart() {
     } else {
 
       toast.error("Deletion error");
-      setBosLoad(false);
+
     }
   }
 
@@ -56,6 +54,8 @@ export default function Cart() {
 
           {data?.data?.data?.products ? (
             <div className="m-4 d-flex justify-content-between">
+
+            
               <Link
                 to={`/address/${data?.data?.data?._id}`}
                 className="border-main btn bg-main text-white "
@@ -64,11 +64,10 @@ export default function Cart() {
               </Link>
 
               <button
-                disabled={bosLoad}
-                onClick={() => deletAllCartt()}
+                onClick={() => deleteAllCartItems()}
                 className="border-none btn btn-danger"
               >
-                {bosLoad ? (
+                {isLoading ? (
                   <>Loading...</>
                 ) : (
                   <>

@@ -4,12 +4,12 @@ import Loader from '../Loader/Loader';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import BrandDetalSon from './BrandDetalSon';
-import { wishlistContext } from '../../Context/WishlistContext';
+import { WishlistContext } from '../../Context/WishlistContext';
 
 
 export default function BrandsDetails() {
 
-  let { getWishlist } = useContext(wishlistContext);
+  let { getWishlist } = useContext(WishlistContext);
 
   const [final, setFinal] = useState(null);
   const [arr, setArr] = useState(0);
@@ -22,8 +22,10 @@ export default function BrandsDetails() {
   const datapro = useQuery('getProduct', getProduct);
   const product = datapro?.data?.data?.data;
 
-  let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
-  let Arr = dataWish?.data?.data?.map((item) => item._id);
+  let { data: wishlistData, refetch } = useQuery("getWish", getWishlist);
+
+  let Arr = wishlistData?.data?.data?.map((item) => item._id);
+
 
   useEffect(() => {
     if (product) {
@@ -44,7 +46,7 @@ export default function BrandsDetails() {
         setArr(0)
       }
     }
-  }, [id.id, product, dataWish]);
+  }, [id.id, product, wishlistData]);
 
 
   // if (datapro.isLoading) {

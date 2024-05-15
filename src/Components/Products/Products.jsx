@@ -2,7 +2,7 @@ import axios from "axios";
 import Product from "../Product/Product";
 import { useQuery } from "react-query";
 import { useContext } from "react";
-import { wishlistContext } from "../../Context/WishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { Helmet } from "react-helmet";
 import React from 'react';
 
@@ -32,7 +32,7 @@ export default function Products() {
   // }
 
 
-  let { getWishlist } = useContext(wishlistContext);
+  let { getWishlist } = useContext(WishlistContext);
 
   function getProduct() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");

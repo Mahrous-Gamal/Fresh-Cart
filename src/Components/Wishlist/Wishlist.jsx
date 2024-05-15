@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { wishlistContext } from "../../Context/WishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { useQuery } from "react-query";
 import WishlistSon from "../WishlistSon/WishlistSon";
 import { Helmet } from "react-helmet";
@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 
 export default function Wishlist() {
 
-  let { wishlistCounter, getWishlist, setWishlistCounter } = useContext(wishlistContext);
+  let { wishlistCounter, getWishlist, setWishlistCounter } = useContext(WishlistContext);
 
   let { data, refetch } = useQuery("getWish", getWishlist);
 

@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { cartContext } from "../../Context/CartContext";
+import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
 import Slider from "react-slick";
+import Deliveryar from "../../Assets/Images/icon-delivery.svg"
+import Return from "../../Assets/Images/Icon-return.svg"
 
 export default function ProductDetails() {
 
-  let { setCounter, addToCart } = useContext(cartContext);
+  let { setCounter, addToCart } = useContext(CartContext);
   let [loading, setLoading] = useState(1);
 
   /****************************************************************/
@@ -93,11 +95,10 @@ export default function ProductDetails() {
 
   return (
     <>
-      <div className="container mt-5 mb-3" style={{ paddingTop: '74.49px' }}>
-        <div className="row pt-5 align-items-center g-4">
-          <div className="col-md-4">
+      <div className="container my-5" style={{ paddingTop: '5px' }}>
+        <div className="row pt-5 g-4">
+          <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12">
             <div className="layer">
-
               <Slider {...settings}>
                 {products?.images?.map((item, index) => {
                   return (
@@ -109,25 +110,70 @@ export default function ProductDetails() {
 
             </div>
           </div>
-          <div className="col-md-8">
+          <div className="col-xl-8 col-lg-6 col-md-12 col-sm-12">
             <div className="layer">
-              <h2 className="mb-3">{products.title}</h2>
-              <p className="text-muted">{products.description}</p>
+              <h2 className="mb-3 fw-bold">{products.title}</h2>
               <span>{products?.category?.name}</span>
               <div className="mt-3 d-flex justify-content-between">
                 <div>
-                  <p >{products.price} <span className="text-main">EGP</span></p>
-
+                  <p className="fw-bold">{products.price} <span className="text-main">EGP</span></p>
                 </div>
+
                 <div>
                   <i className="fa-solid fa-star pe-1 rating-color"></i>
                   {products.ratingsAverage}
+                </div>
+
+              </div>
+              <p className="text-muted border-bottom border-secondary pb-2">{products.description}</p>
+              <div className="colors-container d-flex">
+                <span className="fw-bold">Colours: </span>
+                <ul className="colors">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+
+              </div>
+              <div className="sizes-container d-flex">
+                <span className="fw-bold">Sizes: </span>
+                <ul className="sizes">
+                  <li>XS</li>
+                  <li>S</li>
+                  <li>M</li>
+                  <li>L</li>
+                  <li>XL</li>
+                </ul>
+
+              </div>
+
+              <div className="services">
+                <div className="mt-4 delivery d-flex align-content-center border border-2 border-secondary rounded-1 p-2">
+                  <div className="d-flex justify-content-center align-content-center h-100">
+                    <img className="mt-3" src={Deliveryar} alt="" />
+                  </div>
+                  <div className="text-delivery ms-3">
+                    <h6 className="fw-bold">Free Delivery</h6>
+                    <p >Enter your postal code for Delivery Availability</p>
+                  </div>
+                </div>
+                <div className="mt-3 delivery d-flex align-content-center border border-2 border-secondary rounded-1 p-2">
+                  <div className="d-flex justify-content-center align-content-center h-100">
+                    <img className="mt-3" src={Return} alt="" />
+                  </div>
+                  <div className="text-delivery ms-3">
+                    <h6 className="fw-bold">Return Delivery</h6>
+                    <p>Free 30 Days Delivery Returns. Details</p>
+                  </div>
                 </div>
               </div>
               <button
                 // disabled={!loading}
                 onClick={onlineInBtn}
-                className=" btn bg-main w-100 text-white"
+                className=" btn bg-main w-100 text-white mt-4"
               >
                 {loading ? (
                   <>

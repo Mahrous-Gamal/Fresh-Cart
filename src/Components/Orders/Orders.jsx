@@ -9,12 +9,13 @@ import { Helmet } from "react-helmet";
 
 
 export default function Allorders() {
+  
   let { id } = jwtDecode(localStorage.getItem("token"));
 
   function getAllOredries() {
     return axios(`https://ecommerce.routemisr.com/api/v1/orders/user/${id}`)
       .then((data) => data)
-      .catch((err) => err);
+      .catch((error) => error);
   }
   let { data } = useQuery("getAllOrder", getAllOredries);
   

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function AccordProduct({ele}) {
+export default function AccordProduct({ ele }) {
   return (
     <div className="col-md-3 col-sm-6 rounded-3 shadow ">
       <div className="layer">
@@ -17,7 +17,7 @@ export default function AccordProduct({ele}) {
           <h6>pieces: {ele.count}</h6>
           <div className="d-flex justify-content-between">
             <div>
-              <p>{ele.price}EGP</p>
+              <p>{ele.price} <span className='text-main'>EGP</span></p>
             </div>
             <div>
               <i className="fa-solid fa-star pe-1 rating-color"></i>

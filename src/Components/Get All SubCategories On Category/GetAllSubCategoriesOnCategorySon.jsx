@@ -1,28 +1,27 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { wishlistContext } from "../../Context/WishlistContext";
+import { WishlistContext } from "../../Context/WishlistContext";
 import { toast } from "react-toastify";
 import BigLoader from "../BigLoader/BigLoader";
-import { cartContext } from './../../Context/CartContext';
+import { CartContext } from './../../Context/CartContext';
 
 export default function Product(props) {
   let {
-    setCounter,
+
     addToWishlist,
     setWishlistCounter,
     DeleteWishlist,
-    block,
-    setBlock,
-  } = useContext(wishlistContext);
+  } = useContext(WishlistContext);
   let {
-
+    setCounter,
     addToCart
 
-  } = useContext(cartContext);
+  } = useContext(CartContext);
 
 
   let [loading, setLoading] = useState(1);
   let arrIdWish = props?.arrIdWish;
+
   const item = props.item;
 
   /****************************************************************/
