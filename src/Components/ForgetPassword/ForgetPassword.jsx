@@ -75,29 +75,6 @@ export default function ForgetPassword() {
           <h2 className="mb-4 fw-bold text-dark mt-4">Forget Password !</h2>
           <p className="fs-6">Don't worry, we'll cover you. Enter the email address associated with this account.</p>
           <form onSubmit={formik.handleSubmit}>
-            {/* <label htmlFor="Email text">Email:</label> */}
-            {/* <input
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              type="email"
-              name="email"
-              className="form-control mb-3"
-              id="Email"
-            />
-            {formik.errors.email && formik.touched.email ? (
-              <div className="alert alert-danger" role="alert">
-                {formik.errors.email}
-              </div>
-            ) : (
-              ""
-            )}
-            {err ? (
-              <div className="alert alert-danger" role="alert">
-                {err}
-              </div>
-            ) : (
-              ""
-            )} */}
             <div className="input-group  my-2">
               <span className="input-group-text">
                 <FontAwesomeIcon

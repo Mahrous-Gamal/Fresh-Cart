@@ -10,8 +10,6 @@ export default function Home() {
     <>
 
       <WelcomePage />
-      <Categories />
-      <Products />
 
       <Helmet>
         <meta charSet="utf-8" />

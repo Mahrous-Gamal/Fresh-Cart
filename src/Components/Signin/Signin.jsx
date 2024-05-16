@@ -114,34 +114,9 @@ export default function Signin() {
               ""
             )}
             <label htmlFor="password" >Password:</label>
-            {/* <input
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              type="password"
-              name="password"
-              className="form-control mb-3"
-              id="Pass"
-            />
-            {formik.errors.password && formik.touched.password ? (
-              <div className="alert alert-danger" >
-                {formik.errors.password}
-              </div>
-            ) : (
-              ""
-            )}
-            {err ? (
-              <div className="alert alert-danger" >
-                {err}
-              </div>
-            ) : (
-              ""
-            )} */}
             <div className="input-group position-relative my-2">
               <span className="input-group-text">
-                {/* <FontAwesomeIcon
-                  icon={faLock}
-                  className="lock-icon text-main fs-5"
-                /> */}
+
                 <FiLock className="lock-icon text-main fs-5" />
 
               </span>

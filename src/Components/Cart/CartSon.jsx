@@ -42,7 +42,7 @@ export default function CartSon({ item, refetch }) {
 
   return (
     <>
-      <div className="row py-2 my-3 g-3 border-bottom border-muted">
+      <div className="row py-2 my-3 g-3 bg-main-light m-auto" >
         <div className="col-md-1">
           <img src={item.product.imageCover} className="w-100" alt="" />
         </div>
@@ -53,7 +53,7 @@ export default function CartSon({ item, refetch }) {
             <p className="text-main mb-2">Price : {item.price} <span className='text-main'>EGP</span></p>
             <button
               onClick={() => deletCartt(item.product._id)}
-              className="btn bg-danger text-white"
+              className="btn btn-danger text-white"
             >
               <i className="fa-solid fa-trash-can pe-2"></i>
               Remove

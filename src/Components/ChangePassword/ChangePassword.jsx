@@ -90,150 +90,149 @@ export default function ChangePassword() {
 
   return (
     <>
-      <div style={{ paddingTop: "74.49px" }}>
-        <div className="w-75 m-auto my-5">
-          <h2 className="mb-5 fw-bold text-dark">Change password</h2>
-          <form onSubmit={formik.handleSubmit}>
 
-            <label htmlFor="currentPassword">Current Password:</label>
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
-                <FiLock className="lock-icon text-main fs-5" />
+      <div className="m-auto">
+        <h4 className="mb-4 fw-bold text-dark">Change password</h4>
+        <form onSubmit={formik.handleSubmit}>
 
-              </span>
-              <input
-                type={showCurrentPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="currentPassword"
-                id="currentPassword"
-              />
-              <span
-                className="input-group-textt"
-                onClick={toggleCurrentPassword}
-              >
-                {showCurrentPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
-                  />
-                ) : (
+          <label htmlFor="currentPassword">Current Password:</label>
+          <div className="input-group position-relative my-2">
+            <span className="input-group-text">
+              <FiLock className="lock-icon text-main fs-5" />
 
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
+            </span>
+            <input
+              type={showCurrentPassword ? "text" : "password"}
+              className="form-control"
+              placeholder="••••••••"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              name="currentPassword"
+              id="currentPassword"
+            />
+            <span
+              className="input-group-textt"
+              onClick={toggleCurrentPassword}
+            >
+              {showCurrentPassword ? (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
+                />
+              ) : (
 
-                )}
-              </span>
-            </div>
-            {formik.errors.currentPassword && formik.touched.currentPassword && (
-              <p className="text-danger">
-                *{formik.errors.currentPassword}
-              </p>
-            )}
-            <label htmlFor="Password">New Password:</label>
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
-                <FiLock className="lock-icon text-main fs-5" />
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="eye-icon position-absolute"
+                />
 
-              </span>
-              <input
-                type={showNewPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="password"
-                id="password"
-              />
-              <span
-                className="input-group-textt"
-                onClick={toggleNewPassword}
-              >
-                {showNewPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
-                  />
-                ) : (
+              )}
+            </span>
+          </div>
+          {formik.errors.currentPassword && formik.touched.currentPassword && (
+            <p className="text-danger">
+              *{formik.errors.currentPassword}
+            </p>
+          )}
+          <label htmlFor="Password">New Password:</label>
+          <div className="input-group position-relative my-2">
+            <span className="input-group-text">
+              <FiLock className="lock-icon text-main fs-5" />
 
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
+            </span>
+            <input
+              type={showNewPassword ? "text" : "password"}
+              className="form-control"
+              placeholder="••••••••"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              name="password"
+              id="password"
+            />
+            <span
+              className="input-group-textt"
+              onClick={toggleNewPassword}
+            >
+              {showNewPassword ? (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
+                />
+              ) : (
 
-                )}
-              </span>
-            </div>
-            {formik.errors.password && formik.touched.password && (
-              <p className="text-danger">
-                *{formik.errors.password}
-              </p>
-            )}
-            <label htmlFor="rePassword">Confirm New Password:</label>
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
-                <FiLock className="lock-icon text-main fs-5" />
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="eye-icon position-absolute"
+                />
 
-              </span>
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="rePassword"
-                id="rePassword"
-              />
-              <span
-                className="input-group-textt"
-                onClick={toggleConfirmPassword}
-              >
-                {showConfirmPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
-                  />
-                ) : (
+              )}
+            </span>
+          </div>
+          {formik.errors.password && formik.touched.password && (
+            <p className="text-danger">
+              *{formik.errors.password}
+            </p>
+          )}
+          <label htmlFor="rePassword">Confirm New Password:</label>
+          <div className="input-group position-relative my-2">
+            <span className="input-group-text">
+              <FiLock className="lock-icon text-main fs-5" />
 
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
-                )}
-              </span>
-            </div>
-            {formik.errors.rePassword && formik.touched.rePassword && (
-              <p className="text-danger">
-                *{formik.errors.rePassword}
-              </p>
-            )}
-            {error && (
-              <p className="text-danger">
-                {error}
-              </p>
-            )}
-            <div className="text-end">
-              <button
-                disabled={!(formik.dirty && formik.isValid)}
-                type="submit"
-                className="btn bg-main text-white"
-              >
-                {loaderbtn ? (
-                  <>
-                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Save Password
-                  </>
+            </span>
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              className="form-control"
+              placeholder="••••••••"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              name="rePassword"
+              id="rePassword"
+            />
+            <span
+              className="input-group-textt"
+              onClick={toggleConfirmPassword}
+            >
+              {showConfirmPassword ? (
+                <FontAwesomeIcon
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
+                />
+              ) : (
 
-                ) : (
-                  "Save Password"
-                )}
-              </button>
-            </div>
-          </form>
-        </div>
+                <FontAwesomeIcon
+                  icon={faEye}
+                  className="eye-icon position-absolute"
+                />
+              )}
+            </span>
+          </div>
+          {formik.errors.rePassword && formik.touched.rePassword && (
+            <p className="text-danger">
+              *{formik.errors.rePassword}
+            </p>
+          )}
+          {error && (
+            <p className="text-danger">
+              {error}
+            </p>
+          )}
+          <div className="text-start">
+            <button
+              // disabled={!(formik.dirty && formik.isValid)}
+              type="submit"
+              className="btn bg-main text-white mt-3"
+            >
+              {loaderbtn ? (
+                <>
+                  <i className="fa-solid fa-spinner fa-spin-pulse"></i> Change Password
+                </>
+
+              ) : (
+                "Change Password"
+              )}
+            </button>
+          </div>
+        </form>
       </div>
 
     </>

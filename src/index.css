@@ -12,7 +12,9 @@
 
 body {
   font-family: var(--font-family) !important;
-  min-height: 100vh;
+  /* height: 100vh; */
+  /* border: 2px solid red; */
+  /* overflow: auto; */
 }
 
 /* Scrollbar */
@@ -61,8 +63,9 @@ body {
 
 /*Navbar*/
 
-/* input */
-input {
+/* input:not([type=radio]) */
+input:not([type=radio]),
+textarea {
   border-color: #ced4da !important;
   box-shadow: none !important;
   transition: border-color 0.2s, box-shadow 0.2s !important;
@@ -72,8 +75,9 @@ input {
   -o-transition: border-color 0.2s, box-shadow 0.2s !important;
 }
 
-input:focus,
-input:focus-within {
+input:not([type=radio]):focus,
+input:not([type=radio]):focus-within,
+textarea:focus, textarea:focus-within{
   border-color: var(--main-color) !important;
   box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
 
@@ -81,18 +85,20 @@ input:focus-within {
 
 
 /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input:not([type=radio])::-webkit-outer-spin-button,
+input:not([type=radio])::-webkit-inner-spin-button,
+textarea::-webkit-outer-spin-button,
+textarea::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
+input:not([type=radio])[type=number] {
   -moz-appearance: textfield;
 }
 
-/* input */
+/* input:not([type=radio]) */
 
 .overFlowHideen {
   overflow: hidden;
@@ -364,9 +370,11 @@ a:hover {
   margin-right: 10px;
   cursor: pointer;
 }
+
 .colors li:nth-child(2) {
   border: 3px solid grey;
 }
+
 .colors li:hover {
   border: 3px solid grey;
 }
@@ -385,7 +393,7 @@ a:hover {
 
 .colors li:nth-child(3) {
 
-  background-color:#fcdb7e;
+  background-color: #fcdb7e;
 
 }
 
@@ -427,6 +435,7 @@ a:hover {
   background-color: #0aad0a;
   color: white;
 }
+
 .sizes li:hover {
   background-color: #0aad0a;
   color: white;

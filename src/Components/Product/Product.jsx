@@ -22,7 +22,7 @@ export default function Product(props) {
 
   let [loading, setLoading] = useState(1);
   let arrIdWish = props?.arrIdWish;
-  
+
   const item = props.item;
 
   /****************************************************************/
@@ -97,7 +97,7 @@ export default function Product(props) {
   return (
     <>
       <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
-        <div className="product p-3 rounded-3 cursor-pointer position-relative">
+        <div className="product p-3 rounded-3 cursor-pointer position-relative shadow">
           <i
             onClick={() => chiking()}
             className={`${arrIdWish?.includes(props?.item?._id.toString())

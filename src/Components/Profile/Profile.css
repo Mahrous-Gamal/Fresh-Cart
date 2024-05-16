@@ -1,0 +1,18 @@
+.account {
+    text-align: center;
+}
+
+.account img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border: 3px solid #0aad0a;
+}
+
+.specifyColor {
+    accent-color: #0aad0a;
+}

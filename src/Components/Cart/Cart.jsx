@@ -41,26 +41,37 @@ export default function Cart() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div style={{ paddingTop: "74.49px" }}>
-        <div className="container bg-main-light my-5 p-4">
-          <h2 className="fw-bold">Cart</h2>
-          <p className="text-main">
-            Total Cart Price : {data?.data?.data?.totalCartPrice} <span className='text-main'>EGP</span>
-          </p>
+      <div
+        className="container my-5"
+        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
+      >
+        <div className="container px-0">
+
+
+          {
+            data?.data?.data?.products && (
+              <>
+                <h2 className="fw-bold">Cart</h2>
+                <p className="text-main">
+                  Total Cart Price : {data?.data?.data?.totalCartPrice} <span className='text-main'>EGP</span>
+                </p>
+
+              </>
+            )
+          }
+
 
           {data?.data?.data?.products.map((item) => {
             return <CartSon key={item._id} item={item} refetch={refetch} />;
           })}
 
           {data?.data?.data?.products ? (
-            <div className="m-4 d-flex justify-content-between">
+            <div className="d-flex justify-content-between">
 
-            
               <Link
                 to={`/address/${data?.data?.data?._id}`}
-                className="border-main btn bg-main text-white "
               >
-                Place Order
+                <button className="btn bg-main text-white">Place Order</button>
               </Link>
 
               <button
@@ -78,7 +89,8 @@ export default function Cart() {
             </div>
           ) :
             <>
-              <p className="fw-bold">Oops ! Your cart is empty, add some products to your cart and come back again</p>
+              <div className="mt-4 text-center fs-5 fw-bold">Oops ! Your cart is empty, add some products to your cart and come back again</div>
+
             </>
 
           }

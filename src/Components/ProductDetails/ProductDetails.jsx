@@ -95,6 +95,7 @@ export default function ProductDetails() {
 
   return (
     <>
+
       <div className="container my-5" style={{ paddingTop: '5px' }}>
         <div className="row pt-5 g-4">
           <div className="col-xl-4 col-lg-6 col-md-12 col-sm-12">
@@ -113,7 +114,7 @@ export default function ProductDetails() {
           <div className="col-xl-8 col-lg-6 col-md-12 col-sm-12">
             <div className="layer">
               <h2 className="mb-3 fw-bold">{products.title}</h2>
-              <span>{products?.category?.name}</span>
+
               <div className="mt-3 d-flex justify-content-between">
                 <div>
                   <p className="fw-bold">{products.price} <span className="text-main">EGP</span></p>
@@ -126,7 +127,7 @@ export default function ProductDetails() {
 
               </div>
               <p className="text-muted border-bottom border-secondary pb-2">{products.description}</p>
-              <div className="colors-container d-flex">
+              <div className="colors-container d-flex mt-3">
                 <span className="fw-bold">Colours: </span>
                 <ul className="colors">
                   <li></li>
@@ -138,7 +139,7 @@ export default function ProductDetails() {
                 </ul>
 
               </div>
-              <div className="sizes-container d-flex">
+              <div className="sizes-container d-flex mt-2">
                 <span className="fw-bold">Sizes: </span>
                 <ul className="sizes">
                   <li>XS</li>
@@ -149,9 +150,13 @@ export default function ProductDetails() {
                 </ul>
 
               </div>
+              <p className="fw-bold text-dark">Brand: <span className="text-muted">{products?.brand?.name}</span></p>
+              <p className="fw-bold text-dark">Category: <span className="text-muted"><span>{products?.category?.name}</span></span></p>
+              <p className="fw-bold text-dark">Quantity: <span className="text-muted"><span>{products?.quantity}</span></span></p>
+              {/* <p className="fw-bold text-dark">Ratings Quantity: <span className="text-muted"><span>{products?.ratingsQuantity}</span></span></p> */}
 
               <div className="services">
-                <div className="mt-4 delivery d-flex align-content-center border border-2 border-secondary rounded-1 p-2">
+                <div className="mt-3 delivery d-flex align-content-center border border-2 border-secondary rounded-1 p-2">
                   <div className="d-flex justify-content-center align-content-center h-100">
                     <img className="mt-3" src={Deliveryar} alt="" />
                   </div>
@@ -173,7 +178,7 @@ export default function ProductDetails() {
               <button
                 // disabled={!loading}
                 onClick={onlineInBtn}
-                className=" btn bg-main w-100 text-white mt-4"
+                className=" btn bg-main w-100 text-white mt-3"
               >
                 {loading ? (
                   <>

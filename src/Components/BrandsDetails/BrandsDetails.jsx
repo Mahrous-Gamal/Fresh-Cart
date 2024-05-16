@@ -42,22 +42,17 @@ export default function BrandsDetails() {
         setFinal(jsxElements);
         setArr(1);
       } else {
-        setFinal(<h1 className='text-center mt-4'>No items found</h1>);
+        setFinal(<div className="mt-4 text-center fs-2 fw-bold">No items found</div>);
         setArr(0)
       }
     }
   }, [id.id, product, wishlistData]);
 
-
-  // if (datapro.isLoading) {
-  //   return <Loader />;
-  // }
-
   return (
     <>
       <div
-        className="container mt-4 "
-        style={{ paddingTop: "195.49px", paddingBottom: "150px" }}
+        className="container my-5"
+        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
       >        <div className='row'>
           {final}
         </div>

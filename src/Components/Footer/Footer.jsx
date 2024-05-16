@@ -4,6 +4,9 @@ import Payment1 from "../../Assets/Images/Amazon_Pay.wine.svg"
 import Payment2 from "../../Assets/Images/American-Express.webp"
 import Payment3 from "../../Assets/Images/MasterCard.png"
 import Payment4 from "../../Assets/Images/Paypal.png"
+import { CiLocationOn } from "react-icons/ci";
+import { CiMail } from "react-icons/ci";
+import { IoPhonePortraitOutline } from "react-icons/io5";
 
 
 export default function Footer() {
@@ -76,7 +79,7 @@ export default function Footer() {
 
             <div className="col-xl-2  col-md-3 mx-auto mb-4">
               {/* Links */}
-              <h6 className="fw-bold mb-4 text-dark">Account</h6>
+              <h6 className="fw-bold mb-4 text-text-muted">Account</h6>
               <p className="cursor-pointer">
                 My Account
               </p>
@@ -97,7 +100,7 @@ export default function Footer() {
 
             <div className="col-xl-2 col-md-3 mx-auto mb-4">
               {/* Links */}
-              <h6 className="fw-bold mb-4 text-dark">Quick Link</h6>
+              <h6 className="fw-bold mb-4 text-text-muted">Quick Link</h6>
 
               <p className="cursor-pointer">
                 Privacy Policy
@@ -119,19 +122,19 @@ export default function Footer() {
 
             <div className="col-xl-4 col-md-6 mx-auto mb-md-0 mb-4">
               {/* Links */}
-              <h6 className="fw-bold mb-4 text-dark">Contact</h6>
+              <h6 className="fw-bold mb-4 text-text-muted">Contact</h6>
               <p>
-                <i className="fas fa-home me-3"></i>Assiut, Egypt
+                <CiLocationOn className="fas fa-envelope me-2 text-main fs-4" />
+                Assiut, Egypt
               </p>
               <p>
-                <i className="fas fa-envelope me-3 "></i>
+                <CiMail className="fas fa-envelope me-2 text-main fs-5" />
+
                 mahrous.gamal@gmail.com
               </p>
               <p>
-                <i className="fas fa-phone me-3 "></i>0100 144 9752
-              </p>
-              <p>
-                <i class="fa-solid fa-comment-sms me-3 "></i>0111 222 3333
+                <IoPhonePortraitOutline className="fas fa-envelope me-2 text-main fs-5" />
+                0100 144 9752
               </p>
             </div>
           </div>
@@ -152,7 +155,6 @@ export default function Footer() {
           <span> Mahrous Gamal</span>
         </a>
       </div>
-      {/* Copyright */}
     </footer>
   );
 }

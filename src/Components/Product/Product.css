@@ -1,5 +1,4 @@
 .product {
-    /* border: 1px solid gray; */
     width: 100%;
     text-align: center;
     border-radius: 10px;
@@ -9,12 +8,9 @@
     -o-border-radius: 10px;
     padding: 8px;
     background-color: white;
-  
     position: relative;
     box-shadow: var(--shadow);
-  
-  /* border: solid 1px var(--main-color); */
-  }
+    }
   .product:hover {
     box-shadow: var(--shadow);
   }

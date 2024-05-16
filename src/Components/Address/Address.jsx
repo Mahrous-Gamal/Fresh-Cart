@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import * as Yup from "yup";
 import { CartContext } from "../../Context/CartContext";
 import { toast } from "react-toastify";
+import { FiPhone } from "react-icons/fi";
+import { MdOutlineLocationCity } from "react-icons/md";
 
 export default function Address() {
   const { id } = useParams();
@@ -45,9 +47,6 @@ export default function Address() {
       details: ""
     },
     validationSchema: validationSchema,
-    // onSubmit: (values) => {
-    //   payItem(values);
-    // },
 
     onSubmit: (values) => {
       if (formik.isValid) {
@@ -64,59 +63,74 @@ export default function Address() {
         <h2 className="mb-5 fw-bold text-dark">Address Now</h2>
         <form onSubmit={formik.handleSubmit}>
           <label htmlFor="phone">Phone:</label>
-          <input
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="tel"
-            name="phone"
-            className="form-control my-2"
-            placeholder="123-456-7890"
-            id="phone"
-            value={formik.values.phone}
-          />
+
+          <div className="input-group my-2">
+            <span className="input-group-text">
+              <FiPhone className="user-icon text-main fs-5" />
+
+            </span>
+            <input
+              className="form-control"
+              placeholder="123-456-7890"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="tel"
+              name="phone"
+              id="phone"
+            />
+          </div>
           {formik.errors.phone && formik.touched.phone && (
-            <p className="text-danger">*{formik.errors.phone}</p>
+            <p className="text-danger" >
+              *{formik.errors.phone}
+            </p>
           )}
+
           <label htmlFor="city">City:</label>
-          <input
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="text"
-            name="city"
-            className="form-control my-2"
-            id="city"
-            value={formik.values.city}
-          />
+          <div className="input-group my-2">
+            <span className="input-group-text">
+              <MdOutlineLocationCity className="user-icon text-main fs-5" />
+
+            </span>
+            <input
+              className="form-control"
+              placeholder=""
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              type="text"
+              name="city"
+              id="city"
+            />
+          </div>
           {formik.errors.city && formik.touched.city && (
             <div className="text-danger">*{formik.errors.city}</div>
           )}
 
-          <label htmlFor="details">Details:</label>
-          <input
-            onBlur={formik.handleBlur}
+          <label htmlFor="details" className="mt-2">Details:</label>
+
+          <textarea rows={5} onBlur={formik.handleBlur}
             onChange={formik.handleChange}
-            type="text"
             name="details"
             className="form-control my-2"
             id="details"
             value={formik.values.details}
           />
+
           {formik.errors.details && formik.touched.details && (
             <p className="text-danger">*{formik.errors.details}</p>
           )}
 
           <div className="text-end">
             <button
-              disabled={!formik.dirty || !formik.isValid || loaderbtn}
+              // disabled={!formik.dirty || !formik.isValid || loaderbtn}
               type="submit"
               className="btn bg-main text-white"
             >
               {loaderbtn ? (
                 <>
-                  <i className="fa-solid fa-spinner fa-spin-pulse"></i> Pay
+                  <i className="fa-solid fa-spinner fa-spin-pulse"></i> Next
                 </>
               ) : (
-                "Pay"
+                "Next"
               )}
             </button>
           </div>

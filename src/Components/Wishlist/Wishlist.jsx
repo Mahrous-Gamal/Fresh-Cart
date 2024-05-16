@@ -11,7 +11,7 @@ export default function Wishlist() {
 
   let { data, refetch } = useQuery("getWish", getWishlist);
 
-  let  idProducts = data?.data?.data?.map((item) => item._id);
+  let idProducts = data?.data?.data?.map((item) => item._id);
 
   setWishlistCounter(data?.data?.data?.length);
 
@@ -34,15 +34,15 @@ export default function Wishlist() {
                 <WishlistSon
                   key={item._id}
                   item={item}
-                  idWishlist={ idProducts}
+                  idWishlist={idProducts}
                   refetch={refetch}
                 />
               );
             })}
           </div>
-        ) :(
-          
-          <div className="mt-4 text-center fs-5">Your wishlist is empty, add some products and come back later. Add image to become more beautiful</div>
+        ) : (
+
+          <div className="mt-4 text-center fs-5 fw-bold">Your wishlist is empty, add some products and come back later</div>
         )
         }
       </div>

@@ -47,11 +47,6 @@ export default function GetAllSubCategoriesOnCategory() {
     }
   }, [id.id, product, dataWish]);
 
-
-  // if (datapro.isLoading) {
-  //   return <Loader />;
-  // }
-
   return (
     <>
       <div

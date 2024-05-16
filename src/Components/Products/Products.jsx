@@ -8,30 +8,6 @@ import React from 'react';
 
 export default function Products() {
 
-  // const [products, setPoducts] = useState([]);
-  // const [isLoadingg, setIsLoading] = useState(false);
-  // const [erroe, setError] = useState(null);
-
-  // function getData() {
-
-  //   setIsLoading(true);
-
-  //   axios.get("https://ecommerce.routemisr.com/api/v1/products")
-  //     .then((Response) => {
-  //       setPoducts(Response.data.data);
-  //       setIsLoading(false);
-  //       setError(null);
-  //     }
-  //     ).catch((error) => {
-  //       setPoducts([]);
-  //       setIsLoading(false);
-  //       setError(error.Response.data.message);
-
-  //     })
-
-  // }
-
-
   let { getWishlist } = useContext(WishlistContext);
 
   function getProduct() {
@@ -42,10 +18,6 @@ export default function Products() {
   let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
 
   let Arr = dataWish?.data?.data?.map((item) => item._id);
-
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
 
   return (
     <>

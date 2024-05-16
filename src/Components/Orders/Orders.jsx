@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 
 
 export default function Allorders() {
-  
+
   let { id } = jwtDecode(localStorage.getItem("token"));
 
   function getAllOredries() {
@@ -18,10 +18,6 @@ export default function Allorders() {
       .catch((error) => error);
   }
   let { data } = useQuery("getAllOrder", getAllOredries);
-  
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
   return (
     <>
 
@@ -31,9 +27,10 @@ export default function Allorders() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
+
       <div
-        className="container mt-4 "
-        style={{ paddingTop: "195.49px", paddingBottom: "150px" }}
+        className="container my-5"
+        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
       >
         {data?.data?.length ? (
           <Accordion defaultActiveKey="0">
@@ -42,7 +39,7 @@ export default function Allorders() {
             })}
           </Accordion>
         ) : (
-          <div className="mt-4 text-center fs-5">You have no orders, Add products to your cart and start purchasing and making orders</div>
+          <div className="mt-4 text-center fs-5 fw-bold">You have no orders, Add products to your cart and start purchasing and making orders</div>
         )}
       </div>
     </>
