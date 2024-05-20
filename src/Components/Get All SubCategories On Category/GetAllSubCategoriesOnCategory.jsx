@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
-import GetAllSubCategoriesOnCategorySon from './GetAllSubCategoriesOnCategorySon';
-import Loader from '../Loader/Loader';
+// import GetAllSubCategoriesOnCategorySon from './GetAllSubCategoriesOnCategorySon';
+import Product from '../Product/Product';
 import { useContext, useEffect, useState } from 'react';
 import { WishlistContext } from '../../Context/WishlistContext';
 
@@ -23,19 +23,21 @@ export default function GetAllSubCategoriesOnCategory() {
   const product = datapro?.data?.data?.data;
 
   let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
-  let Arr = dataWish?.data?.data?.map((item) => item._id);
+  let idProducts = dataWish?.data?.data?.map((item) => item._id);
 
   useEffect(() => {
     if (product) {
       const filteredItems = product.filter(ele => ele.category._id === id.id);
-      
+
       if (filteredItems?.length > 0) {
         const jsxElements = filteredItems.map((item) => (
-          <GetAllSubCategoriesOnCategorySon
+          <Product
             key={item._id}
             item={item}
-            arrIdWish={Arr}
+            arrIdWish={idProducts}
             refetch={refetch}
+            wishlist={false}
+
           />
         ));
         setFinal(jsxElements);

@@ -1,36 +1,34 @@
 import "./App.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import BeforeRegistering from "./Layout/BeforeRegistering";
 import AuthenticationLayout from "./Layout/AuthenticationLayout";
 import MainLayout from "./Layout/MainLayout";
-import Home from "./Components/Home/Home";
-import Products from "./Components/Products/Products";
-import Cart from "./Components/Cart/Cart";
-import Categories from "./Components/Categories/Categories";
-import Brands from "./Components/Brands/Brands";
-import NotFound from "./Components/NotFound/NotFound";
-import Signin from "./Components/Signin/Signin";
-import Register from "./Components/Register/Register";
+import Home from "./Pages/Home/Home.jsx";
+import Products from "./Pages/Products/Products";
+import Cart from "./Pages/Cart/Cart";
+import Categories from "./Pages/Categories/Categories";
+import Brands from "./Pages/Brands/Brands";
+import NotFound from "./Pages/NotFound/NotFound";
+import Login from "./Pages/Login/Login";
+import Register from "./Pages/Register/Register";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import ProductDetails from "./Components/ProductDetails/ProductDetails";
+import ProductDetails from "./Pages/ProductDetails/ProductDetails";
 import CartContextProvider from "./Context/CartContext";
 import { ToastContainer } from "react-toastify";
-import BeforeRegistering from "./Layout/BeforeRegistering";
 import WelcomePage from "./Components/WelcomePage/WelcomePage";
 import { Offline } from "react-detect-offline";
 import GetAllSubCategoriesOnCategory from "./Components/Get All SubCategories On Category/GetAllSubCategoriesOnCategory";
-import BrandsDetails from "./Components/BrandsDetails/BrandsDetails";
-import ForgetPassword from "./Components/ForgetPassword/ForgetPassword";
-import VerifyResetCode from "./Components/VerifyResetCode/VerifyResetCode";
-import ResetPassword from "./Components/ResetPassword/ResetPassword";
-import Address from "./Components/Address/Address";
-import Orders from "./Components/Orders/Orders";
-import Wishlist from "./Components/Wishlist/Wishlist";
-import Profile from "./Components/Profile/Profile";
-import UpdateData from "./Components/UpdateData/UpdateData";
-import ChangePassword from "./Components/ChangePassword/ChangePassword.jsx";
+import BrandsDetails from "./Pages/BrandsDetails/BrandsDetails";
+import ForgetPassword from "./Pages/ForgetPassword/ForgetPassword";
+import VerifyResetCode from "./Pages/VerifyResetCode/VerifyResetCode";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
+import Address from "./Pages/Address/Address";
+import Orders from "./Pages/Orders/Orders";
+import Wishlist from "./Pages/Wishlist/Wishlist";
+import Profile from "./Pages/Profile/Profile";
 import ScrollButton from "./Components/ScrollButton/ScrollButton";
 import { MdOutlineWifiOff } from "react-icons/md";
 import WishlistContextProvider from "./Context/WishlistContext.js";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 export default function App() {
   const routers = createBrowserRouter([
@@ -41,9 +39,9 @@ export default function App() {
         {
           index: true,
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <WelcomePage />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
       ],
@@ -56,7 +54,7 @@ export default function App() {
           index: true,
           element: (
             // <ProtectedRoute>
-            <Signin />
+            <Login />
             // </ProtectedRoute>
           ),
         },
@@ -64,7 +62,7 @@ export default function App() {
           path: "signin",
           element: (
             // <ProtectedRoute>
-            <Signin />
+            <Login />
             // </ProtectedRoute>
           ),
         },
@@ -72,32 +70,32 @@ export default function App() {
           path: "signup",
           element: (
             // <ProtectedRoute>
-              <Register />
+            <Register />
             // </ProtectedRoute>
           ),
         },
         {
-          path: "forgetPass",
+          path: "forgetPassword",
           element: (
-            <ProtectedRoute>
-              <ForgetPassword />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <ForgetPassword />
+            // </ProtectedRoute>
           ),
         },
         {
           path: "verifyResetCode",
           element: (
-            <ProtectedRoute>
-              <VerifyResetCode />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <VerifyResetCode />
+            // </ProtectedRoute>
           ),
         },
         {
           path: "resetPassword",
           element: (
-            <ProtectedRoute>
-              <ResetPassword />
-            </ProtectedRoute>
+            // <ProtectedRoute>
+            <ResetPassword />
+            // </ProtectedRoute>
           ),
         },
         { path: "*", element: <NotFound /> },
@@ -110,123 +108,108 @@ export default function App() {
         {
           index: true,
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "home",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Home />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "products",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Products />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "cart",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Cart />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "wishlist",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Wishlist />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "categories",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Categories />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "brands",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Brands />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "brands/:id",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <BrandsDetails />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "product-details/:id",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ProductDetails />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "categories/:id",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <GetAllSubCategoriesOnCategory />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "address/:id",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Address />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "allorders",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Orders />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
         {
           path: "profile",
           element: (
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Profile />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           ),
         },
-        {
-          path: "UpdateData",
-          element: (
-            <ProtectedRoute>
-              <UpdateData />
-            </ProtectedRoute>
-          ),
-        },
-        {
-          path: "UpdatePass",
-          element: (
-            <ProtectedRoute>
-              <ChangePassword />
-            </ProtectedRoute>
-          ),
-        },
+
         { path: "*", element: <NotFound /> },
       ],
     },
@@ -245,7 +228,6 @@ export default function App() {
           <p className="m-0 ms-2"></p>
         </div>
       </Offline>
-
 
       <ToastContainer theme="light" autoClose={1000} />
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap");
 
 :root {
-  --main-color: #0aad0a;
+  --main-color: #2cb82c;
   --light-color: #f0f3f2;
   --rating-color: #ffc908;
   --font-family: "Encode Sans Expanded", sans-serif;
@@ -40,7 +40,10 @@ body {
   padding-left: 10px;
   padding-right: 10px;
 }
-
+.nav-link-icon.active{
+  color: var(--main-color) !important;
+  font-weight: 600;
+}
 .navbar-nav .nav-item {
   width: fit-content;
 }
@@ -49,7 +52,7 @@ body {
   transition: 0.3s;
 }
 
-.navbar-nav .nav-link:not(.active):hover {
+.navbar-nav .nav-link:not(.active):hover ,.navbar-nav .nav-link-icon:not(.active):hover{
   color: var(--main-color) !important;
 }
 
@@ -77,7 +80,8 @@ textarea {
 
 input:not([type=radio]):focus,
 input:not([type=radio]):focus-within,
-textarea:focus, textarea:focus-within{
+textarea:focus,
+textarea:focus-within {
   border-color: var(--main-color) !important;
   box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
 
@@ -226,11 +230,11 @@ a:hover {
 }
 
 /* forgetPass */
-.forgetPass {
+.ResetPassword {
   color: blue !important;
 }
 
-.forgetPass:hover {
+.ResetPassword:hover {
   text-decoration: underline !important;
   color: blue !important;
 }
@@ -432,12 +436,16 @@ a:hover {
 }
 
 .sizes li:nth-child(3) {
-  background-color: #0aad0a;
+  background-color: var(--main-color);
   color: white;
 }
 
 .sizes li:hover {
-  background-color: #0aad0a;
+  background-color: var(--main-color);
   color: white;
   cursor: pointer;
+}
+
+.border-main {
+  border: 1px solid var(--main-color);
 }

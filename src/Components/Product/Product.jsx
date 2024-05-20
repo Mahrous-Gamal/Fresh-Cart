@@ -98,13 +98,31 @@ export default function Product(props) {
     <>
       <div className="col-lg-3 col-md-4 col-sm-6 position-relative my-3">
         <div className="product p-3 rounded-3 cursor-pointer position-relative shadow">
-          <i
-            onClick={() => chiking()}
-            className={`${arrIdWish?.includes(props?.item?._id.toString())
-              ? "fa-solid fa-heart text-danger position-absolute z-3"
-              : "fa-regular fa-heart position-absolute z-3"
-              }`}
-          ></i>
+
+
+          {
+            props?.wishlist === true ?
+
+
+              <i
+                onClick={() => {
+                  isOnline ? DeleteWishlist(props.item._id) : toast.error("You are offline now");
+                }}
+                className="fa-solid fa-heart text-danger fs-5"
+              ></i>
+
+              :
+
+              <i
+                onClick={() => chiking()}
+                className={`${arrIdWish?.includes(props?.item?._id.toString())
+                  ? "fa-solid fa-heart text-danger position-absolute z-3 fs-5"
+                  : "fa-regular fa-heart position-absolute z-3 fs-5"
+                  }`}
+              ></i>
+
+
+          }
           <Link to={`/product-details/${item._id}`}>
             <img src={item.imageCover} className="w-100" alt="imageCover" />
             <span className="text-main">{item.category.name}</span>

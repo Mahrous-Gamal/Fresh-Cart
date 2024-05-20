@@ -95,14 +95,15 @@ export default function Navbar() {
               <li>
                 <NavLink
                   to="/profile"
-                  className="a-nav btn position-relative border-0"
+                  className="a-nav nav-link-icon btn position-relative border-0"
                 >
-                  <LuUser className="fs-3" />
+                  <LuUser className="fs-2" />
+                  {/* hjbhjbj */}
 
                 </NavLink>
                 <NavLink
                   to="/wishlist"
-                  className="a-nav btn position-relative me-1 border-0"
+                  className="a-nav nav-link-icon btn position-relative me-1 border-0"
                 >
                   <FaRegHeart className="fs-3" />
 
@@ -117,7 +118,7 @@ export default function Navbar() {
                 </NavLink>
                 <NavLink
                   to="/cart"
-                  className="a-nav btn position-relative me-2 border-0"
+                  className="a-nav nav-link-icon btn position-relative me-2 border-0"
                 >
                   <HiOutlineShoppingCart className="fs-3" />
 

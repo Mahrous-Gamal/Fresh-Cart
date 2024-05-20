@@ -44,7 +44,7 @@ export default function ChangePassword() {
           toast.success("Your Password has been updated successfully");
 
           localStorage.clear()
-          navigate('/signin');
+          navigate('/login');
         }
       })
       .catch((error) => {
@@ -116,14 +116,14 @@ export default function ChangePassword() {
             >
               {showCurrentPassword ? (
                 <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  className="eye-icon eye-slash position-absolute"
+                  icon={faEye}
+                  className="eye-icon position-absolute"
                 />
               ) : (
 
                 <FontAwesomeIcon
-                  icon={faEye}
-                  className="eye-icon position-absolute"
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
                 />
 
               )}
@@ -131,7 +131,7 @@ export default function ChangePassword() {
           </div>
           {formik.errors.currentPassword && formik.touched.currentPassword && (
             <p className="text-danger">
-              *{formik.errors.currentPassword}
+              {formik.errors.currentPassword}
             </p>
           )}
           <label htmlFor="Password">New Password:</label>
@@ -155,14 +155,14 @@ export default function ChangePassword() {
             >
               {showNewPassword ? (
                 <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  className="eye-icon eye-slash position-absolute"
+                  icon={faEye}
+                  className="eye-icon position-absolute"
                 />
               ) : (
 
                 <FontAwesomeIcon
-                  icon={faEye}
-                  className="eye-icon position-absolute"
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
                 />
 
               )}
@@ -170,7 +170,7 @@ export default function ChangePassword() {
           </div>
           {formik.errors.password && formik.touched.password && (
             <p className="text-danger">
-              *{formik.errors.password}
+              {formik.errors.password}
             </p>
           )}
           <label htmlFor="rePassword">Confirm New Password:</label>
@@ -194,21 +194,21 @@ export default function ChangePassword() {
             >
               {showConfirmPassword ? (
                 <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  className="eye-icon eye-slash position-absolute"
+                  icon={faEye}
+                  className="eye-icon position-absolute"
                 />
               ) : (
 
                 <FontAwesomeIcon
-                  icon={faEye}
-                  className="eye-icon position-absolute"
+                  icon={faEyeSlash}
+                  className="eye-icon eye-slash position-absolute"
                 />
               )}
             </span>
           </div>
           {formik.errors.rePassword && formik.touched.rePassword && (
             <p className="text-danger">
-              *{formik.errors.rePassword}
+              {formik.errors.rePassword}
             </p>
           )}
           {error && (

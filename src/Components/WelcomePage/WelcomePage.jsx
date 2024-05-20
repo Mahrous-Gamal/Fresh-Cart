@@ -5,8 +5,8 @@ import MainSlider from "../MainSlider/MainSlider";
 import { useNavigate } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../GoSignIn/GoSignIn";
 import { Helmet } from "react-helmet";
-import Categories from './../Categories/Categories';
-import Products from './../Products/Products';
+import Categories from '../../Pages/Categories/Categories';
+import Products from '../../Pages/Products/Products';
 
 
 export default function WelcomePage() {
