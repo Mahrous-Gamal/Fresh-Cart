@@ -13,8 +13,7 @@
 body {
   font-family: var(--font-family) !important;
   /* height: 100vh; */
-  /* border: 2px solid red; */
-  /* overflow: auto; */
+  border: 2px solid red;
 }
 
 /* Scrollbar */
@@ -135,6 +134,9 @@ a:hover {
 .bg-main {
   background-color: var(--main-color) !important;
 }
+.border-main {
+  border: 1px solid var(--main-color);
+}
 
 .bg-main-light {
   background-color: var(--light-color) !important;
@@ -239,45 +241,7 @@ a:hover {
   color: blue !important;
 }
 
-/* forgetPass */
-
-.colomns {
-  columns: 4;
-}
-
-.colomns-son {
-  border-radius: 6px;
-  overflow: hidden;
-  margin-bottom: 15px;
-  border: 1px solid var(--main-color);
-}
-
-.colomns-son-style {
-  top: 100%;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  transition: 0.3s;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 25px;
-  font-weight: 600;
-}
-
-.colomns-son:hover .colomns-son-style {
-  top: 0;
-}
-
-.colomns-son img {
-  transition: 0.4s;
-}
-
-.colomns-son:hover img {
-  scale: 1.1;
-}
+/* forgetPassword */
 
 /* Remove border from toggler */
 .navbar-toggler {
@@ -446,6 +410,41 @@ a:hover {
   cursor: pointer;
 }
 
-.border-main {
-  border: 1px solid var(--main-color);
+.layer-category img{
+  height: 300px;
+}
+
+/* Custom styles for Accordion */
+.accordion-header {
+  /* background-color: var(--main-color); Change header background color */
+  color: white; /* Change header text color */
+  border-color: var(--main-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
+}
+
+.accordion-body {
+  background-color: #e9ecef; /* Change body background color */
+  color: #343a40; /* Change body text color */
+  border-color: var(--main-color) !important;
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
+
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: var(--main-color); /* Change active header background color */
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
+}
+
+.btn-main:active {
+  box-shadow: 0 0 0 0.25rem rgba(10, 173, 10, 0.25) !important;
+}
+
+.w-30{
+
+  max-width: 30%;
 }

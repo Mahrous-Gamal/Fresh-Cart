@@ -185,7 +185,7 @@ export default function UpdateData() {
             <button
               // disabled={!(formik.dirty && formik.isValid)}
               type="submit"
-              className="btn bg-main text-white mt-3"
+              className="btn btn-main bg-main text-white mt-3"
             >
               {loaderbtn ? (
                 <>

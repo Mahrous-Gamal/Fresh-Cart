@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import AccordItem from "./AccordItem";
 import Accordion from "react-bootstrap/Accordion";
 import { Helmet } from "react-helmet";
+import Loader from './../../Components/Loader/Loader';
 
 
 export default function Allorders() {
@@ -16,7 +17,12 @@ export default function Allorders() {
       .then((data) => data)
       .catch((error) => error);
   }
-  let { data } = useQuery("getAllOrder", getAllOredries);
+  let { data ,isLoading} = useQuery("getAllOrder", getAllOredries);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+  
   return (
     <>
 

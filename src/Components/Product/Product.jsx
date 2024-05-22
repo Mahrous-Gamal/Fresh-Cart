@@ -141,7 +141,7 @@ export default function Product(props) {
           </Link>
           <button
             onClick={() => addProductToCart(item._id)}
-            className="btn bg-main w-100 text-white"
+            className="w-100 btn btn-main bg-main text-white"
           >
             {loading ? (
               <>

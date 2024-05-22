@@ -4,17 +4,22 @@ import { useQuery } from "react-query";
 // import WishlistSon from "../../Components/WishlistSon/WishlistSon";
 import Product from "../../Components/Product/Product";
 import { Helmet } from "react-helmet";
-
+import Loader from './../../Components/Loader/Loader';
+import WishlistEmpty from "../../Assets/Images/wishlist.svg"
 
 export default function Wishlist() {
 
   let { wishlistCounter, getWishlist, setWishlistCounter } = useContext(WishlistContext);
 
-  let { data, refetch } = useQuery("getWish", getWishlist);
+  let { data, refetch, isLoading } = useQuery("getWish", getWishlist);
 
   let idProducts = data?.data?.data?.map((item) => item._id);
 
   setWishlistCounter(data?.data?.data?.length);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -25,8 +30,8 @@ export default function Wishlist() {
       </Helmet>
 
       <div
-        className="container my-5"
-        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
+        className="container"
+        style={{ paddingTop: "60.49px", paddingBottom: "40px" }}
       >
         {wishlistCounter ? (
           <div className="row">
@@ -44,7 +49,11 @@ export default function Wishlist() {
           </div>
         ) : (
 
-          <div className="mt-4 text-center fs-5 fw-bold">Your wishlist is empty, add some products and come back later</div>
+          <div className="mt-4 text-center fs-5 fw-bold">
+            <img src={WishlistEmpty} className="w-30" alt="" />
+
+            <p>Your wishlist is empty, add some products and come back later</p>
+          </div>
         )
         }
       </div>

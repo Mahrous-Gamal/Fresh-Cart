@@ -62,7 +62,7 @@ export default function CartSon({ item, refetch }) {
           <div className="d-flex align-items-center">
             <button
               onClick={() => updateCartItem(item.product._id, item.count + 1)}
-              className="btn bg-main text-white fs-2 py-0"
+              className="btn btn-main bg-main text-white fs-2 py-0"
             >
               +
             </button>
@@ -70,7 +70,7 @@ export default function CartSon({ item, refetch }) {
             <button
               disabled={item.count <= 1}
               onClick={() => updateCartItem(item.product._id, item.count - 1)}
-              className="btn  bg-main text-white  fs-2 py-0"
+              className="btn btn-main bg-main text-white fs-2 py-0"
             >
               -
             </button>

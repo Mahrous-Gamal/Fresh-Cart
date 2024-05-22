@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import Image1 from "../../Assets/Images/slider-1.jpg";
 import Image2 from "../../Assets/Images/slider-2.jpg";
 import MainSlider from "../MainSlider/MainSlider";
-import { useNavigate } from "react-router-dom";
 // import MyVerticallyCenteredModal from "../GoSignIn/GoSignIn";
 import { Helmet } from "react-helmet";
-import Categories from '../../Pages/Categories/Categories';
+import FeaturedCategories from '../FeaturedCategories/FeaturedCategories';
 import Products from '../../Pages/Products/Products';
 
 
@@ -58,7 +57,7 @@ export default function WelcomePage() {
         </div>
       </div>
 
-      <Categories />
+      <FeaturedCategories />
       <Products />
 
     </>

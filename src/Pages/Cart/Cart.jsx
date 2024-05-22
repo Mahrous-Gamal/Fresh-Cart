@@ -7,6 +7,8 @@ import { Helmet } from "react-helmet";
 import { CartContext } from './../../Context/CartContext';
 import { GiShoppingCart } from "react-icons/gi";
 // import "../../Pages/Cart/"
+import EmptyCart from "../../Assets/Images/cart.svg"
+import Loader from './../../Components/Loader/Loader';
 
 export default function Cart() {
 
@@ -30,9 +32,9 @@ export default function Cart() {
     }
   }
 
-  // if (isLoading) {
-  //   return <Loader />;
-  // }
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -43,8 +45,8 @@ export default function Cart() {
       </Helmet>
 
       <div
-        className="container my-5"
-        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
+        className="container"
+        style={{ paddingTop: "60.49px", paddingBottom: "40px" }}
       >
         <div className="container px-0">
 
@@ -60,7 +62,7 @@ export default function Cart() {
                   <p className="text-muted fw-bold fs-5">
                     Total Price : {data?.data?.data?.totalCartPrice} <span className='text-main'>EGP</span>
                   </p>
-              </div>
+                </div>
 
               </>
             )
@@ -77,12 +79,12 @@ export default function Cart() {
               <Link
                 to={`/address/${data?.data?.data?._id}`}
               >
-                <button className="btn bg-main text-white">Place Order</button>
+                <button className="btn btn-main bg-main text-white">Place Order</button>
               </Link>
 
               <button
                 onClick={() => deleteAllCartItems()}
-                className="border-none btn btn-danger"
+                className="btn btn-danger"
               >
                 {isLoading ? (
                   <>Loading...</>
@@ -95,7 +97,10 @@ export default function Cart() {
             </div>
           ) :
             <>
-              <div className="mt-4 text-center fs-5 fw-bold">Oops ! Your cart is empty, add some products to your cart and come back again</div>
+              <div className="text-center fs-5 fw-bold">
+                <img src={EmptyCart} className="w-30" alt="" />
+                <p>Oops ! Your cart is empty, add some products to your cart and come back again</p>
+              </div>
 
             </>
 

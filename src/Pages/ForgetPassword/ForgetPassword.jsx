@@ -101,9 +101,9 @@ export default function ForgetPassword() {
             )}
             <div className="text-end">
               <button
-                disabled={!(formik.dirty && formik.isValid)}
+                // disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
-                className="btn bg-main text-white"
+                className="btn btn-main bg-main text-white"
               >
                 {loaderbtn ? (
                   <>

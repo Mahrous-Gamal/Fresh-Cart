@@ -130,15 +130,15 @@ export default function ResetPassword() {
               >
                 {showPassword ? (
                   <FontAwesomeIcon
-                  icon={faEye}
-                  className="eye-icon position-absolute"
-                />
-              ) : (
+                    icon={faEye}
+                    className="eye-icon position-absolute"
+                  />
+                ) : (
 
-                <FontAwesomeIcon
-                  icon={faEyeSlash}
-                  className="eye-icon eye-slash position-absolute"
-                />
+                  <FontAwesomeIcon
+                    icon={faEyeSlash}
+                    className="eye-icon eye-slash position-absolute"
+                  />
                 )}
               </span>
             </div>
@@ -151,9 +151,9 @@ export default function ResetPassword() {
             )}
             <div className="text-end">
               <button
-                disabled={!(formik.dirty && formik.isValid)}
+                // disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
-                className="btn bg-main text-white"
+                className="btn btn-main bg-main text-white"
               >
                 {loaderbtn ? (
                   <>

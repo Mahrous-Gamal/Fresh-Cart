@@ -4,9 +4,8 @@ import { useQuery } from 'react-query';
 import axios from 'axios';
 // import BrandDetalSon from './BrandDetalSon';
 import Product from "../../Components/Product/Product";
-
 import { WishlistContext } from '../../Context/WishlistContext';
-
+// import NoItems from "../../Assets/Images/Wavy.jpg"
 
 export default function BrandsDetails() {
 
@@ -45,7 +44,10 @@ export default function BrandsDetails() {
         setFinal(jsxElements);
         setArr(1);
       } else {
-        setFinal(<div className="mt-4 text-center fs-2 fw-bold">No items found</div>);
+        setFinal(<div className="text-center fs-2 fw-bold">
+          {/* <img src={NoItems} className='w-30 border border-1' alt="" /> */}
+          <p>No items found</p>
+        </div>);
         setArr(0)
       }
     }
@@ -54,8 +56,8 @@ export default function BrandsDetails() {
   return (
     <>
       <div
-        className="container my-5"
-        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
+        className="container my-3"
+        style={{ paddingTop: "10.49px", paddingBottom: "40px" }}
       >        <div className='row'>
           {final}
         </div>

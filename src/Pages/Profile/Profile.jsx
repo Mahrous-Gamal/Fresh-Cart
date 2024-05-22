@@ -3,7 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import MyPhoto from '../../Assets/Images/its me.jpg';
 import { toast } from "react-toastify";
@@ -94,14 +93,15 @@ export default function Profile() {
         style={{ paddingTop: "40px", Bottom: "100px" }}
       >
         <div className="shadow p-4">
-          <div className="account">
-            <img src={MyPhoto} alt="" />
-          </div>
+
           <div className="row mt-4">
-            <div className="col-xl-4 col-lg-4 col-md-12  col-sm-12 border">
+            <div className="col-xl-4 col-lg-4 col-md-12  col-sm-12 ">
+              <div className="account">
+                <img src={MyPhoto} alt="" />
+              </div>
               <div className="d-flex mb-5">
                 <div>
-                  <h4 className="fw-bold">Account Details</h4>
+                  <h4 className="fw-bold mt-3">Account Details</h4>
                   <ul style={{ listStyle: "none" }}>
                     <li>
                       Name: <span className="fw-bold">{data?.name}</span>
@@ -128,53 +128,15 @@ export default function Profile() {
                       </span>
                     </li>
                     <li>
-                      Your role: <span className="fw-bold">{data?.role}</span>{" "}
-                    </li>
-                  </ul>
-                  <h4 className="fw-bold"> Tax invoices</h4>
-                  <ul style={{ listStyle: "none" }}>
-                    <li>
-                      Name: <span className="fw-bold">{data?.name}</span>
-                    </li>
-                    <li>
-                      Email:{" "}
-                      <span className="fw-bold">
-                        {localStorage.getItem("email")}
-                      </span>
-                    </li>
-                    <li>
-                      Your role: <span className="fw-bold">{data?.role}</span>{" "}
-                    </li>
-                  </ul>
-                  <h4 className="fw-bold">My Bills</h4>
-                  <ul style={{ listStyle: "none" }}>
-                    <li>
-                      Name: <span className="fw-bold">{data?.name}</span>
-                    </li>
-                    <li>
-                      Email:{" "}
-                      <span className="fw-bold">
-                        {localStorage.getItem("email")}
-                      </span>
-                    </li>
-                    <li>
-                      Your role: <span className="fw-bold">{data?.role}</span>{" "}
+                      Your role: User <span className="fw-bold">{data?.role}</span>{" "}
                     </li>
                   </ul>
                 </div>
               </div>
-              <div className="mb-5">
-                <NavLink
-                  to="/UpdateData"
-                  className="linkItem d-flex align-items-center"
-                >
-                  <i class="fa-solid fa-pen mt-2 fs-3 me-3"></i>
-                  <h4 className="m-0 fw-bold">Update Your Data</h4>
-                </NavLink>
-              </div>
+
             </div>
 
-            <div className="col-xl-8 col-lg-8 col-md-12  col-sm-12 border">
+            <div className="col-xl-8 col-lg-8 col-md-12  col-sm-12 border pb-3">
               <div className="info">
                 <UpdateData />
                 <hr />

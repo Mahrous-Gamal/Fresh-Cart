@@ -69,7 +69,6 @@ export default function ProductDetails() {
 
 
 
-
   function onlineInBtn() {
     if (isOnline) {
       addproductToCart(products?._id)
@@ -178,7 +177,7 @@ export default function ProductDetails() {
               <button
                 // disabled={!loading}
                 onClick={onlineInBtn}
-                className=" btn bg-main w-100 text-white mt-3"
+                className="w-100 btn bg-main btn-main text-white mt-3"
               >
                 {loading ? (
                   <>

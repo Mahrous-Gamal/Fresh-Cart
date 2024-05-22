@@ -3,6 +3,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import Brand from "../../Components/Brand/Brand";
 import { Helmet } from "react-helmet";
+import Loader from './../../Components/Loader/Loader';
 
 
 export default function Brands() {
@@ -11,6 +12,11 @@ export default function Brands() {
   }
 
   let { data, isLoading } = useQuery("getbrand", getBrand);
+
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
 

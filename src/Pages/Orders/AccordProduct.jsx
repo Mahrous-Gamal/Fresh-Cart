@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function AccordProduct({ ele }) {
   return (
-    <div className="col-md-3 col-sm-6 rounded-3 shadow ">
+    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12 mt-3 rounded-3 shadow">
       <div className="layer">
         <img
           src={ele.product.imageCover}

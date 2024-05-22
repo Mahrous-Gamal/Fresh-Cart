@@ -42,7 +42,7 @@ export default function ForgetPass() {
 
   const validationSchema = () => {
     return Yup.object({
-      resetCode: Yup.string().min(6, "Reset code must be at least  6 digits").max(8, "Reset code must be at most 8 digits").required("Reset code is a required field"),
+      resetCode: Yup.string().min(5, "Reset code must be at least 5 digits").max(8, "Reset code must be at most 8 digits").required("Reset code is a required field"),
     });
   };
 
@@ -93,7 +93,7 @@ export default function ForgetPass() {
               <button
                 // disabled={!(formik.dirty && formik.isValid)}
                 type="submit"
-                className="btn bg-main text-white"
+                className="btn btn-main bg-main text-white"
               >
                 {loaderbtn ? (
                   <>

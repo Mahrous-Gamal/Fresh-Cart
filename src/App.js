@@ -40,7 +40,7 @@ export default function App() {
           index: true,
           element: (
             // <ProtectedRoute>
-              <WelcomePage />
+            <WelcomePage />
             // </ProtectedRoute>
           ),
         },
@@ -109,7 +109,7 @@ export default function App() {
           index: true,
           element: (
             // <ProtectedRoute>
-              <Home />
+            <Home />
             // </ProtectedRoute>
           ),
         },
@@ -117,7 +117,7 @@ export default function App() {
           path: "home",
           element: (
             // <ProtectedRoute>
-              <Home />
+            <Home />
             // </ProtectedRoute>
           ),
         },
@@ -125,7 +125,7 @@ export default function App() {
           path: "products",
           element: (
             // <ProtectedRoute>
-              <Products />
+            <Products />
             // </ProtectedRoute>
           ),
         },
@@ -133,7 +133,7 @@ export default function App() {
           path: "cart",
           element: (
             // <ProtectedRoute>
-              <Cart />
+            <Cart />
             // </ProtectedRoute>
           ),
         },
@@ -141,7 +141,7 @@ export default function App() {
           path: "wishlist",
           element: (
             // <ProtectedRoute>
-              <Wishlist />
+            <Wishlist />
             // </ProtectedRoute>
           ),
         },
@@ -149,7 +149,7 @@ export default function App() {
           path: "categories",
           element: (
             // <ProtectedRoute>
-              <Categories />
+            <Categories />
             // </ProtectedRoute>
           ),
         },
@@ -157,7 +157,7 @@ export default function App() {
           path: "brands",
           element: (
             // <ProtectedRoute>
-              <Brands />
+            <Brands />
             // </ProtectedRoute>
           ),
         },
@@ -165,7 +165,7 @@ export default function App() {
           path: "brands/:id",
           element: (
             // <ProtectedRoute>
-              <BrandsDetails />
+            <BrandsDetails />
             // </ProtectedRoute>
           ),
         },
@@ -173,7 +173,7 @@ export default function App() {
           path: "product-details/:id",
           element: (
             // <ProtectedRoute>
-              <ProductDetails />
+            <ProductDetails />
             // </ProtectedRoute>
           ),
         },
@@ -181,7 +181,7 @@ export default function App() {
           path: "categories/:id",
           element: (
             // <ProtectedRoute>
-              <GetAllSubCategoriesOnCategory />
+            <GetAllSubCategoriesOnCategory />
             // </ProtectedRoute>
           ),
         },
@@ -189,7 +189,7 @@ export default function App() {
           path: "address/:id",
           element: (
             // <ProtectedRoute>
-              <Address />
+            <Address />
             // </ProtectedRoute>
           ),
         },
@@ -197,7 +197,7 @@ export default function App() {
           path: "allorders",
           element: (
             // <ProtectedRoute>
-              <Orders />
+            <Orders />
             // </ProtectedRoute>
           ),
         },
@@ -205,7 +205,7 @@ export default function App() {
           path: "profile",
           element: (
             // <ProtectedRoute>
-              <Profile />
+            <Profile />
             // </ProtectedRoute>
           ),
         },

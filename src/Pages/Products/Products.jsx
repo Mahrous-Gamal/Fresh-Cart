@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { WishlistContext } from "../../Context/WishlistContext";
 import { Helmet } from "react-helmet";
 import React from 'react';
+import Loader from './../../Components/Loader/Loader';
 
 export default function Products() {
 
@@ -14,10 +15,15 @@ export default function Products() {
     return axios.get("https://ecommerce.routemisr.com/api/v1/products");
   }
 
-  let { data } = useQuery("getProduct", getProduct);
+  let { data ,isLoading } = useQuery("getProduct", getProduct);
   let { data: dataWish, refetch } = useQuery("getWish", getWishlist);
 
   let idProducts = dataWish?.data?.data?.map((item) => item._id);
+
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -27,7 +33,7 @@ export default function Products() {
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
 
-      <div className="container my-3" style={{ paddingTop: "74.49px" }}>
+      <div className="container my-5" style={{ paddingTop: "74.49px" }}>
         <div className="row ">
           {data?.data?.data?.map((item) => {
             return (
