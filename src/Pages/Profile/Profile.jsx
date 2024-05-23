@@ -104,7 +104,7 @@ export default function Profile() {
                   <h4 className="fw-bold mt-3">Account Details</h4>
                   <ul style={{ listStyle: "none" }}>
                     <li>
-                      Name: <span className="fw-bold">{data?.name}</span>
+                      Name: <span className="fw-bold">{data?.name}  Mahrous Gamal</span>
                     </li>
                     <li>
                       Email:{" "}
@@ -113,21 +113,18 @@ export default function Profile() {
                       </span>
                     </li>
                     <li>
-                      Your role: <span className="fw-bold">{data?.role}</span>{" "}
+                      Your role: <span className="fw-bold">{data?.role} User</span>{" "}
                     </li>
                   </ul>
                   <h4 className="fw-bold">My Orders</h4>
                   <ul style={{ listStyle: "none" }}>
-                    <li>
-                      Name: <span className="fw-bold">{data?.name}</span>
+                    <li className="fw-bold">
+                      My Bill
                     </li>
-                    <li>
-                      Email:{" "}
-                      <span className="fw-bold">
-                        {localStorage.getItem("email")}
-                      </span>
+                    <li className="fw-bold">
+                      Tax Invoices
                     </li>
-                    <li>
+                    <li className="fw-bold">
                       Your role: User <span className="fw-bold">{data?.role}</span>{" "}
                     </li>
                   </ul>

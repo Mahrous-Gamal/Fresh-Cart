@@ -255,6 +255,9 @@ export default function Register() {
                 {formik.errors.rePassword}
               </p>
             )}
+
+            <p className="fw-bold text-muted">By Signup, you agree to our <span className="text-main">Terms of Service</span> & <span className="text-main">Privacy Policy</span></p>
+
             <div className="text-end">
               <button
                 // disabled={!(formik.dirty && formik.isValid)}
@@ -269,6 +272,7 @@ export default function Register() {
                 ) : (
                   "Create Account"
                 )}
+                {/* Already have an account? Sign in */}
 
               </button>
             </div>

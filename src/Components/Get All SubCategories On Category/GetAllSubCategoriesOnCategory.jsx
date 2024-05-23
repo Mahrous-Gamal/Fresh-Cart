@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import Product from '../Product/Product';
 import { useContext, useEffect, useState } from 'react';
 import { WishlistContext } from '../../Context/WishlistContext';
+import NoItems from "../../Assets/Images/noCatProducts.svg"
 
 
 export default function GetAllSubCategoriesOnCategory() {
@@ -43,7 +44,10 @@ export default function GetAllSubCategoriesOnCategory() {
         setFinal(jsxElements);
         setArr(1);
       } else {
-        setFinal(<div className="mt-4 text-center fs-2 fw-bold">No items found</div>);
+        setFinal(<div className="text-center fs-2 fw-bold">
+          <img src={NoItems} className='w-100 image-notfound' style={{ height: "88vh" }} alt="" />
+          <p>No items found</p>
+        </div>);
         setArr(0)
       }
     }
@@ -52,8 +56,9 @@ export default function GetAllSubCategoriesOnCategory() {
   return (
     <>
       <div
-        className="container my-5"
-        style={{ paddingTop: "74.49px", paddingBottom: "40px" }}
+        className="container my-3"
+        style={{ paddingTop: "60.49px", paddingBottom: "40px" }}
+
       >        <div className='row'>
           {final}
         </div>

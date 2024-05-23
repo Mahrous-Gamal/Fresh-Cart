@@ -29,11 +29,6 @@ export default function WelcomePage() {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Fresh Cart | Home</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
 
       <div className="container posss my-3 " style={{ paddingTop: "74.49px" }}>
         <div className="row">
@@ -59,7 +54,11 @@ export default function WelcomePage() {
 
       <FeaturedCategories />
       <Products />
-
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Fresh Cart | Home</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
     </>
   );
 }

@@ -31,7 +31,7 @@ export default function ResetPassword() {
         setLoaderbtn(false);
         if (response.data.token) {
           localStorage.setItem("token", response.data.token);
-          navigate("/signin");
+          navigate("/login");
         }
       })
       .catch((error) => {
@@ -55,7 +55,7 @@ export default function ResetPassword() {
           /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
           "Minimum eight characters, at least one letter, one number and one special character"
         )
-        .required("Confirm Password is a required field"),
+        .required("New Password is a required field"),
     });
     return errors;
   }

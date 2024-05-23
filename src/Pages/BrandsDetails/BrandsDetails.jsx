@@ -5,7 +5,7 @@ import axios from 'axios';
 // import BrandDetalSon from './BrandDetalSon';
 import Product from "../../Components/Product/Product";
 import { WishlistContext } from '../../Context/WishlistContext';
-// import NoItems from "../../Assets/Images/Wavy.jpg"
+import NoItems from "../../Assets/Images/noCatProducts.svg"
 
 export default function BrandsDetails() {
 
@@ -45,7 +45,7 @@ export default function BrandsDetails() {
         setArr(1);
       } else {
         setFinal(<div className="text-center fs-2 fw-bold">
-          {/* <img src={NoItems} className='w-30 border border-1' alt="" /> */}
+          <img src={NoItems} className='w-100 image-notfound' style={{ height: "88vh" }} alt="" />
           <p>No items found</p>
         </div>);
         setArr(0)

@@ -59,7 +59,7 @@ export default function App() {
           ),
         },
         {
-          path: "signin",
+          path: "login",
           element: (
             // <ProtectedRoute>
             <Login />
@@ -98,7 +98,7 @@ export default function App() {
             // </ProtectedRoute>
           ),
         },
-        { path: "*", element: <NotFound /> },
+        // { path: "*", element: <NotFound /> },
       ],
     },
     {

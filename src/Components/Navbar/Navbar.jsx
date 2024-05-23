@@ -137,7 +137,7 @@ export default function Navbar() {
                 <NavLink
                   onClick={clearLocalStorage}
                   className="nav-link pe-0"
-                  to="/signin"
+                  to="/login"
                 >
                   LogOut
                   <i className="fa-solid fa-right-from-bracket ps-2"></i>

@@ -31,10 +31,10 @@ export default function Wishlist() {
 
       <div
         className="container"
-        style={{ paddingTop: "60.49px", paddingBottom: "40px" }}
+
       >
         {wishlistCounter ? (
-          <div className="row">
+          <div className="row" style={{ paddingTop: "100px", paddingBottom: "40px" }}>
             {data?.data?.data?.map((item) => {
               return (
                 <Product
@@ -49,8 +49,8 @@ export default function Wishlist() {
           </div>
         ) : (
 
-          <div className="mt-4 text-center fs-5 fw-bold">
-            <img src={WishlistEmpty} className="w-30" alt="" />
+          <div className="text-center fs-5 fw-bold">
+            <img src={WishlistEmpty} className='w-100 image-notfound' style={{ height: "88vh" }} alt="" />
 
             <p>Your wishlist is empty, add some products and come back later</p>
           </div>

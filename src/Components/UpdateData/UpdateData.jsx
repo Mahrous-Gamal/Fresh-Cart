@@ -116,7 +116,7 @@ export default function UpdateData() {
               </div>
               {formik.errors.name && formik.touched.name && (
                 <p className="text-danger">
-                  *{formik.errors.name}
+                  {formik.errors.name}
                 </p>
               )}
             </div>
@@ -142,7 +142,7 @@ export default function UpdateData() {
               </div>
               {formik.errors.email && formik.touched.email && (
                 <p className="text-danger">
-                  *{formik.errors.email}
+                  {formik.errors.email}
                 </p>
               )}
             </div>
@@ -167,7 +167,7 @@ export default function UpdateData() {
               </div>
               {formik.errors.phone && formik.touched.phone && (
                 <p className="text-danger" >
-                  *{formik.errors.phone}
+                  {formik.errors.phone}
                 </p>
               )}
             </div>

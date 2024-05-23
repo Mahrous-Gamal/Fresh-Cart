@@ -42,7 +42,7 @@ export default function CartSon({ item, refetch }) {
 
   return (
     <>
-      <div className="row py-2 my-3 g-3 bg-main-light m-auto" >
+      <div className="row py-2 my-3 g-3 bg-main-light m-auto border mt-5">
         <div className="col-md-1">
           <img src={item.product.imageCover} className="w-100" alt="" />
         </div>

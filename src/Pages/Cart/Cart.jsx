@@ -46,7 +46,7 @@ export default function Cart() {
 
       <div
         className="container"
-        style={{ paddingTop: "60.49px", paddingBottom: "40px" }}
+
       >
         <div className="container px-0">
 
@@ -54,7 +54,7 @@ export default function Cart() {
           {
             data?.data?.data?.products && (
               <>
-                <div className="cart d-flex justify-content-between">
+                <div className="cart d-flex justify-content-between" style={{ paddingTop: "100.49px" }}>
                   <h2 className="fw-bold"> <GiShoppingCart className="text-main fs-1 fw-bold rotated mb-2"
                     style={{
                       transform: "rotatey(180deg)"
@@ -74,7 +74,7 @@ export default function Cart() {
           })}
 
           {data?.data?.data?.products ? (
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mb-5" >
 
               <Link
                 to={`/address/${data?.data?.data?._id}`}
@@ -98,7 +98,7 @@ export default function Cart() {
           ) :
             <>
               <div className="text-center fs-5 fw-bold">
-                <img src={EmptyCart} className="w-30" alt="" />
+                <img src={EmptyCart} className='w-100 image-notfound' style={{ height: "88vh" }} alt="" />
                 <p>Oops ! Your cart is empty, add some products to your cart and come back again</p>
               </div>
 
