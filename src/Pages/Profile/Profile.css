@@ -1,10 +1,11 @@
 .account {
-    /* text-align: center; */
+    text-align: center;
+    /* border: 2px solid red; */
 }
 
 .account img {
-    width: 100px;
-    height: 100px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -15,4 +16,5 @@
 
 .specifyColor {
     accent-color: #0aad0a;
-}
+    width: 100% !important;
+} 

@@ -8,6 +8,13 @@ import MyPhoto from '../../Assets/Images/its me.jpg';
 import { toast } from "react-toastify";
 import ChangePassword from '../../Components/ChangePassword/ChangePassword';
 import UpdateData from '../../Components/UpdateData/UpdateData';
+import { FiSettings } from "react-icons/fi";
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { AiOutlineMessage } from "react-icons/ai";
+import { GoQuestion } from "react-icons/go";
+import { LuUsers } from "react-icons/lu";
+import { LuLogIn } from "react-icons/lu";
+
 import "./Profile.css"
 
 
@@ -97,38 +104,33 @@ export default function Profile() {
           <div className="row mt-4">
             <div className="col-xl-4 col-lg-4 col-md-12  col-sm-12 ">
               <div className="account">
-                <img src={MyPhoto} alt="" />
+                <img src={MyPhoto} alt="" className="ms-auto" />
+                <p className="fw-bold fs-5 text-center mt-2" >{data?.name}  Mahrous Gamal</p>
+
               </div>
-              <div className="d-flex mb-5">
-                <div>
-                  <h4 className="fw-bold mt-3">Account Details</h4>
-                  <ul style={{ listStyle: "none" }}>
-                    <li>
-                      Name: <span className="fw-bold">{data?.name}  Mahrous Gamal</span>
-                    </li>
-                    <li>
-                      Email:{" "}
-                      <span className="fw-bold">
-                        {localStorage.getItem("email")}
-                      </span>
-                    </li>
-                    <li>
-                      Your role: <span className="fw-bold">{data?.role} User</span>{" "}
-                    </li>
-                  </ul>
-                  <h4 className="fw-bold">My Orders</h4>
-                  <ul style={{ listStyle: "none" }}>
-                    <li className="fw-bold">
-                      My Bill
-                    </li>
-                    <li className="fw-bold">
-                      Tax Invoices
-                    </li>
-                    <li className="fw-bold">
-                      Your role: User <span className="fw-bold">{data?.role}</span>{" "}
-                    </li>
-                  </ul>
-                </div>
+              <div className=" mb-5">
+
+                <ul style={{ listStyle: "none" }} className="account-info">
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3  mt-4 ">
+                    <FiSettings className="fs-3 me-2" /> Account settings
+                  </li>
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3">
+                    <MdOutlineShoppingCart className="fs-3 me-2" /> Purchase History
+                  </li>
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3">
+                    <AiOutlineMessage className="fs-3 me-2" /> Feedback
+                  </li>
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3">
+                    <GoQuestion className="fs-3 me-2" /> Help & Support
+                  </li>
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3">
+                    <LuUsers className="fs-3 me-2" /> About us
+                  </li>
+                  <li className="fw-bold mb-3 border-bottom border-dark pb-3">
+                    <LuLogIn className="fs-3 me-2" /> Sign Out
+                  </li>
+                </ul>
+
               </div>
 
             </div>
