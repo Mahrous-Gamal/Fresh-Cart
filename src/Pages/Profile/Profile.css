@@ -11,7 +11,7 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    border: 3px solid #0aad0a;
+    border: 3px solid var(--main-color );
 }
 
 .specifyColor {

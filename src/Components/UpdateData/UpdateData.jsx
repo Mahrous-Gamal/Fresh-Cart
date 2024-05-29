@@ -172,12 +172,12 @@ export default function UpdateData() {
               )}
             </div>
 
-            <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
+            {/* <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 ">
               <div className="gender mt-2">
                 <input type="radio" name="gender" id="male" className="specifyColor ms-3" checked /> <label htmlFor="male">User</label>
                 <input type="radio" name="gender" className="specifyColor ms-3" id="female" /> <label htmlFor="female">Admin</label>
               </div>
-            </div>
+            </div> */}
           </div>
 
 

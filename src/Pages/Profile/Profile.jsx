@@ -108,7 +108,7 @@ export default function Profile() {
                 <p className="fw-bold fs-5 text-center mt-2" >{data?.name}  Mahrous Gamal</p>
 
               </div>
-              <div className=" mb-5">
+            <div className=" mb-5">
 
                 <ul style={{ listStyle: "none" }} className="account-info">
                   <li className="fw-bold mb-3 border-bottom border-dark pb-3  mt-4 ">
