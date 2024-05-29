@@ -8,6 +8,7 @@ import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-ico
 import { FiUser, FiPhone, FiLock } from "react-icons/fi";
 import { Helmet } from "react-helmet";
 import { toast } from "react-toastify";
+import ResPhoto from "../../Assets/Images/Key-rafiki.svg"
 import "../Login/Signin.css";
 
 
@@ -105,178 +106,189 @@ export default function Register() {
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Register Now </h2>
 
-          <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="name">Name:</label>
-
-            <div className="input-group my-2">
-              <span className="input-group-text">
-                <FiUser className="user-icon text-main fs-5" />
-              </span>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="e.g. John Doe"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="name"
-                id="name"
-              />
+          <div className="row">
+            <div className="col-xl-6  col-lg-6 d-lg-block d-none">
+              <img src={ResPhoto} alt="" />
 
             </div>
-            {formik.errors.name && formik.touched.name && (
-              <p className="text-danger" >
-                *{formik.errors.name}
-              </p>
-            )}
-            <label htmlFor="email">Email:</label>
 
-            <div className="input-group my-2">
-              <span className="input-group-text">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="user-icon text-main fs-5"
-                />
-              </span>
-              <input
-                className="form-control"
-                placeholder="e.g. user@example.com"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                type="email"
-                name="email"
-                id="email"
-              />
-            </div>
-            {formik.errors.email && formik.touched.email && (
-              <p className="text-danger" >
-                *{formik.errors.email}
-              </p>
-            )}
+            <div className="col-xl-6 col-lg-6 col-md-12">
+              <form onSubmit={formik.handleSubmit}>
+                <label htmlFor="name">Name:</label>
 
-            <label htmlFor="phone">Phone:</label>
-
-            <div className="input-group my-2">
-              <span className="input-group-text">
-                <FiPhone className="user-icon text-main fs-5" />
-
-              </span>
-              <input
-                className="form-control"
-                placeholder="123-456-7890"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                type="tel"
-                name="phone"
-                id="phone"
-              />
-            </div>
-            {formik.errors.phone && formik.touched.phone && (
-              <p className="text-danger" >
-                *{formik.errors.phone}
-              </p>
-            )}
-
-            <label htmlFor="password">Password:</label>
-
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
-                <FiLock className="lock-icon text-main fs-5" />
-
-              </span>
-              <input
-                type={showPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="password"
-                id="password"
-              />
-              <span
-                className="input-group-textt"
-                onClick={togglePassword}
-              >
-                {showPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
-                  />
-                ) : (
-
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
+                <div className="input-group my-2">
+                  <span className="input-group-text">
+                    <FiUser className="user-icon text-main fs-5" />
+                  </span>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="e.g. John Doe"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    name="name"
+                    id="name"
                   />
 
+                </div>
+                {formik.errors.name && formik.touched.name && (
+                  <p className="text-danger" >
+                    {formik.errors.name}
+                  </p>
                 )}
-              </span>
-            </div>
-            {formik.errors.password && formik.touched.password && (
-              <p className="text-danger" >
-                {formik.errors.password}
-              </p>
-            )}
-            <label htmlFor="rePassword">Confirm Password:</label>
+                <label htmlFor="email">Email:</label>
 
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
-                <FiLock className="lock-icon text-main fs-5" />
-
-              </span>
-              <input
-                type={showConfirmPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="rePassword"
-                id="rePassword"
-              />
-              <span
-                className="input-group-textt"
-                onClick={toggleConfirmPassword}
-              >
-                {showConfirmPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
+                <div className="input-group my-2">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="user-icon text-main fs-5"
+                    />
+                  </span>
+                  <input
+                    className="form-control"
+                    placeholder="e.g. user@example.com"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="email"
+                    name="email"
+                    id="email"
                   />
-                ) : (
+                </div>
+                {formik.errors.email && formik.touched.email && (
+                  <p className="text-danger" >
+                    {formik.errors.email}
+                  </p>
+                )}
 
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
+                <label htmlFor="phone">Phone:</label>
+
+                <div className="input-group my-2">
+                  <span className="input-group-text">
+                    <FiPhone className="user-icon text-main fs-5" />
+
+                  </span>
+                  <input
+                    className="form-control"
+                    placeholder="123-456-7890"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="tel"
+                    name="phone"
+                    id="phone"
                   />
+                </div>
+                {formik.errors.phone && formik.touched.phone && (
+                  <p className="text-danger" >
+                    {formik.errors.phone}
+                  </p>
                 )}
-              </span>
-            </div>
-            {formik.errors.rePassword && formik.touched.rePassword && (
-              <p className="text-danger" >
-                {formik.errors.rePassword}
-              </p>
-            )}
 
-            <p className="fw-bold text-muted">By Signup, you agree to our <span className="text-main">Terms of Service</span> & <span className="text-main">Privacy Policy</span></p>
+                <label htmlFor="password">Password:</label>
 
-            <div className="text-end">
-              <button
-                // disabled={!(formik.dirty && formik.isValid)}
-                type="submit"
-                className="btn btn-main bg-main text-white"
-              >
-                {loaderbtn ? (
-                  <>
-                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Create Account
-                  </>
+                <div className="input-group position-relative my-2">
+                  <span className="input-group-text">
+                    <FiLock className="lock-icon text-main fs-5" />
 
-                ) : (
-                  "Create Account"
+                  </span>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="form-control"
+                    placeholder="••••••••"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    name="password"
+                    id="password"
+                  />
+                  <span
+                    className="input-group-textt"
+                    onClick={togglePassword}
+                  >
+                    {showPassword ? (
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        className="eye-icon position-absolute"
+                      />
+                    ) : (
+
+                      <FontAwesomeIcon
+                        icon={faEyeSlash}
+                        className="eye-icon eye-slash position-absolute"
+                      />
+
+                    )}
+                  </span>
+                </div>
+                {formik.errors.password && formik.touched.password && (
+                  <p className="text-danger" >
+                    {formik.errors.password}
+                  </p>
                 )}
-                {/* Already have an account? Sign in */}
+                <label htmlFor="rePassword">Confirm Password:</label>
 
-              </button>
+                <div className="input-group position-relative my-2">
+                  <span className="input-group-text">
+                    <FiLock className="lock-icon text-main fs-5" />
+
+                  </span>
+                  <input
+                    type={showConfirmPassword ? "text" : "password"}
+                    className="form-control"
+                    placeholder="••••••••"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    name="rePassword"
+                    id="rePassword"
+                  />
+                  <span
+                    className="input-group-textt"
+                    onClick={toggleConfirmPassword}
+                  >
+                    {showConfirmPassword ? (
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        className="eye-icon position-absolute"
+                      />
+                    ) : (
+
+                      <FontAwesomeIcon
+                        icon={faEyeSlash}
+                        className="eye-icon eye-slash position-absolute"
+                      />
+                    )}
+                  </span>
+                </div>
+                {formik.errors.rePassword && formik.touched.rePassword && (
+                  <p className="text-danger" >
+                    {formik.errors.rePassword}
+                  </p>
+                )}
+
+                <p className="fw-bold text-muted">By Signup, you agree to our <span className="text-main">Terms of Service</span> & <span className="text-main">Privacy Policy</span></p>
+
+                <div className="text-end">
+                  <button
+                    // disabled={!(formik.dirty && formik.isValid)}
+                    type="submit"
+                    className="btn btn-main bg-main text-white w-100"
+                  >
+                    {loaderbtn ? (
+                      <>
+                        <i className="fa-solid fa-spinner fa-spin-pulse"></i> Create Account
+                      </>
+
+                    ) : (
+                      "Create Account"
+                    )}
+                    {/* Already have an account? Sign in */}
+
+                  </button>
+                </div>
+              </form>
             </div>
-          </form>
+          </div>
+
+
         </div>
       </div>
     </>

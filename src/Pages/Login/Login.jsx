@@ -8,6 +8,7 @@ import { faEye, faEyeSlash, faEnvelope } from "@fortawesome/free-regular-svg-ico
 import { FiLock } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import Shoping from "../../Assets/Images/Online shopping.svg"
 import "./Signin.css";
 
 
@@ -86,96 +87,106 @@ export default function Login() {
       <div style={{ paddingTop: "74.49px" }}>
         <div className="w-75 m-auto my-5">
           <h2 className="mb-5 fw-bold text-dark">Login </h2>
-          <form onSubmit={formik.handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <div className="input-group my-2">
-              <span className="input-group-text">
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="user-icon text-main fs-5"
-                />
-              </span>
-              <input
-                className="form-control"
-                placeholder="e.g. user@example.com"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                type="email"
-                name="email"
-                id="email"
-              />
-            </div>
-            {formik.errors.email && formik.touched.email ? (
-              <p className="text-danger" >
-                {formik.errors.email}
-              </p>
-            ) : (
-              ""
-            )}
-            <label htmlFor="password" >Password:</label>
-            <div className="input-group position-relative my-2">
-              <span className="input-group-text">
+          <div className="row">
 
-                <FiLock className="lock-icon text-main fs-5" />
-
-              </span>
-              <input
-                type={showPassword ? "text" : "password"}
-                className="form-control"
-                placeholder="••••••••"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                name="password"
-                id="password"
-              />
-              <span
-                className="input-group-textt"
-                onClick={togglePassword}
-              >
-                {showPassword ? (
-                  <FontAwesomeIcon
-                    icon={faEye}
-                    className="eye-icon position-absolute"
+            <div className="col-xl-6 col-lg-6 col-md-12">
+              <form onSubmit={formik.handleSubmit}>
+                <label htmlFor="email">Email:</label>
+                <div className="input-group my-2">
+                  <span className="input-group-text">
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="user-icon text-main fs-5"
+                    />
+                  </span>
+                  <input
+                    className="form-control"
+                    placeholder="e.g. user@example.com"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    type="email"
+                    name="email"
+                    id="email"
                   />
+                </div>
+                {formik.errors.email && formik.touched.email ? (
+                  <p className="text-danger" >
+                    {formik.errors.email}
+                  </p>
                 ) : (
+                  ""
+                )}
+                <label htmlFor="password" >Password:</label>
+                <div className="input-group position-relative my-2">
+                  <span className="input-group-text">
 
-                  <FontAwesomeIcon
-                    icon={faEyeSlash}
-                    className="eye-icon eye-slash position-absolute"
+                    <FiLock className="lock-icon text-main fs-5" />
+
+                  </span>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    className="form-control"
+                    placeholder="••••••••"
+                    onBlur={formik.handleBlur}
+                    onChange={formik.handleChange}
+                    name="password"
+                    id="password"
                   />
-                )}
-              </span>
-            </div>
-            {formik.errors.password && formik.touched.password ? (
-              <p className="text-danger" >
-                {formik.errors.password}
-              </p>
-            ) : (
-              ""
-            )}
-            <Link to="/forgetPassword" className="ResetPassword">
-              Forgot Password ?
-            </Link>
-            <div className="text-end">
-              <button
-                // disabled={!(formik.dirty && formik.isValid)}
-                type="submit"
-                className="btn btn-main bg-main text-white"
-              >
-                {loaderbtn ? (
-                  <>
-                    <i className="fa-solid fa-spinner fa-spin-pulse"></i> Login
-                  </>
+                  <span
+                    className="input-group-textt"
+                    onClick={togglePassword}
+                  >
+                    {showPassword ? (
+                      <FontAwesomeIcon
+                        icon={faEye}
+                        className="eye-icon position-absolute"
+                      />
+                    ) : (
+
+                      <FontAwesomeIcon
+                        icon={faEyeSlash}
+                        className="eye-icon eye-slash position-absolute"
+                      />
+                    )}
+                  </span>
+                </div>
+                {formik.errors.password && formik.touched.password ? (
+                  <p className="text-danger" >
+                    {formik.errors.password}
+                  </p>
                 ) : (
-                  "Login"
+                  ""
                 )}
-              </button>
+                <Link to="/forgetPassword" className="ResetPassword">
+                  Forgot Password ?
+                </Link>
+                <div className="text-end">
+                  <button
+                    // disabled={!(formik.dirty && formik.isValid)}
+                    type="submit"
+                    className="btn btn-main bg-main text-white w-100 mt-2"
+                  >
+                    {loaderbtn ? (
+                      <>
+                        <i className="fa-solid fa-spinner fa-spin-pulse"></i> Login
+                      </>
+                    ) : (
+                      "Login"
+                    )}
+                  </button>
+                </div>
+                <p className="fw-bold mt-3">Don't have an account ?
+                  <Link to="/signup" className="text-main ms-1 ">
+                    Signup now
+                  </Link></p>
+              </form>
             </div>
-            <p className="fw-bold mt-3">Don't have an account ?
-              <Link to="/signup" className="text-main ms-1">
-                Signup now
-              </Link></p>
-          </form>
+            <div className="col-xl-6  col-lg-6 d-lg-block d-none">
+              <img src={Shoping}  alt="" />
+            </div>
+
+          </div>
+
         </div>
       </div>
 
